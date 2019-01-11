@@ -1,0 +1,6 @@
+framework module Pods_MFCoin {
+  umbrella header "Pods-MFCoin-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module HSHDWalletKit {
+  umbrella header "HSHDWalletKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

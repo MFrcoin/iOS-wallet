@@ -1,0 +1,11 @@
+framework module HSCryptoKit {
+    umbrella header "HSCryptoKit.h"
+
+    export *
+    module * { export * }
+
+    explicit module Private {
+        header "CryptoKitPrivate.h"
+        link "crypto"
+    }
+}

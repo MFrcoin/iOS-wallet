@@ -1,0 +1,6 @@
+framework module HSBitcoinKit {
+  umbrella header "HSBitcoinKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
