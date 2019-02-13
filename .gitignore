@@ -1,0 +1,8 @@
+# MacOS trash
+.DS_Store
+*/.DS_Store
+*/**/*/.DS_Store
+
+# XCode stuff
+*.plist
+*.xcuserstate
