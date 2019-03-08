@@ -26,8 +26,8 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         nextButton.layer.cornerRadius = Constants.CORNER_RADIUS
-        passUnderLineView.backgroundColor = .clear
-        replyPassUnderLineView.backgroundColor = .clear
+        passUnderLineView.backgroundColor = .gray
+        replyPassUnderLineView.backgroundColor = .gray
         passErrorLabel.text = ""
         replyPassErrorLabel.text = ""
     }
@@ -85,10 +85,10 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if textField.tag == 10 {
-            passUnderLineView.backgroundColor = .clear
+            passUnderLineView.backgroundColor = .gray
         }
         if textField.tag == 20 {
-            replyPassUnderLineView.backgroundColor = .clear
+            replyPassUnderLineView.backgroundColor = .gray
         }
     }
     

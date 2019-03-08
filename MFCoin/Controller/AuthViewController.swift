@@ -26,8 +26,8 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         nextButton.layer.cornerRadius = Constants.CORNER_RADIUS
-        underLinePassView.backgroundColor = .clear
-        underReplyPassView.backgroundColor = .clear
+        underLinePassView.backgroundColor = .gray
+        underReplyPassView.backgroundColor = .gray
         passErrorLabel.text = ""
         replyPassErrorLabel.text = ""
         guard let biometrics = DAKeychain.shared[Constants.BIOMETRICS] else { return }
@@ -85,10 +85,10 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if textField.tag == 10 {
-            underLinePassView.backgroundColor = .clear
+            underLinePassView.backgroundColor = .gray
         }
         if textField.tag == 20 {
-            underReplyPassView.backgroundColor = .clear
+            underReplyPassView.backgroundColor = .gray
         }
     }
     

@@ -26,7 +26,7 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        underLineView.backgroundColor = .clear
+        underLineView.backgroundColor = .gray
     }
     
     @IBAction func goForward(_ sender: UIButton) {
@@ -78,7 +78,7 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        underLineView.backgroundColor = .clear
+        underLineView.backgroundColor = .gray
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

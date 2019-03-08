@@ -18,11 +18,7 @@ class KitManager {
     func createWords() {
         print("create words")
         clearAll()
-        let words = "response friend student farm tumble morning also purse random tennis bullet expect"
-        //MbJtMsgyx9DegEuWGgiLCSdie8NisPvPDm
-        //let mnemonic = Mnemonic.init(language: .english).toString()
-        //print("mnemonic \(mnemonic)")
-        //Mnemonic.create(strength: .normal, language: .english)
+        let words = Mnemonic.init(language: .english).toString()
         save(words: words.trimmingCharacters(in: .whitespacesAndNewlines))
     }
     
