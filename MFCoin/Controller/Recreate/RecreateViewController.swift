@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import HSBitcoinKit
-import HSHDWalletKit
 
 class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDelegate {
 
@@ -21,6 +19,7 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
     @IBOutlet weak var bip39Switch: UISwitch!
     @IBOutlet weak var phraseTF: UITextField!
     
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var bip39View: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +56,7 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "scannerController") as! ScannerViewController
         vc.delegate = self
-        show(vc, sender: sender)
+        show(vc, sender: nil)
     }
     
     @IBAction func goForward(_ sender: UIButton) {
@@ -68,8 +67,6 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
     
     func qrCodeReader(info: String) {
         phraseTF.text = info
-        let bitKit = BitcoinKit.init(withWords: [info], coin: .bitcoin(network: .testNet))
-        print (bitKit.debugInfo)
     }
     
     
@@ -78,10 +75,10 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 10 {
-            undelinePassPhraseView.backgroundColor = Colors.blueColor
+            undelinePassPhraseView.backgroundColor = Constants.BLUECOLOR
         }
         if textField.tag == 20 {
-            underlineBip39View.backgroundColor = Colors.blueColor
+            underlineBip39View.backgroundColor = Constants.BLUECOLOR
         }
     }
     

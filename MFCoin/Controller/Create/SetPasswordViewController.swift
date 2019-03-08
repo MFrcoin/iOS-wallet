@@ -16,6 +16,7 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var replyPassTextField: UITextField!
     @IBOutlet weak var replyPassUnderLineView: UIView!
     @IBOutlet weak var replyPassErrorLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        nextButton.layer.cornerRadius = Constants.CORNER_RADIUS
         passUnderLineView.backgroundColor = .clear
         replyPassUnderLineView.backgroundColor = .clear
         passErrorLabel.text = ""
@@ -38,7 +40,6 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     @IBAction func skipForward(_ sender: UIButton) {
         let alert = UIAlertController.init(title: "", message: "By not setting a password, your wallet can be accessed without authorization.", preferredStyle: .alert)
         let alertActionOk = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
@@ -51,7 +52,6 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(alertActionSkip)
         self.present(alert, animated: true, completion: nil)
     }
-    
     
     private func getDiffPassword() -> Bool {
         guard let password = setPasswordTextField.text else {
@@ -74,13 +74,12 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 10 {
-            passUnderLineView.backgroundColor = Colors.blueColor
+            passUnderLineView.backgroundColor = Constants.BLUECOLOR
         }
         if textField.tag == 20 {
-            replyPassUnderLineView.backgroundColor = Colors.blueColor
+            replyPassUnderLineView.backgroundColor = Constants.BLUECOLOR
         }
     }
     

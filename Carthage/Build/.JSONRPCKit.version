@@ -1,0 +1,18 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "2.0.0",
+  "iOS" : [
+    {
+      "name" : "JSONRPCKit",
+      "hash" : "85b81b41a00f075abdeaad24c57654268338c4dd1755c7254a837b7077f6de99"
+    }
+  ]
+}

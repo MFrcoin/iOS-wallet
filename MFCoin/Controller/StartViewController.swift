@@ -7,54 +7,80 @@
 //
 
 import UIKit
-//import BitcoinKit
+import SwiftSocket
+import CryptoSwift
 
 
 class StartViewController: UIViewController {
 
+    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var enterButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        update()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        enterButton.layer.cornerRadius = Constants.CORNER_RADIUS
+        createButton.layer.cornerRadius = Constants.CORNER_RADIUS
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
+    
+    private func update(){
+        //ShapeShift().getFees()
+        FiatTicker().setPrice()
+    }
+    
+    
+    @IBAction func enterButtonPressed(_ sender: UIButton) {
+        if KitManager().getWords() != "" {
+            let sb = UIStoryboard.init(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "authVC") as! AuthViewController
+            show(vc, sender: nil)
+        } else {
+            let sb = UIStoryboard.init(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "createWalletVC") as! CreateWalletViewController
+            show(vc, sender: nil)
+        }
+    }
+    
+    @IBAction func createButtonPressed(_ sender: UIButton) {
+        if KitManager().getWords() != "" {
+            alert()
+        } else {
+            let sb = UIStoryboard.init(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "createWalletVC") as! CreateWalletViewController
+            show(vc, sender: nil)
+        }
+    }
+    
+    @IBAction func restoreButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    private func alert() {
+       
+        let alert = UIAlertController.init(title: "Override existing wallet?", message: "If you create a new wallet, your existing wallet will be lost unless you backed up your recovery phrase", preferredStyle: .alert)
+        let alertActionCancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        let alertActionOk = UIAlertAction.init(title: "Ok", style: .default, handler: { (ok) in
+            let sb = UIStoryboard.init(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "createWalletVC") as! CreateWalletViewController
+            self.show(vc, sender: nil)
+        })
+        alert.addAction(alertActionCancel)
+        alert.addAction(alertActionOk)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     //""Override existing wallet?
     //If you create a new wallet, your existing wallet will be lost unless you backed up your recovery phrase
     
 }
 
-//    func createWallet() {
-//
-//        do {
-//            // from Testnet Cashaddr
-//            let cashaddrTest = try!  AddressFactory.create("bchtest:pr6m7j9njldwwzlg9v7v53unlr4jkmx6eyvwc0uz5t")
-//            print ("cashaddrTest \(cashaddrTest)")
-//            // from Mainnet Cashaddr
-//            let cashaddrMain = try! AddressFactory.create("bitcoincash:qpjdpjrm5zvp2al5u4uzmp36t9m0ll7gd525rss978")
-//            print ("cashaddrMain \(cashaddrMain)")
-//            // from Base58 format
-//
-//            let address = try! AddressFactory.create("1AC4gh14wwZPULVPCdxUkgqbtPvC92PQPN")
-//            print ("address \(address)")
-//            print ("*---------------------*")
-//        }
-//        do {
-//            let privateKey = PrivateKey(network: .testnet) // You can choose .mainnet or .testnet
-//            let wallet = Wallet(privateKey: privateKey)
-//            print ("privateKey \(privateKey)")
-//            print ("wallet \(wallet)")
-//            print ("*---------------------*")
-//        }
-//        do {
-//            let wallet = try! Wallet(wif: "92pMamV6jNyEq9pDpY4f6nBy9KpV2cfJT4L5zDUYiGqyQHJfF1K")
-//            print ("wallet2 \(wallet)")
-//            print ("*---------------------*")
-//        }
-//
-//    }
+

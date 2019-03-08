@@ -1,1 +1,0 @@
-# hd-wallet-kit-ios

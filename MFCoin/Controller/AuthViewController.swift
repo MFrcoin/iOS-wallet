@@ -16,52 +16,49 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var underReplyPassView: UIView!
     @IBOutlet weak var passErrorLabel: UILabel!
     @IBOutlet weak var replyPassErrorLabel: UILabel!
-    
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passTF.delegate = self
         replyPassTF.delegate = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        nextButton.layer.cornerRadius = Constants.CORNER_RADIUS
         underLinePassView.backgroundColor = .clear
         underReplyPassView.backgroundColor = .clear
         passErrorLabel.text = ""
         replyPassErrorLabel.text = ""
-        touchFaceId()
+        guard let biometrics = DAKeychain.shared[Constants.BIOMETRICS] else { return }
+        if biometrics == "true" {
+            touchFaceId()
+        }
     }
     
     @IBAction func goForward(_ sender: UIButton) {
         if passTF.text == replyPassTF.text {
-            guard let password = DAKeychain.shared["pass"] else {
-                passErrorLabel.text = "Нет такого аккаунта"
+            guard let password = DAKeychain.shared[Constants.PASS_KEY] else {
+                gogo()
                 return }
-            print(password)
             if password == passTF.text {
-                let sb = UIStoryboard.init(name: "Coins", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "tabBarController") as! CoinsTabBarController
-                self.show(vc, sender: sender)
+                gogo()
             } else {
-                passErrorLabel.text = "Пароль не подходит"
+                passErrorLabel.text = "Password is incorrect"
                 replyPassErrorLabel.text = ""
             }
         } else {
-            replyPassErrorLabel.text = "Пароли не совпадают"
+            replyPassErrorLabel.text = "Passwords is different"
         }
     }
-    
-    @IBAction func skipForward(_ sender: UIButton) {
-        
+    @IBAction func skipFoward(_ sender: UIButton) {
+        gogo()
     }
     
     func touchFaceId() {
         BiometricIDAuth.shared.authenticateUser { (answer) in
             if answer == "success" {
-                let sb = UIStoryboard.init(name: "Coins", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "tabBarController") as! CoinsTabBarController
-                self.show(vc, sender: nil)
+                self.gogo()
             } else {
                 DispatchQueue.main.async {
                     self.passErrorLabel.text = answer
@@ -70,13 +67,19 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    private func gogo() {
+        let sb = UIStoryboard.init(name: "Coins", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "tabBarController") as! CoinsTabBarController
+        self.show(vc, sender: nil)
+    }
  
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 10 {
-            underLinePassView.backgroundColor = Colors.blueColor
+            underLinePassView.backgroundColor = Constants.BLUECOLOR
         }
         if textField.tag == 20 {
-            underReplyPassView.backgroundColor = Colors.blueColor
+            underReplyPassView.backgroundColor = Constants.BLUECOLOR
         }
     }
     

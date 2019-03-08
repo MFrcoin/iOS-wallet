@@ -13,9 +13,13 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var phraseTextView: UITextView!
     @IBOutlet weak var underLineView: UIView!
+    @IBOutlet weak var nextButton: UIButton!
+    
+    let manager = KitManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nextButton.layer.cornerRadius = Constants.CORNER_RADIUS
         phraseTextView.delegate = self
         errorLabel.text = ""
         phraseTextView.text = ""
@@ -29,15 +33,15 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
         guard let metaPhrase = DAKeychain.shared["mnemonic"] else { return }
         print (metaPhrase)
         guard let phrase = phraseTextView.text else {
-            errorLabel.text = "Введите фразу"
+            errorLabel.text = "Please, enter recovery phrase"
             return }
         if phrase == "" {
-            errorLabel.text = "Введите фразу"
+            errorLabel.text = "Please, enter recovery phrase"
         }
-        if metaPhrase != phrase {
+        if manager.diffWords(words: phrase) {
             print ("metaPhrase \(metaPhrase)")
             print ("phrase \(phrase)")
-            errorLabel.text = "Фраза не совпадает"
+            errorLabel.text = "Phrases is different"
         } else {
             let sb = UIStoryboard.init(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "setPass") as! SetPasswordViewController
@@ -47,12 +51,11 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
     }
   
     @IBAction func skipForward(_ sender: UIButton) {
-        guard let metaPhrase = DAKeychain.shared["mnemonic"] else { return }
         let message = """
         Please make sure that your recovery phrase matches the following:
 
-        \(metaPhrase)
-        
+        \(manager.getWords())
+
         It is recommended not to skip verification, so that any misspellings could be detected.
 """
         
@@ -71,7 +74,7 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
 
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        underLineView.backgroundColor = Colors.blueColor
+        underLineView.backgroundColor = Constants.BLUECOLOR
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

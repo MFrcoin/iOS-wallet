@@ -10,7 +10,7 @@ import Foundation
 
 open class DAKeychain {
     
-    open var loggingEnabled = false
+    open var loggingEnabled = true
     
     private init() {}
     

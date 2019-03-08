@@ -7,84 +7,62 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SetCoinsTableViewController: UITableViewController {
+    
+    var coins: Results<CoinModel>?
+    let realm = RealmHelper.shared
+    let kit = KitManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        coins = realm.getCoins()
+        tableView.allowsMultipleSelection = true
+        let readyCoins = UIBarButtonItem.init(title: "Ready", style: .done, target: self , action: #selector(readyButtonPressed))
+        self.navigationItem.rightBarButtonItem = readyCoins
     }
 
+    @objc func readyButtonPressed() {
+        
+        kit.initSelectedWallets()
+        
+        let sb = UIStoryboard.init(name: "Coins", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "tabBarController") as! CoinsTabBarController
+        show(vc, sender: nil)
+    }
+    
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let coinsUnw = coins else { return 0 }
+        return coinsUnw.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "createCoinsCell", for: indexPath) as! CoinsTableViewCell
+        if let coinsUnw = coins {
+            let coin = coinsUnw[indexPath.row]
+            cell.coin = coin
+            cell.coinsName.text = coin.name
+            cell.coinsPrice.text = "\(coin.price)"
+            cell.coinsLogo.image = UIImage(named:coin.logo)
+        }
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? CoinsTableViewCell {
+            guard let coin = cell.coin else { return }
+            if cell.accessoryType == .checkmark {
+                realm.coinIsSelected(coin: coin, selected: false)
+                cell.accessoryType = .none
+            } else {
+                realm.coinIsSelected(coin: coin, selected: true)
+                cell.accessoryType = .checkmark
+            }
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
