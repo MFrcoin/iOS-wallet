@@ -9,22 +9,20 @@
 import UIKit
 
 class NaviController: UINavigationController {
+    var titleObservation: NSKeyValueObservation?
+    var head = RealmHelper.shared.getHeadFiat()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationBar.topItem?.largeTitleDisplayMode = .always
+        titleObservation = UserDefaults.standard.observe(\.myBalance, options: [.new]) { (vc, change) in
+            guard let newValue = change.newValue else { return }
+            self.head = RealmHelper.shared.getHeadFiat()
+            self.navigationBar.topItem?.title = "\(newValue) \(self.head.name)"
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationBar.topItem?.title = "\(UserDefaults.standard.double(forKey: Constants.MYBALANCE)) \(head.name)"
     }
-    */
-
 }

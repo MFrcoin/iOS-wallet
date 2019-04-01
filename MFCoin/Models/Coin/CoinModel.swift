@@ -26,6 +26,7 @@ class CoinModel: Object {
     @objc dynamic var balance: Int = 0
     @objc dynamic var unBalance: Int = 0
     @objc dynamic var fee: Int = 100000
+    @objc dynamic var online = false
     var derPaths = List<CoinDerPaths>()
     
     convenience init(coinStruct: CoinStruct) {
@@ -45,5 +46,6 @@ class CoinModel: Object {
         self.currentAddrE = ""
         self.currentAddrI = ""
         self.fee = 100000
+        self.online = true
     }
 }

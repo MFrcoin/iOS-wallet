@@ -13,6 +13,7 @@ class TransactFeesTableViewController: UITableViewController, UITextFieldDelegat
     
     var walletsCoins: Results<CoinModel>?
     let realm = RealmHelper.shared
+    let convert = ConvertValue.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,8 @@ class TransactFeesTableViewController: UITableViewController, UITextFieldDelegat
             cell.logoImage.image = UIImage(named:coin.logo)
             cell.coinNameLabel.text = coin.fullName
             cell.shortCoinNameLabel.text = coin.shortName
-            cell.amountLabel.text = "0"
+            let convertFee = convert.convert(value: coin.fee)
+            cell.amountLabel.text = "\(convertFee)"
         }
         return cell
     }
@@ -46,7 +48,7 @@ class TransactFeesTableViewController: UITableViewController, UITextFieldDelegat
     private func setCoinFeesAlert(_ coin: CoinModel) {
         let alert = UIAlertController.init(title: "\(coin.fullName) transaction fees", message: "The fee value is per kilobyte of transaction data.", preferredStyle: .alert)
         alert.addTextField { (textField: UITextField) in
-            let convertFee = ConvertValue().convertValue(value: coin.fee)
+            let convertFee = self.convert.convert(value: coin.fee)
             
             textField.text = String(convertFee)
             textField.delegate = self
@@ -55,21 +57,24 @@ class TransactFeesTableViewController: UITableViewController, UITextFieldDelegat
         let alertActionDefault = UIAlertAction.init(title: "Default", style: .default, handler: {
             (def) in
             if let tf = alert.textFields {
-                let convertFee = ConvertValue().convertValue(value: 100000)
+                let convertFee = self.convert.convert(value: Constants.DEFAULTFEE)
                 tf[0].text = String(convertFee)
+                try! Realm().write {
+                    coin.fee = Constants.DEFAULTFEE
+                }
+                self.tableView.reloadData()
             }
-           
-            //сброс к дефолтному значению
         })
         let alertActionCancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
         let alertActionOk = UIAlertAction.init(title: "Ok", style: .default, handler: { (ok) in
             if let tf = alert.textFields {
                 if let fee = tf[0].text {
                     if let dFee = Double(fee) {
-                        let convertFee = ConvertValue().convertValueToSatoshi(value: dFee)
+                        let convertFee = self.convert.convertValueToSatoshi(value: dFee)
                         try! Realm().write{
                             coin.fee = convertFee
                         }
+                        self.tableView.reloadData()
                     }
                 }
             }

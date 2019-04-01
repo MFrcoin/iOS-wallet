@@ -6,7 +6,6 @@
 //  Copyright © 2019 Egor Vdovin. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 
 class CoinDerPaths: Object {
@@ -20,8 +19,8 @@ class CoinDerPaths: Object {
     @objc dynamic var index = 0
     @objc dynamic var wif = ""
     
-    var input = List<Input>()
-    var output = List<Output>()
+    var unspent = List<Unspent>()
+    var history = List<History>()
     
     convenience init(path: String, address: String, change: Int, index: Int, wif: String) {
         self.init()

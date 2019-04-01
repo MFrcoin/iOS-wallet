@@ -7,24 +7,54 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TxHistoryViewController: UIViewController {
-
+    
+    var coin: CoinModel?
+    var txHistory: TxHistory?
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var sentOrReceivedLabel: UILabel!
+    @IBOutlet weak var coinsLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var txIdLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setInfo()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setInfo() {
+        guard let coinUnw = coin else {return}
+        guard let txUnw = txHistory else {return}
+        dateLabel.text = dateFormat(milliseconds: txUnw.date)
+        statusLabel.text = "\(txUnw.status) confirmations"
+        sentOrReceivedLabel.textColor = Constants.BLUECOLOR
+        if txUnw.received {
+            sentOrReceivedLabel.text = "Received"
+        } else {
+            sentOrReceivedLabel.text = "Sent"
+        }
+        coinsLabel.text = "\(txUnw.value) \(coinUnw.shortName)"
+        addressLabel.text = "\(txUnw.address)"
+        txIdLabel.text = "\(txUnw.txid)"
     }
-    */
-
+    
+    @IBAction func viewBlockButtonPressed(_ sender: UIButton) {
+        guard let coinUnw = coin else {return}
+        guard let txUnw = txHistory else {return}
+        let url = CoinsList().getBlockchainUrl(coin: coinUnw)
+        if let link = URL(string: "\(url)\(txUnw.txid)") {
+            UIApplication.shared.open(link)
+        }
+    }
+    
+    private func dateFormat(milliseconds: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(milliseconds))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy, HH:mm"
+        return formatter.string(from: date)
+    }
 }

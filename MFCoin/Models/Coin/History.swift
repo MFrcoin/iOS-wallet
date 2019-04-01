@@ -6,44 +6,15 @@
 //  Copyright © 2019 Egor Vdovin. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 
-
-class Input: Object {
-    @objc dynamic var txHash = ""
-    @objc dynamic var txPos = 0
+class History: Object {
     @objc dynamic var height = 0
-    @objc dynamic var value: Int = 0
-    @objc dynamic var isUnspent = false
+    @objc dynamic var txId = ""
     
-    
-    convenience init(result: Listunspent.Result) {
+    convenience init(txId: String, height: Int) {
         self.init()
-        self.txHash = result.tx_hash ?? ""
-        self.txPos = result.tx_pos ?? 0
-        self.height = result.height ?? 0
-        self.value = result.value ?? 0
-        self.isUnspent = false
-    }
-}
-
-class Output: Object {
-    @objc dynamic var id = ""
-    @objc dynamic var txHash = ""
-    @objc dynamic var height = 0
-    @objc dynamic var value: Int = 0
-    @objc dynamic var txId: String = ""
-    @objc dynamic var date = Date()
-    @objc dynamic var toAddress = ""
-    
-    convenience init(id: String, txHash: String, height: Int, balance: Int, txId: String) {
-        self.init()
-        self.id = id
-        self.txHash = txHash
-        self.height = height
-        self.value = balance
         self.txId = txId
-        self.date = Date()
+        self.height = height
     }
 }

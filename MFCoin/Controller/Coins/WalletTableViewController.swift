@@ -16,39 +16,69 @@ class WalletTableViewController: UITableViewController {
     var walletsCoins: Results<CoinModel>?
     let convert = ConvertValue.shared
     var head = RealmHelper.shared.getHeadFiat()
+    var startFlag = false
+    
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
+        startVC()
+    }
+    
+    private func startVC() {
+        self.navigationItem.largeTitleDisplayMode = .always
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading")
+        refreshControl.tintColor = Constants.BLUECOLOR
+        refreshControl.addTarget(self, action: #selector(refreshBalances), for: .valueChanged)
         tableView.refreshControl = refreshControl
         walletsCoins = realmManager.selCoins
-        self.tabBarController?.navigationItem.title = realmManager.getTotalAmount()
+        kitManager.getBalances()
+        kitManager.updateHistory()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.refreshControl?.beginRefreshing()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if tableView.refreshControl?.isRefreshing ?? false {
+            tableView.refreshControl?.endRefreshing()
+        }
+        NotificationCenter.default.removeObserver(self, name: Constants.UPDATE, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .flagsChanged, object: nil)
+        startFlag = false
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if !startFlag {
+            startFlag = true
+            NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
+            NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
+            let newHead = RealmHelper.shared.getHeadFiat()
+            if newHead != head {
+                head = newHead
+                realmManager.updateTitleBalance()
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    @objc func refreshBalances() {
+        if self.tableView.refreshControl?.isRefreshing ?? false {
+            self.tableView.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
         self.tableView.refreshControl?.beginRefreshing()
         kitManager.getBalances()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
-        try! Realm().refresh()
-        self.tableView.reloadData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: Constants.UPDATE, object: nil)
-    }
-    
     @objc func update() {
-        head = RealmHelper.shared.getHeadFiat()
-        walletsCoins = realmManager.selCoins
-        guard let walletsUnw = walletsCoins else {return}
-        for coin in walletsUnw {
-            realmManager.updateBalance(coin: coin)
-        }
-        try! Realm().refresh()
+        head = realmManager.getHeadFiat()
+        realmManager.updateTitleBalance()
+        kitManager.updateHistory()
         DispatchQueue.main.async {
             self.tableView.refreshControl?.endRefreshing()
             self.tableView.reloadData()
-            self.tabBarController?.navigationItem.title = self.realmManager.getTotalAmount()
         }
     }
     
@@ -66,11 +96,17 @@ class WalletTableViewController: UITableViewController {
             cell.coinsPriceLabel.text = "= \(coin.price) \(head.name)"
             cell.coinsLogo.image = UIImage(named: coin.logo)
             cell.coinsFiatValueLabel.text = "\(Float(coin.fiatPrice))"
-            let convertBalance = convert.convertValue(value: coin.balance)
-            if coin.unBalance > 0 {
-                cell.coinsValueLabel.text = "!\(convertBalance) \(coin.shortName)"
+            let convertBalance = convert.convert(value: coin.balance)
+            if coin.online {
+                cell.coinsValueLabel.textColor = .black
+                if coin.unBalance > 0 {
+                    cell.coinsValueLabel.text = "!\(convertBalance) \(coin.shortName)"
+                } else {
+                    cell.coinsValueLabel.text = "\(convertBalance) \(coin.shortName)"
+                }
             } else {
-                cell.coinsValueLabel.text = "\(convertBalance) \(coin.shortName)"
+                cell.coinsValueLabel.textColor = .red
+                cell.coinsValueLabel.text = "Offline"
             }
         }
         return cell
@@ -83,6 +119,7 @@ class WalletTableViewController: UITableViewController {
                 realmManager.coinIsSelected(coin: coin, selected: false)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
+            walletsCoins = realmManager.selCoins
             tableView.reloadData()
         }
     }
@@ -92,14 +129,30 @@ class WalletTableViewController: UITableViewController {
         let sb = UIStoryboard.init(name: "Coins", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "containerVC") as! ContainerViewController
         vc.coin = cell.coin
-        show(vc, sender: nil)
-    }    
+        self.show(vc, sender: nil)
+    }
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        let sb = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "setCoins") as! SetCoinsTableViewController
+        self.show(vc, sender: sender)
+    }
 }
 
+
 extension WalletTableViewController {
-    func subscribe() {
-        //        let bag = DisposeBag()
-        //        var publishSubject = PublishSubject<CoinModel>()
-        //        publishSubject.
+    
+    @objc func internetReactions() {
+        guard let status = Network.reachability?.status else { return }
+        switch status {
+        case .wifi, .wwan:
+            KitManager().getOnline()
+            self.refreshBalances()
+        default:
+            let alert = UIAlertController.init(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
+            let alertActionCancel = UIAlertAction.init(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(alertActionCancel)
+            self.present(alert, animated: true)
+        }
     }
 }

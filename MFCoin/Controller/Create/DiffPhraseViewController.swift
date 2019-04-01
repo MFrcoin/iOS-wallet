@@ -30,7 +30,7 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func goForward(_ sender: UIButton) {
-        guard let metaPhrase = DAKeychain.shared["mnemonic"] else { return }
+        guard let metaPhrase = DAKeychain.shared[Constants.MNEMONIC_KEY] else { return }
         print (metaPhrase)
         guard let phrase = phraseTextView.text else {
             errorLabel.text = "Please, enter recovery phrase"
@@ -71,8 +71,6 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-
-
     func textViewDidBeginEditing(_ textView: UITextView) {
         underLineView.backgroundColor = Constants.BLUECOLOR
     }

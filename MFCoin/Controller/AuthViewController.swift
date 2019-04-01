@@ -22,6 +22,8 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         passTF.delegate = self
         replyPassTF.delegate = self
+        KitManager().getOnline()
+        FiatTicker().setPrice()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +73,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     private func gogo() {
         let sb = UIStoryboard.init(name: "Coins", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "tabBarController") as! CoinsTabBarController
-        self.show(vc, sender: nil)
+        self.present(vc, animated: true)
     }
  
     func textFieldDidBeginEditing(_ textField: UITextField) {

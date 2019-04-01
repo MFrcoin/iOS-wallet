@@ -9,10 +9,15 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
-    
+   
+    @IBOutlet weak var biometricsSwitch: UISwitch!
     @IBOutlet weak var scrollView: UIScrollView!
     let sb = UIStoryboard.init(name: "Settings", bundle: nil)
+    
+    override func viewDidLoad() {
+        guard let biometrics = DAKeychain.shared[Constants.BIOMETRICS] else { return }
+        biometricsSwitch.setOn(biometrics == "true", animated: false)
+    }
     
     @IBAction func switchedPressed(_ sender: UISwitch) {
          DAKeychain.shared[Constants.BIOMETRICS] = "\(sender.isOn)"
@@ -48,5 +53,6 @@ class SettingsViewController: UIViewController {
         let vc = sb.instantiateViewController(withIdentifier: "sweepPaperVC") as! SweepPaperViewController
         show(vc, sender: nil)
     }
+    
     
 }

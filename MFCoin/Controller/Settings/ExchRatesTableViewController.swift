@@ -56,8 +56,8 @@ class ExchRatesTableViewController: UITableViewController {
     
     private func setHead(name: String) {
         guard let resultUnw = results else {return}
-        let realm = try! Realm()
-        try! realm.write {
+        let bRealm = try! Realm()
+        try! bRealm.write {
             for result in resultUnw {
                 result.head = false
                 if result.name == name {

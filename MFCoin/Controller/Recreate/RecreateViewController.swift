@@ -21,24 +21,25 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var bip39View: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bip39ViewConstraint.constant = 0
         bip39View.isHidden = true
         bip39PassphraseTF.delegate = self
         phraseTF.delegate = self
+        nextButton.layer.cornerRadius = Constants.CORNER_RADIUS
+        KitManager().getOnline()
+        FiatTicker().setPrice()
     }
-    
     
     @IBAction func switchPressed(_ sender: Any) {
         if bip39Switch.isOn {
-            phraseTF.isEnabled = false
             UIView.animate(withDuration: 0.5) {
                 self.bip39ViewConstraint.constant = 160
                 self.bip39View.isHidden = false
             }
         } else {
-            phraseTF.isEnabled = true
             UIView.animate(withDuration: 0.5) {
                 self.bip39ViewConstraint.constant = 0
                 self.bip39View.isHidden = true
@@ -47,8 +48,8 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        undelinePassPhraseView.backgroundColor = .clear
-        underlineBip39View.backgroundColor = .clear
+        undelinePassPhraseView.backgroundColor = .gray
+        underlineBip39View.backgroundColor = .gray
         errorPhraseLabel.text = ""
     }
     
@@ -60,18 +61,32 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
     }
     
     @IBAction func goForward(_ sender: UIButton) {
-        let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "setPass") as! SetPasswordViewController
-        show(vc, sender: sender)
+        if phraseTF.text != "" {
+            guard let words = phraseTF.text else {return}
+            save(words: words.trimmingCharacters(in: .whitespacesAndNewlines))
+            if bip39Switch.isOn {
+                if bip39PassphraseTF.text != "" {
+                    guard let phrase = bip39PassphraseTF.text else {return}
+                    save(phrase: phrase.trimmingCharacters(in: .whitespacesAndNewlines))
+                }
+            }
+            let sb = UIStoryboard.init(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "setPass") as! SetPasswordViewController
+            show(vc, sender: sender)
+        }
     }
     
     func qrCodeReader(info: String) {
         phraseTF.text = info
     }
     
+    private func save(words: String) {
+        DAKeychain.shared[Constants.MNEMONIC_KEY] = words
+    }
     
-    //"Could not verify your recovery phrase. Word list size must be multiple of three words."
-    //"Could not verify your recovery phrase. Word list is empty."
+    private func save(phrase: String) {
+        DAKeychain.shared[Constants.PASSPHRASE_KEY] = phrase
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 10 {
@@ -84,10 +99,10 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if textField.tag == 10 {
-            undelinePassPhraseView.backgroundColor = .clear
+            undelinePassPhraseView.backgroundColor = .gray
         }
         if textField.tag == 20 {
-            underlineBip39View.backgroundColor = .clear
+            underlineBip39View.backgroundColor = .gray
         }
     }
     

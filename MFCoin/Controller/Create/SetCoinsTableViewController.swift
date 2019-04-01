@@ -14,24 +14,27 @@ class SetCoinsTableViewController: UITableViewController {
     var coins: Results<CoinModel>?
     let realm = RealmHelper.shared
     let kit = KitManager.shared
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         coins = realm.getCoins()
         tableView.allowsMultipleSelection = true
         let readyCoins = UIBarButtonItem.init(title: "Ready", style: .done, target: self , action: #selector(readyButtonPressed))
         self.navigationItem.rightBarButtonItem = readyCoins
+        self.navigationItem.largeTitleDisplayMode = .never
+        NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
     }
 
     @objc func readyButtonPressed() {
-        
         kit.initSelectedWallets()
-        
         let sb = UIStoryboard.init(name: "Coins", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "tabBarController") as! CoinsTabBarController
-        show(vc, sender: nil)
+        self.present(vc, animated: true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: .flagsChanged, object: nil)
+    }
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,7 +48,7 @@ class SetCoinsTableViewController: UITableViewController {
             let coin = coinsUnw[indexPath.row]
             cell.coin = coin
             cell.coinsName.text = coin.name
-            cell.coinsPrice.text = "\(coin.price)"
+            cell.coinsPrice.text = "\(Float(coin.fiatPrice))"
             cell.coinsLogo.image = UIImage(named:coin.logo)
         }
         return cell
@@ -63,6 +66,21 @@ class SetCoinsTableViewController: UITableViewController {
             }
         }
     }
+}
 
-
+extension SetCoinsTableViewController {
+    
+    @objc func internetReactions() {
+        guard let status = Network.reachability?.status else { return }
+        switch status {
+        case .wifi, .wwan:
+            kit.getOnline()
+            FiatTicker().setPrice()
+        default:
+            let alert = UIAlertController.init(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
+            let alertActionCancel = UIAlertAction.init(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(alertActionCancel)
+            self.present(alert, animated: true)
+        }
+    }
 }

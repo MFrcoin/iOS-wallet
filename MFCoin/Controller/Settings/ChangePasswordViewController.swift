@@ -40,6 +40,12 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             } else {
                 errorLabel.text = "Old password incorrect"
             }
+        } else {
+            if getBoolNewPass() {
+                DAKeychain.shared[Constants.PASS_KEY] = repeatPassTF.text
+            } else {
+                errorLabel.text = "Repeat password incorrect"
+            }
         }
     }
     

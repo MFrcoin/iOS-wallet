@@ -14,7 +14,6 @@ class AddressTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var coinCountLabel: UILabel!
-    @IBOutlet weak var fiatCountLabel: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
     
     

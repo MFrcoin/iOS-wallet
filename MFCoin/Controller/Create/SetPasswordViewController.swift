@@ -36,7 +36,7 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
         if getDiffPassword() {
             let sb = UIStoryboard.init(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "setCoins") as! SetCoinsTableViewController
-            show(vc, sender: sender)
+            self.show(vc, sender: sender)
         }
     }
     
@@ -68,7 +68,7 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
             replyPassErrorLabel.text = "Set reply password"
             return false }
         if password == replyPassword {
-            DAKeychain.shared["pass"] = password
+            DAKeychain.shared[Constants.PASS_KEY] = password
             return true
         }
         return false

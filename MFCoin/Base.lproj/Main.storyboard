@@ -13,16 +13,16 @@
         <!--Navigation Controller-->
         <scene sceneID="CQ5-Sh-G0F">
             <objects>
-                <navigationController id="AlD-rB-jd5" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q6U-Vb-Ng8">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                <navigationController hidesBarsOnSwipe="YES" hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="AlD-rB-jd5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="q6U-Vb-Ng8">
+                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -42,63 +42,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, enter your password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQN-e6-9fA">
-                                <rect key="frame" x="16" y="80" width="288" height="26.5"/>
+                                <rect key="frame" x="16" y="36" width="288" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fj-d9-7fv">
-                                <rect key="frame" x="16" y="176.5" width="288" height="0.0"/>
+                                <rect key="frame" x="16" y="132.5" width="288" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="IF8-as-CxO">
-                                <rect key="frame" x="16" y="184.5" width="288" height="18"/>
+                                <rect key="frame" x="16" y="140.5" width="288" height="18"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tq7-6v-fJQ">
-                                <rect key="frame" x="16" y="202.5" width="288" height="2"/>
+                                <rect key="frame" x="16" y="158.5" width="288" height="2"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="GST-LJ-YEf"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароли не совпадают" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvR-c1-mzr">
-                                <rect key="frame" x="16" y="220.5" width="288" height="20.5"/>
+                                <rect key="frame" x="16" y="176.5" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.92156862750000001" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq3-ig-sfC">
-                                <rect key="frame" x="16" y="262" width="288" height="0.0"/>
+                                <rect key="frame" x="16" y="218" width="288" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat password" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="AVT-5I-bur">
-                                <rect key="frame" x="16" y="270" width="288" height="18"/>
+                                <rect key="frame" x="16" y="226" width="288" height="18"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtK-2J-o6S">
-                                <rect key="frame" x="16" y="288" width="288" height="2"/>
+                                <rect key="frame" x="16" y="244" width="288" height="2"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="lBA-HO-Hm8"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароли не совпадают" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHo-Cp-s18">
-                                <rect key="frame" x="16" y="306" width="288" height="21"/>
+                                <rect key="frame" x="16" y="262" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.92156862750000001" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbc-9v-wyh">
-                                <rect key="frame" x="16" y="377" width="288" height="40"/>
+                                <rect key="frame" x="16" y="333" width="288" height="40"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Msz-KQ-Z4D"/>
@@ -113,7 +113,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tf-NB-PRe">
-                                <rect key="frame" x="109" y="437" width="102" height="30"/>
+                                <rect key="frame" x="109" y="393" width="102" height="30"/>
                                 <state key="normal" title="Skip (for tests)"/>
                                 <connections>
                                     <action selector="skipFoward:" destination="0IW-qv-BfW" eventType="touchUpInside" id="4nt-ar-Wgi"/>
@@ -157,7 +157,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BMP-X9-H1m"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="nextButton" destination="Cbc-9v-wyh" id="mNN-oT-EUu"/>
                         <outlet property="passErrorLabel" destination="mvR-c1-mzr" id="htd-hc-dpF"/>
@@ -181,7 +180,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainFon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="t3W-Z2-NLX">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heu-q5-dMy">
                                 <rect key="frame" x="20" y="364" width="280" height="44"/>
@@ -219,7 +218,6 @@
                                 </state>
                                 <connections>
                                     <action selector="restoreButtonPressed:" destination="nR8-jf-Z4Z" eventType="touchUpInside" id="4Mx-Oe-64J"/>
-                                    <segue destination="YTv-MH-Dvl" kind="show" id="TZt-Q4-dO0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYg-hI-4zP">
@@ -267,7 +265,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cvB-cX-vfx"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5gW-cW-l26"/>
+                    <navigationItem key="navigationItem" id="5gW-cW-l26">
+                        <barButtonItem key="backBarButtonItem" title="Start" id="Jb9-9v-XlG"/>
+                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="createButton" destination="pnS-JN-t99" id="VUi-cf-UUr"/>
                         <outlet property="enterButton" destination="heu-q5-dMy" id="jOm-b9-Qvo"/>
@@ -286,7 +287,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LO9-5S-g8N">
-                                <rect key="frame" x="0.0" y="64" width="375" height="826"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="870"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eob-vT-pdb" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="826"/>
@@ -346,8 +347,12 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                             </imageView>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CBd-uK-xUp">
                                                 <rect key="frame" x="310" y="682.5" width="51" height="31"/>
+                                                <color key="onTintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                                <connections>
+                                                    <action selector="saveSeedSwitched:" destination="URU-pD-F2i" eventType="valueChanged" id="UUr-RR-aey"/>
+                                                </connections>
                                             </switch>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLX-KT-jBc">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLX-KT-jBc">
                                                 <rect key="frame" x="16" y="749.5" width="343" height="44"/>
                                                 <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                                 <constraints>
@@ -430,7 +435,6 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ToA-1r-Sht"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="890"/>
                     <connections>
@@ -444,10 +448,10 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
             </objects>
             <point key="canvasLocation" x="1188" y="48.575712143928037"/>
         </scene>
-        <!--Diff Phrase View Controller-->
+        <!--Re-enter phrase-->
         <scene sceneID="CCC-i4-ocS">
             <objects>
-                <viewController storyboardIdentifier="diffPhrase" id="84d-J2-JSI" customClass="DiffPhraseViewController" customModule="MFCoin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="diffPhrase" title="Re-enter phrase" id="84d-J2-JSI" customClass="DiffPhraseViewController" customModule="MFCoin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yrm-rt-X0w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -537,6 +541,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hhK-2y-Gy3"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="errorLabel" destination="BIp-Zg-zMX" id="45W-BI-FGh"/>
                         <outlet property="nextButton" destination="zLX-C8-bf8" id="2ot-XS-lrb"/>
@@ -548,10 +553,10 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
             </objects>
             <point key="canvasLocation" x="1911" y="136"/>
         </scene>
-        <!--Set Password View Controller-->
+        <!--Password-->
         <scene sceneID="IXd-ay-NBi">
             <objects>
-                <viewController storyboardIdentifier="setPass" id="dFw-Im-tga" customClass="SetPasswordViewController" customModule="MFCoin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setPass" title="Password" id="dFw-Im-tga" customClass="SetPasswordViewController" customModule="MFCoin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gFG-QT-AXN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -701,9 +706,9 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
         <!--Set Coins Table View Controller-->
         <scene sceneID="k5d-mz-pTu">
             <objects>
-                <tableViewController storyboardIdentifier="setCoins" id="MrP-H7-vNm" customClass="SetCoinsTableViewController" customModule="MFCoin" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="setCoins" clearsSelectionOnViewWillAppear="NO" id="MrP-H7-vNm" customClass="SetCoinsTableViewController" customModule="MFCoin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wsm-P5-ywy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -755,7 +760,6 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                             <outlet property="delegate" destination="MrP-H7-vNm" id="fTa-ed-Gz2"/>
                         </connections>
                     </tableView>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZdJ-Xe-xQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -770,7 +774,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your recovery phrase:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZW-kK-CBR">
-                                <rect key="frame" x="16" y="80" width="284" height="55"/>
+                                <rect key="frame" x="16" y="36" width="284" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="0cc-pQ-pR9"/>
                                 </constraints>
@@ -779,13 +783,13 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TW1-y9-q1D">
-                                <rect key="frame" x="16" y="175" width="239" height="0.0"/>
+                                <rect key="frame" x="16" y="131" width="239" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="lorem ipsum lorem ipsum lorem ipsum" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Zr4-PM-PKQ">
-                                <rect key="frame" x="16" y="178" width="245" height="26"/>
+                            <textField opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your words" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Zr4-PM-PKQ">
+                                <rect key="frame" x="16" y="134" width="245" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Yj2-Kn-Ht5"/>
                                 </constraints>
@@ -794,14 +798,14 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqK-bo-FkZ">
-                                <rect key="frame" x="16" y="204" width="288" height="2"/>
+                                <rect key="frame" x="16" y="160" width="288" height="2"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="1uz-ys-GNU"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uL-ri-oPD">
-                                <rect key="frame" x="16" y="473" width="288" height="33"/>
+                                <rect key="frame" x="16" y="429" width="288" height="33"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Next">
@@ -812,7 +816,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use a BIP39 passphrase" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="j7W-bf-JIe">
-                                <rect key="frame" x="16" y="266.5" width="231" height="30"/>
+                                <rect key="frame" x="16" y="222.5" width="231" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Q5U-qQ-nji"/>
                                 </constraints>
@@ -821,16 +825,17 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-Tf-qeN">
-                                <rect key="frame" x="255" y="266" width="51" height="31"/>
+                                <rect key="frame" x="255" y="222" width="51" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="Icp-cZ-BUj"/>
                                 </constraints>
+                                <color key="onTintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <connections>
                                     <action selector="switchPressed:" destination="YTv-MH-Dvl" eventType="valueChanged" id="3QT-ZF-DLQ"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xq4-YG-Q7T">
-                                <rect key="frame" x="269" y="174" width="35" height="30"/>
+                                <rect key="frame" x="269" y="130" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="vDW-8k-2EG"/>
                                     <constraint firstAttribute="width" constant="35" id="vrs-fj-gMe"/>
@@ -841,7 +846,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exp-EO-4Ne">
-                                <rect key="frame" x="0.0" y="297" width="320" height="160"/>
+                                <rect key="frame" x="0.0" y="253" width="320" height="160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type your BIP39 passphrase " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="7pA-FX-Qnt">
                                         <rect key="frame" x="16" y="94" width="288" height="18"/>
@@ -860,7 +865,7 @@ If you enter a different passphrase, a new empty wallet will be created.</string
                                         <color key="textColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Пока не работает" placeholder="lorem ipsum lorem ipsum" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hn0-8h-Kxq">
+                                    <textField opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hn0-8h-Kxq">
                                         <rect key="frame" x="16" y="120" width="288" height="18"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -893,7 +898,7 @@ If you enter a different passphrase, a new empty wallet will be created.</string
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не удалось проверить Вашу восстанавливающую фразу.  Word list is empty." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="mzR-8X-RaY">
-                                <rect key="frame" x="16" y="214" width="239" height="30"/>
+                                <rect key="frame" x="16" y="170" width="239" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YqG-4V-hB0"/>
                                 </constraints>
@@ -949,7 +954,7 @@ If you enter a different passphrase, a new empty wallet will be created.</string
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gq-jU-Ezc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="363.75" y="929.57746478873241"/>
+            <point key="canvasLocation" x="304" y="930"/>
         </scene>
         <!--Scanner View Controller-->
         <scene sceneID="2iH-7Z-zI3">

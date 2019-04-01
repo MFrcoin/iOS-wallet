@@ -8,14 +8,20 @@
 import UIKit
 
 class Constants {
-    static let MNEMONIC_KEY = "mnemonic"
-    static let PASS_KEY = "password_key"
+    static let MNEMONIC_KEY = "mn3m0n1c"
+    static let PASSPHRASE_KEY = "p4ssphr4s3"
+    static let PASS_KEY = "p4ssw0rd_k3y"
     static let BLUECOLOR = UIColor.init(red: 33/255, green: 184/255, blue: 186/255, alpha: 1)
+    static let GREENCOLOR = UIColor.init(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
     static let CORNER_RADIUS: CGFloat = 5
     static let SEQUENCE_FINAL: UInt32 = 0xffffffff
     static let PURPOSE = 44
     static let UPDATE = NSNotification.Name(rawValue: "UpdateInfo")
+    static let INSUFFICIENTFUNDS = NSNotification.Name(rawValue: "InsufficientFunds")
     static let BIOMETRICS = "biometrics_bool"
+    static let MYBALANCE = "myBalance"
+    static let FIRSTTIME = "FirstTimeStart"
+    static let DEFAULTFEE = 100000
 }
 
 enum FiatHeads: String, CaseIterable {

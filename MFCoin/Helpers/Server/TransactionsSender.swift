@@ -33,7 +33,7 @@ class TransactionsSender {
     private func getPrivateKeys(coin: CoinModel) -> [PrivateKey] {
         var keys = [PrivateKey]()
         for path in coin.derPaths {
-            if path.input.count > 0 {
+            if path.unspent.count > 0 {
                 if let privateKey = PrivateKey(wif: path.wif) {
                     keys.append(privateKey)
                 }
@@ -49,7 +49,7 @@ class TransactionsSender {
         let mfcoin = coins.filter("index == %@", coinUnw.index)[0]
         var changeAddress = ""
         for path in mfcoin.derPaths {
-            for input in path.input {
+            for input in path.unspent {
                 guard let toAd = BitcoinAddress.init(string: path.address) else {return}
                 let lockingScript1 = BitcoinScript.buildPayToPublicKeyHash(address: toAd)
                 let txid: Data = Data(hex: String(input.txHash))
@@ -71,8 +71,8 @@ class TransactionsSender {
         
         guard let toAddr = BitcoinAddress(string: toAddress) else {return}
         guard let changeAddr = BitcoinAddress(string: changeAddress) else {return}
+        guard let unsignedTx = createUnsignedTx(toAddr: toAddr, amount: amount, changeAddr: changeAddr, utxos: utxos) else { return }
         
-        let unsignedTx = createUnsignedTx(toAddr: toAddr, amount: amount, changeAddr: changeAddr, utxos: utxos)
         let signedTx = signTx(unsignedTx: unsignedTx, keys: getPrivateKeys(coin: mfcoin))
         print(signedTx.encoded.hex)
         let info = "\"\(signedTx.hexEncoded)\""
@@ -81,17 +81,22 @@ class TransactionsSender {
                 print("list.result \(list.result)")
             }
         })
-        //kitManager.updateInformation(tx: signedTx.hexEncoded)
     }
     
-    private func selectTx(from utxos: [BitcoinUnspentTransaction], amount: Int64) -> (utxos: [BitcoinUnspentTransaction], fee: Int64) {
-        
-        //https://github.com/yenom/BitcoinKit/blob/master/Sources/BitcoinKit/Wallet/Standard/StandardUtxoSelector.swift
-        return (utxos, Int64(fee))
+    private func selectTx(from utxos: [BitcoinUnspentTransaction], amount: Int64) -> (utxos: [BitcoinUnspentTransaction], fee: Int64)? {
+        let selector = BitcoinUnspentSelector.init()
+        do {
+            let answer = try selector.select(from: utxos, targetValue: BigInt(amount))
+            return (answer.utxos, Int64(answer.fee))
+        } catch let error{
+            print(error)
+        }
+        return nil
     }
     
-    private func createUnsignedTx(toAddr: BitcoinAddress, amount: Int64, changeAddr: BitcoinAddress, utxos: [BitcoinUnspentTransaction]) -> BitcoinUnsignedTransaction {
-        let (utxos, fee) = selectTx(from: utxos, amount: amount)
+    
+    private func createUnsignedTx(toAddr: BitcoinAddress, amount: Int64, changeAddr: BitcoinAddress, utxos: [BitcoinUnspentTransaction]) -> BitcoinUnsignedTransaction? {
+        guard let (utxos, fee) = selectTx(from: utxos, amount: amount) else {return nil}
         let totalAmount: Int64 = utxos.reduce(0) { $0 + $1.output.value }
         let change: Int64 = totalAmount - amount - fee
         print(change)
@@ -135,3 +140,5 @@ class TransactionsSender {
         return transactionToSign
     }
 }
+
+

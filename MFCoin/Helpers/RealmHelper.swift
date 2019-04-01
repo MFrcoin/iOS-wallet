@@ -15,7 +15,6 @@ class RealmHelper {
     
     func setCoins() {
         print("set Coins")
-        clearSelectedCoins()
         let realm = try! Realm()
         for coin in SLIP.CoinType.allCases {
             if let coinStruct = CoinsList.shared.coinInit(coin: coin) {
@@ -35,32 +34,33 @@ class RealmHelper {
             print("isSelected \(coin.shortName)")
         }
     }
-    
-    func clearSelectedCoins() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-            print("ALL DELETED")
-        }
-    }
+
 }
 
 
 //MARK: GETTER
 extension RealmHelper {
     
-    func getCoins() -> Results<CoinModel> {
+    func getAllCoins() -> Results<CoinModel> {
+        let realm = try! Realm()
+        let coins = realm.objects(CoinModel.self)
+        if coins.count == 0 {
+            setCoins()
+        }
+        return realm.objects(CoinModel.self)
+    }
+    
+    func getCoins() -> Results<CoinModel>? {
         let realm = try! Realm()
         let result = getSelectedCoins()
         if result.count == 0 {
-            setCoins()
-            return realm.objects(CoinModel.self)
+            return getAllCoins()
         }
         let coinsCount = getCoinsCount()
         if result.count > 0 && result.count < coinsCount {
             return getUnSelectedCoins()
         }
-        return result
+        return nil
     }
     
     var selCoins: Results<CoinModel> {
@@ -129,26 +129,30 @@ extension RealmHelper {
         return "\(totalAmount)"
     }
     
+    func getTxHistories(coin: CoinModel) -> Results<TxHistory> {
+        let realm = try! Realm()
+        let result = realm.objects(TxHistory.self).filter("coinFullName = %@", coin.fullName).sorted(byKeyPath: "date")
+        return result
+    }
+    
+    func isTxid(_ txid: String, _ confirmations: Int) -> Bool {
+        let realm = try! Realm()
+        let result = realm.objects(TxHistory.self).filter("txid = %@", txid)
+        if result.count > 0 {
+            try! realm.write {
+                for history in result {
+                    history.status = confirmations
+                }
+            }
+            return false
+        }
+        return true
+    }
 }
 
 
 //MARK: SAVE
 extension RealmHelper {
-    func updateBalance(coin: CoinModel) {
-        let realm = try! Realm()
-        var balance = 0
-        var unBalance = 0
-        for path in coin.derPaths {
-            balance += path.balance
-            unBalance += path.unBalance
-        }
-        try! realm.write {
-            coin.balance = balance
-            coin.unBalance = unBalance
-            let fiatBalance = ConvertValue().convertSatoshToFiat(satoshi: coin.balance, rate: coin.fiatPrice)
-            coin.price = fiatBalance
-        }
-    }
     
     func saveCurrentAddress(coin: CoinModel, ext: String) {
         let realm = try! Realm()
@@ -163,8 +167,10 @@ extension RealmHelper {
             let coin = realm.objects(CoinModel.self).filter("name = %@", json.id)
             if coin.count > 0 {
                 coin[0].fiatPrice = json.current_price
+                print (json.current_price)
                 let balance = coin[0].balance
-                coin[0].price =  ConvertValue.shared.convertSatoshToFiat(satoshi: balance, rate: json.current_price)
+                coin[0].price = ConvertValue.shared.convertSatoshToFiat(satoshi: balance, rate: json.current_price)
+                print ( coin[0].price)
             }
         }
         DispatchQueue.main.async{
@@ -188,14 +194,44 @@ extension RealmHelper {
             NotificationCenter.default.post(name: Constants.UPDATE, object: nil)
         }
     }
+}
+
+//MARK: Update
+extension RealmHelper {
     
-    func saveFee(_ array: Array<Any>) {
-        print("array \(array)")
+    func updateBalance(coin: CoinModel) {
         let realm = try! Realm()
+        var balance = 0
+        var unBalance = 0
+        for path in coin.derPaths {
+            balance += path.balance
+            unBalance += path.unBalance
+        }
         try! realm.write {
-            let coins = selCoins
-            for coin in coins {
-                
+            coin.balance = balance
+            coin.unBalance = unBalance
+            let fiatBalance = ConvertValue().convertSatoshToFiat(satoshi: coin.balance, rate: coin.fiatPrice)
+            coin.price = fiatBalance
+        }
+    }
+    
+    func updateTitleBalance() {
+        let coins = selCoins
+        for coin in coins {
+            updateBalance(coin: coin)
+        }
+        let myBalance = Double(getTotalAmount())
+        UserDefaults.standard.set(myBalance, forKey: Constants.MYBALANCE)
+    }
+    
+    func updateTxHistory(txid: String, confirmations: Int) {
+        let realm = try! Realm()
+        let result = realm.objects(TxHistory.self).filter("txid = %@", txid)
+        if result.count > 0 {
+            try! realm.write {
+                for history in result {
+                    history.status = confirmations
+                }
             }
         }
     }

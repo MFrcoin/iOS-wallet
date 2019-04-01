@@ -18,13 +18,11 @@ struct Fiat: Codable {
 
 class FiatTicker {
     let realm = RealmHelper.shared
-    let tickerUrl = "https://blockchain.info/ticker"
-    let gecko = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&ids=mfcoin&sparkline=false"
+    let gecko = "https://api.coingecko.com/api/v3/coins/markets?vs_currency="
 
     func setPrice() {
-        let coins = realm.selCoins
+        let coins = realm.getAllCoins()
         let fiatHead = realm.getHeadFiat()
-        print(fiatHead.name)
         for coin in coins {
             getFiatCourses(coin, fiatHead.name)
         }
@@ -33,8 +31,8 @@ class FiatTicker {
     
     private func getFiatCourses(_ coin: CoinModel, _ head: String) {
         let downHead = head.lowercased()
-        let gecko = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=\(downHead)&ids=\(coin.name)&sparkline=false"
-        guard let url = URL(string: gecko) else {return}
+        let geckoUrl = "\(gecko)\(downHead)&ids=\(coin.name)&sparkline=false"
+        guard let url = URL(string: geckoUrl) else {return}
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, _, error) in
@@ -42,7 +40,6 @@ class FiatTicker {
             do {
                 let json = try JSONDecoder().decode([Fiat].self, from: data)
                 print(json)
-               
                 self.realm.saveFiatInCoin(json: json[0])
             } catch {
                 print(error)
@@ -52,8 +49,8 @@ class FiatTicker {
     
     private func getBTCCurrencies() {
         for head in FiatHeads.allCases {
-            let gecko = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=\(head)&ids=bitcoin&sparkline=false"
-            guard let url = URL(string: gecko) else {return}
+            let geckoUrl = "\(gecko)\(head)&ids=bitcoin&sparkline=false"
+            guard let url = URL(string: geckoUrl) else {return}
             
             let session = URLSession.shared
             session.dataTask(with: url) { (data, _, error) in

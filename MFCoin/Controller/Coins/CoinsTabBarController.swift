@@ -8,30 +8,12 @@
 
 import UIKit
 
-class CoinsTabBarController: UITabBarController {
-    @IBOutlet weak var addBarButton: UIBarButtonItem!
-    
-    //@IBOutlet weak var walletsSum: UINavigationItem!
+class CoinsTabBarController: UITabBarController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated:false)
-        //navigationController?.navigationBar.largeTitleTextAttributes = ["432234.44"]
-        
-        //walletsSum.title = "432234.44"
-        // Do any additional setup after loading the view.
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-    @IBAction func addBarButtonPressed(_ sender: UIBarButtonItem) {
-        let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "setCoins") as! SetCoinsTableViewController
-        self.show(vc, sender: sender)
-    }
-    
-  
-    @IBAction func scanBarButtonPressed(_ sender: UIBarButtonItem) {
-        
-    }
-    
-    
 }
+
+

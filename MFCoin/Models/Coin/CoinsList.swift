@@ -6,7 +6,6 @@
 //  Copyright © 2019 Egor Vdovin. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct address {
@@ -68,6 +67,7 @@ class CoinsList {
         default: return nil
         }
     }
+    
     func getPrivateKeyPrefix(coin: CoinModel) -> UInt8? {
         switch coin.fullName {
         case "Bitcoin": return 0x80
@@ -75,6 +75,16 @@ class CoinsList {
         case "Litecoin": return 0xb3
         case "Dash": return 0x4C
         default: return nil
+        }
+    }
+    
+    func getBlockchainUrl(coin: CoinModel) -> String {
+        switch coin.fullName {
+        case "Bitcoin": return "https://www.blockchain.com/btc/tx/"
+        case "MFCoin": return "https://block.mfcoin.net/tx/"
+        case "Litecoin": return "https://chain.so/tx/LTC/"
+        case "Dash": return "https://explorer.dash.org/tx/"
+        default: return ""
         }
     }
 }

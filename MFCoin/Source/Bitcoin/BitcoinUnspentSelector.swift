@@ -29,7 +29,9 @@ public struct BitcoinUnspentSelector {
 
         // total values of utxos should be greater than targetValue
         guard utxos.sum() >= targetValue && !utxos.isEmpty else {
-            throw BitcoinUnspentSelectorError.insufficientFunds
+            NotificationCenter.default.post(name: Constants.UPDATE, object: nil)
+            return ([], 0)
+            //throw BitcoinUnspentSelectorError.insufficientFunds
         }
 
         // definitions for the following calculation
@@ -75,8 +77,9 @@ public struct BitcoinUnspentSelector {
                 }
             }
         }
-
-        throw BitcoinUnspentSelectorError.insufficientFunds
+        NotificationCenter.default.post(name: Constants.UPDATE, object: nil)
+        return ([], 0)
+        //throw BitcoinUnspentSelectorError.insufficientFunds
     }
 
     public func calculateFee(input: Int, output: Int = 2) -> BigInt {

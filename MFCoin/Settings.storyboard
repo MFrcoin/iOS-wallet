@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem Ipsumlorem" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CO0-gP-zwh">
-                                <rect key="frame" x="20" y="84" width="335" height="222.5"/>
+                                <rect key="frame" x="20" y="40" width="335" height="222.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <nil key="highlightedColor"/>
@@ -44,7 +44,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BBt-f5-ZwD"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="phraseLabel" destination="CO0-gP-zwh" id="oEW-t0-WAQ"/>
                         <outlet property="qrImage" destination="69U-2q-yuZ" id="cjn-9j-Kwc"/>
@@ -121,7 +120,6 @@
                             <outlet property="delegate" destination="VBu-kG-cjT" id="7DY-JU-Ab9"/>
                         </connections>
                     </tableView>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQg-yS-NuN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,7 +134,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="yoo-iG-JAI">
-                                <rect key="frame" x="16" y="80" width="343" height="167"/>
+                                <rect key="frame" x="16" y="36" width="343" height="167"/>
                                 <string key="text">You are about to transfer coins from a paper wallet to your MFCoin wallet.
 After the transfer is complate, please avoid reusing the paper wallet for security reasons.
 
@@ -219,7 +217,6 @@ Supported formats: WIF, BIP38, Mini private key.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DBI-xe-u2C"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="nextButton" destination="yyD-GY-njj" id="9DB-zo-Ax5"/>
                         <outlet property="privateKeyTF" destination="6mS-J2-YwQ" id="pae-fv-IWV"/>
@@ -238,7 +235,7 @@ Supported formats: WIF, BIP38, Mini private key.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atj-K5-vBL">
-                                <rect key="frame" x="8" y="77" width="359" height="44"/>
+                                <rect key="frame" x="8" y="33" width="359" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4o0-ap-k7r"/>
                                 </constraints>
@@ -247,7 +244,7 @@ Supported formats: WIF, BIP38, Mini private key.</string>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qH-4S-WBt">
-                                <rect key="frame" x="8" y="129" width="359" height="44"/>
+                                <rect key="frame" x="8" y="85" width="359" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="PN3-sQ-Qh6"/>
                                 </constraints>
@@ -256,7 +253,7 @@ Supported formats: WIF, BIP38, Mini private key.</string>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OTr-e7-Ga2">
-                                <rect key="frame" x="8" y="181" width="359" height="44"/>
+                                <rect key="frame" x="8" y="137" width="359" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mcA-86-s2K"/>
                                 </constraints>
@@ -265,7 +262,7 @@ Supported formats: WIF, BIP38, Mini private key.</string>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdR-JU-bb3">
-                                <rect key="frame" x="16" y="285" width="343" height="42"/>
+                                <rect key="frame" x="16" y="241" width="343" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="nD3-p8-kdd"/>
                                 </constraints>
@@ -308,7 +305,6 @@ Supported formats: WIF, BIP38, Mini private key.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CWB-Nu-poC"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="changeButton" destination="ymp-Co-PQU" id="8FM-Gl-eVP"/>
                         <outlet property="errorLabel" destination="sdR-JU-bb3" id="lxa-qL-LQv"/>
@@ -330,7 +326,7 @@ Supported formats: WIF, BIP38, Mini private key.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="transFeesCell" rowHeight="60" id="7jE-zs-UZ5" customClass="TransactFeesTableViewCell" customModule="MFCoin" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="transFeesCell" rowHeight="60" id="7jE-zs-UZ5" customClass="TransactFeesTableViewCell" customModule="MFCoin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7jE-zs-UZ5" id="dWR-cV-WPm">
@@ -396,7 +392,6 @@ Supported formats: WIF, BIP38, Mini private key.</string>
                             <outlet property="delegate" destination="7j3-hC-TuE" id="wO2-4l-MIW"/>
                         </connections>
                     </tableView>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iot-K2-mEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

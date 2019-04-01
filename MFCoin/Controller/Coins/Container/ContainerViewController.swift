@@ -14,6 +14,7 @@ class ContainerViewController: UIViewController {
     @IBOutlet weak var rootView: UIView!
     
     var coin: CoinModel?
+    var head = RealmHelper.shared.getHeadFiat()
     
     lazy var receiveViewController: ReceiveViewController = {
         let sb = UIStoryboard.init(name: "Coins", bundle: nil)

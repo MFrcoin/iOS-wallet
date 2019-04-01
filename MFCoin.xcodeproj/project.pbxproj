@@ -117,6 +117,9 @@
 		84616736220EBF900085C756 /* SwiftSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84616734220EBF900085C756 /* SwiftSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		846586F62229938A0046A8ED /* CoinDerPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846586F52229938A0046A8ED /* CoinDerPaths.swift */; };
 		84696F6B2224080500BAE8BD /* TransactionsSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84696F6A2224080500BAE8BD /* TransactionsSender.swift */; };
+		846E88852250916500EB6EAE /* TxHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E88842250916500EB6EAE /* TxHistoryViewController.swift */; };
+		846E88872250F97100EB6EAE /* NaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E88862250F97100EB6EAE /* NaviController.swift */; };
+		846EC9F5224F3B4000565D95 /* Unspent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846EC9F4224F3B4000565D95 /* Unspent.swift */; };
 		8470A8DB221C8CA800454971 /* ConvertValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470A8DA221C8CA800454971 /* ConvertValue.swift */; };
 		8470F89221D69C7E0096CE22 /* mainFon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8470F89121D69C7D0096CE22 /* mainFon.png */; };
 		8470F89521D69D7C0096CE22 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8470F89421D69D7B0096CE22 /* Logo.png */; };
@@ -126,6 +129,7 @@
 		8474DE072218179C00AF2365 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DE062218179C00AF2365 /* ReceiveViewController.swift */; };
 		8474DE09221817AE00AF2365 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DE08221817AE00AF2365 /* SendViewController.swift */; };
 		8474DE0B22183B4A00AF2365 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DE0A22183B4A00AF2365 /* AddressTableViewCell.swift */; };
+		8484A31622524731006B8486 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484A31522524731006B8486 /* Reachability.swift */; };
 		8487C2CA21CE38BF000A9725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487C2C921CE38BF000A9725 /* AppDelegate.swift */; };
 		8487C2CC21CE38BF000A9725 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487C2CB21CE38BF000A9725 /* StartViewController.swift */; };
 		8487C2CF21CE38BF000A9725 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8487C2CD21CE38BF000A9725 /* Main.storyboard */; };
@@ -136,6 +140,7 @@
 		848AE24721E335D100B96427 /* BiometricIDAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AE24621E335D100B96427 /* BiometricIDAuth.swift */; };
 		848AE24A21E3419D00B96427 /* DiffPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AE24921E3419D00B96427 /* DiffPhraseViewController.swift */; };
 		848AE24C21E341CC00B96427 /* SetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AE24B21E341CC00B96427 /* SetPasswordViewController.swift */; };
+		84917370224DEF7C008D57B8 /* TxHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491736F224DEF7C008D57B8 /* TxHistory.swift */; };
 		849F012D21E4A43C000AB56A /* CoinsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F012C21E4A43C000AB56A /* CoinsTabBarController.swift */; };
 		84AA92EF221FF466004979FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA92EE221FF466004979FF /* SettingsViewController.swift */; };
 		84ABA725221F2DF60057458C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ABA724221F2DF60057458C /* Settings.storyboard */; };
@@ -281,6 +286,9 @@
 		84616734220EBF900085C756 /* SwiftSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSocket.framework; path = Carthage/Build/iOS/SwiftSocket.framework; sourceTree = "<group>"; };
 		846586F52229938A0046A8ED /* CoinDerPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDerPaths.swift; sourceTree = "<group>"; };
 		84696F6A2224080500BAE8BD /* TransactionsSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSender.swift; sourceTree = "<group>"; };
+		846E88842250916500EB6EAE /* TxHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxHistoryViewController.swift; sourceTree = "<group>"; };
+		846E88862250F97100EB6EAE /* NaviController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviController.swift; sourceTree = "<group>"; };
+		846EC9F4224F3B4000565D95 /* Unspent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unspent.swift; sourceTree = "<group>"; };
 		8470A8DA221C8CA800454971 /* ConvertValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertValue.swift; sourceTree = "<group>"; };
 		8470F89121D69C7D0096CE22 /* mainFon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFon.png; sourceTree = "<group>"; };
 		8470F89421D69D7B0096CE22 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
@@ -290,6 +298,7 @@
 		8474DE062218179C00AF2365 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		8474DE08221817AE00AF2365 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		8474DE0A22183B4A00AF2365 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		8484A31522524731006B8486 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		8487C2C621CE38BF000A9725 /* MFCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8487C2C921CE38BF000A9725 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8487C2CB21CE38BF000A9725 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +311,7 @@
 		848AE24621E335D100B96427 /* BiometricIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricIDAuth.swift; sourceTree = "<group>"; };
 		848AE24921E3419D00B96427 /* DiffPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffPhraseViewController.swift; sourceTree = "<group>"; };
 		848AE24B21E341CC00B96427 /* SetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordViewController.swift; sourceTree = "<group>"; };
+		8491736F224DEF7C008D57B8 /* TxHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxHistory.swift; sourceTree = "<group>"; };
 		849F012C21E4A43C000AB56A /* CoinsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTabBarController.swift; sourceTree = "<group>"; };
 		84AA92EE221FF466004979FF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		84ABA724221F2DF60057458C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -553,14 +563,15 @@
 			isa = PBXGroup;
 			children = (
 				845C3EB621EA552F00A4C836 /* RealmHelper.swift */,
-				84882A1321FE1FCF0044FA4F /* Server */,
 				842CAFFD21EB5CE7000B8F0A /* KitManager.swift */,
+				84882A1321FE1FCF0044FA4F /* Server */,
 				845B796C21E35F2100867A57 /* KeychainService.swift */,
 				848AE24621E335D100B96427 /* BiometricIDAuth.swift */,
 				84ACE6EF21E90986000E624B /* QRCodeGenerate.swift */,
 				842CB00121EB7915000B8F0A /* Constants.swift */,
 				8470A8DA221C8CA800454971 /* ConvertValue.swift */,
 				845403B7221877CD00186453 /* Extensions.swift */,
+				8484A31522524731006B8486 /* Reachability.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -631,9 +642,11 @@
 			isa = PBXGroup;
 			children = (
 				8456E2172222C4EE00DACD49 /* History.swift */,
+				846EC9F4224F3B4000565D95 /* Unspent.swift */,
+				846586F52229938A0046A8ED /* CoinDerPaths.swift */,
 				845C3EB421EA54A500A4C836 /* CoinModel.swift */,
 				843FDD9521E50EBF00C655F2 /* CoinsList.swift */,
-				846586F52229938A0046A8ED /* CoinDerPaths.swift */,
+				8491736F224DEF7C008D57B8 /* TxHistory.swift */,
 			);
 			path = Coin;
 			sourceTree = "<group>";
@@ -761,8 +774,10 @@
 				8474DE052218170B00AF2365 /* Container */,
 				845403BB22187E6600186453 /* ViewModel */,
 				849F012C21E4A43C000AB56A /* CoinsTabBarController.swift */,
+				846E88862250F97100EB6EAE /* NaviController.swift */,
 				842CAFF921EB47A9000B8F0A /* WalletTableViewController.swift */,
 				84AA92EE221FF466004979FF /* SettingsViewController.swift */,
+				846E88842250916500EB6EAE /* TxHistoryViewController.swift */,
 			);
 			path = Coins;
 			sourceTree = "<group>";
@@ -952,6 +967,7 @@
 				845B796F21E363A100867A57 /* SetCoinsTableViewController.swift in Sources */,
 				843A15302219D98D006F393D /* OpCode.swift in Sources */,
 				843F8FFC21CE9258008E2F86 /* CoinsTableViewCell.swift in Sources */,
+				8484A31622524731006B8486 /* Reachability.swift in Sources */,
 				8451DFDC221981E10035D715 /* Crypto.m in Sources */,
 				842CAFFE21EB5CE7000B8F0A /* KitManager.swift in Sources */,
 				84882A1521FE20000044FA4F /* ServerConnect.swift in Sources */,
@@ -987,6 +1003,7 @@
 				845050B6222BD0E4000B4194 /* Serialization.swift in Sources */,
 				8456E2142222A83700DACD49 /* ShapeShift.swift in Sources */,
 				843A15A12219DB97006F393D /* Contract.pb.swift in Sources */,
+				846EC9F5224F3B4000565D95 /* Unspent.swift in Sources */,
 				8474DE0B22183B4A00AF2365 /* AddressTableViewCell.swift in Sources */,
 				84ACE6F021E90986000E624B /* QRCodeGenerate.swift in Sources */,
 				843A155D2219DA3D006F393D /* Ethereum.swift in Sources */,
@@ -1006,6 +1023,7 @@
 				843A15322219D98D006F393D /* WitnessProgram.swift in Sources */,
 				8451DFD5221981E10035D715 /* Data+Hex.swift in Sources */,
 				8451DFE7221981E10035D715 /* BigIntEncoding.swift in Sources */,
+				846E88852250916500EB6EAE /* TxHistoryViewController.swift in Sources */,
 				845403B8221877CD00186453 /* Extensions.swift in Sources */,
 				8451DFE1221981E10035D715 /* PrivateKey.swift in Sources */,
 				8451DFDD221981E10035D715 /* BlockchainFactory.swift in Sources */,
@@ -1054,6 +1072,7 @@
 				843A15582219DA3D006F393D /* EthereumChecksum.swift in Sources */,
 				8451DFD6221981E10035D715 /* String+Clear.swift in Sources */,
 				843A15872219DB16006F393D /* PublicKey+Icon.swift in Sources */,
+				84917370224DEF7C008D57B8 /* TxHistory.swift in Sources */,
 				843A156D2219DA6D006F393D /* ERC721Encoder.swift in Sources */,
 				845C3EB521EA54A500A4C836 /* CoinModel.swift in Sources */,
 				843A156A2219DA6D006F393D /* Function.swift in Sources */,
@@ -1067,6 +1086,7 @@
 				842B5AEF2226F00500D8688A /* FiatTicker.swift in Sources */,
 				843A159A2219DB79006F393D /* TronAddress.swift in Sources */,
 				843A157F2219DAFA006F393D /* HDWallet.swift in Sources */,
+				846E88872250F97100EB6EAE /* NaviController.swift in Sources */,
 				843A15792219DAD4006F393D /* ReverseResolverEncoder.swift in Sources */,
 				843A15B72219E83B006F393D /* Mnemonic.swift in Sources */,
 				843A15732219DAAF006F393D /* EIP712TypedData.swift in Sources */,

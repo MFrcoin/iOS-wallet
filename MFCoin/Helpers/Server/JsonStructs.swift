@@ -61,13 +61,68 @@ struct GetHistory: Codable {
     var id: String
     
     struct Result: Codable {
-        var txhash: String?
+        var tx_hash: String?
         var height: Int?
         private enum ResultKeys: String, CodingKey {
-            case txhash = "tx_hash"
+            case tx_hash = "tx_hash"
             case height = "height"
         }
     }
+    
+    enum answerKeys: String, CodingKey{
+        case jsonrpc = "jsonrpc"
+        case id = "id"
+    }
+    let result: [Result]
+}
+
+struct GetMempool: Codable {
+    var jsonrpc: String
+    var id: String
+    
+    struct Result: Codable {
+        var tx_hash: String?
+        var height: Int?
+        var fee: Int?
+    }
+    
+    enum answerKeys: String, CodingKey{
+        case jsonrpc = "jsonrpc"
+        case id = "id"
+    }
+    let result: [Result]
+}
+
+struct GetTxHistory: Codable {
+    var jsonrpc: String
+    var id: String
+    
+    struct Result: Codable {
+        var blockhash: String
+        var confirmations: Int
+        var time: Int
+        var hex: String
+        var txid: String
+        var version: Int
+        var locktime: Int
+        
+        struct Vin: Codable {
+            var txid: String
+            var vout: Int
+        }
+        
+        struct Vout: Codable {
+            var value: Float
+            var n: Int
+            struct ScriptPubKey: Codable {
+                var addresses: [String]
+            }
+            let scriptPubKey: ScriptPubKey
+        }
+        let vin: [Vin]
+        let vout: [Vout]
+    }
+    
     
     enum answerKeys: String, CodingKey{
         case jsonrpc = "jsonrpc"
@@ -89,6 +144,21 @@ struct Broadcast: Codable {
         case id = "id"
     }
     let result: Result
+}
+
+struct Version: Codable {
+    var jsonrpc: String
+    var id: String
+    
+    struct Result: Codable {
+        
+    }
+    
+    enum answerKeys: String, CodingKey{
+        case jsonrpc = "jsonrpc"
+        case id = "id"
+    }
+    let result: Result?
 }
 
 struct JsonError: Codable {

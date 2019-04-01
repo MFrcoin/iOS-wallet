@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import RealmSwift
+import BigInt
 
 public class ConvertValue {
     static let shared = ConvertValue()
-    let realm = RealmHelper.shared
     
     func convertSatoshToFiat(satoshi : Int, rate: Double) -> Float {
         let bitcoins : Double = Double(satoshi) / 100000000
@@ -24,17 +23,12 @@ public class ConvertValue {
         return Int(bitcoins * 100000000)
     }
     
-    public func convertValue(value: Int) -> Float {
-        if value >= 2 {
-            return Float(value/100000000)
-        }
-        return Float(value)
+    func convert(value: Int) -> Double {
+        return Double(value)/100000000
     }
     
-    public func convertValueToSatoshi(value: Double) -> Int {
+    func convertValueToSatoshi(value: Double) -> Int {
         return Int(value*100000000)
     }
-    
-
     
 }
