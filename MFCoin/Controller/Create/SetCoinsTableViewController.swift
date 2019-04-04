@@ -22,6 +22,7 @@ class SetCoinsTableViewController: UITableViewController {
         let readyCoins = UIBarButtonItem.init(title: "Ready", style: .done, target: self , action: #selector(readyButtonPressed))
         self.navigationItem.rightBarButtonItem = readyCoins
         self.navigationItem.largeTitleDisplayMode = .never
+        NotificationCenter.default.removeObserver(self, name: Constants.UPDATE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
     }
 
@@ -33,10 +34,16 @@ class SetCoinsTableViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
         NotificationCenter.default.removeObserver(self, name: .flagsChanged, object: nil)
     }
+    
+    @objc func update() {
+        coins = realm.getCoins()
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let coinsUnw = coins else { return 0 }
         return coinsUnw.count

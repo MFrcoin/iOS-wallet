@@ -22,8 +22,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         passTF.delegate = self
         replyPassTF.delegate = self
-        KitManager().getOnline()
-        FiatTicker().setPrice()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,10 +37,10 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func goForward(_ sender: UIButton) {
+        guard let password = DAKeychain.shared[Constants.PASS_KEY] else {
+            gogo()
+            return }
         if passTF.text == replyPassTF.text {
-            guard let password = DAKeychain.shared[Constants.PASS_KEY] else {
-                gogo()
-                return }
             if password == passTF.text {
                 gogo()
             } else {
@@ -52,9 +50,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         } else {
             replyPassErrorLabel.text = "Passwords is different"
         }
-    }
-    @IBAction func skipFoward(_ sender: UIButton) {
-        gogo()
     }
     
     func touchFaceId() {
@@ -71,6 +66,8 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func gogo() {
+        KitManager().getOnline()
+        FiatTicker().setPrice()
         let sb = UIStoryboard.init(name: "Coins", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "tabBarController") as! CoinsTabBarController
         self.present(vc, animated: true)

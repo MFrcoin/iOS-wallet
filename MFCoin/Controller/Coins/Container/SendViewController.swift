@@ -43,6 +43,7 @@ class SendViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(insuffFunds), name: Constants.INSUFFICIENTFUNDS, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.SENDED, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
         firstMoneyTF.delegate = self
         secondMoneyTF.delegate = self
@@ -56,13 +57,24 @@ class SendViewController: UIViewController, UITextFieldDelegate {
         setInfo(coinUnw)
     }
     
+    
+    @objc func update(_ notification: Notification) {
+        if let text = notification.userInfo?["txId"] {
+            statusLabel.textColor = Constants.BLUECOLOR
+            statusLabel.text = "\(text)"
+        } else {
+            setSendStatus(status: .failure)
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: Constants.INSUFFICIENTFUNDS, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Constants.SENDED, object: nil)
         NotificationCenter.default.removeObserver(self, name: .flagsChanged, object: nil)
     }
     
     @objc func insuffFunds() {
-        setSendStatus(status: 2)
+        setSendStatus(status: .insufficientFunds)
     }
     
     private func setInfo(_ coin: CoinModel) {
@@ -108,12 +120,12 @@ class SendViewController: UIViewController, UITextFieldDelegate {
             if BitcoinAddress.isValid(string: address) {
             let ts = TransactionsSender(coin: coinUnw, toAddress: address, amount: convertAmount)
             ts.sendToSomeAddress(Int64(convertAmount))
-            setSendStatus(status: 1)
+            //setSendStatus(status: .success)
             } else {
-                setSendStatus(status: 3)
+                setSendStatus(status: .invalidAddress)
             }
         } else {
-            setSendStatus(status: 2)
+            setSendStatus(status: .insufficientFunds)
         }
     }
     
@@ -130,26 +142,26 @@ class SendViewController: UIViewController, UITextFieldDelegate {
         inputFiat = sender.text
     }
     
-    private func setSendStatus(status: Int) {
+    private func setSendStatus(status: SendedStatus) {
         switch status {
-        case 1:
+        case .success:
             statusLabel.textColor = Constants.BLUECOLOR
             statusLabel.text = "Sended"
             KitManager().getBalances()
             RealmHelper().updateTitleBalance()
-        case 2:
+        case .insufficientFunds:
             statusLabel.textColor = .red
             statusLabel.text = "Insufficient funds"
-        case 3:
+        case .invalidAddress:
             statusLabel.textColor = .red
             statusLabel.text = "Address is invalid"
-        case 4:
+        case .online:
             statusLabel.textColor = Constants.BLUECOLOR
             statusLabel.text = "Online"
-        case 5:
+        case .offline:
             statusLabel.textColor = .red
             statusLabel.text = "Offline"
-        default:
+        case .failure:
             statusLabel.textColor = .red
             statusLabel.text = "Unknown ERROR"
         }
@@ -164,13 +176,13 @@ extension SendViewController: ScannerDelegate {
             let startAddressIndex = info.index(after: dotIndex)
             let wAddress = info[startAddressIndex...]
             guard let coinUnw = coin else {
-                setSendStatus(status: 4)
+                setSendStatus(status: .online)
                 return
             }
             if wName == coinUnw.fullName {
                 addressTF.text = String(wAddress)
             } else {
-                setSendStatus(status: 3)
+                setSendStatus(status: .invalidAddress)
             }
         } else {
             addressTF.text = info
@@ -184,13 +196,22 @@ extension SendViewController {
         guard let status = Network.reachability?.status else { return }
         switch status {
         case .wifi, .wwan:
-            setSendStatus(status: 4)
+            setSendStatus(status: .online)
         default:
-            setSendStatus(status: 5)
+            setSendStatus(status: .offline)
             let alert = UIAlertController.init(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
             let alertActionCancel = UIAlertAction.init(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(alertActionCancel)
             self.present(alert, animated: true)
         }
     }
+}
+
+enum SendedStatus {
+    case success
+    case failure
+    case insufficientFunds
+    case online
+    case offline
+    case invalidAddress
 }

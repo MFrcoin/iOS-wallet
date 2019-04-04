@@ -50,6 +50,9 @@ class ReceiveViewController: UIViewController,UITextFieldDelegate {
         shareButtonView.layer.cornerRadius = Constants.CORNER_RADIUS
         if let coinUnw = coin {
             setupInfo(coinUnw)
+            print(coinUnw.derPaths[0].wif)
+            print(coinUnw.derPaths[0].address)
+            print(coinUnw.derPaths[0].balance)
         }
     }
     
@@ -101,6 +104,13 @@ class ReceiveViewController: UIViewController,UITextFieldDelegate {
         inputFiat = sender.text
     }
 
+    @IBAction func anotherAddressPressed(_ sender: UIButton) {
+        let sb = UIStoryboard.init(name: "Coins", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "newAddressTVC") as! NewAddressTVC
+        guard let coinUnw = coin else {return}
+        vc.coin = coinUnw
+        show(vc, sender: nil)
+    }
 }
 
 extension UIImageView {

@@ -20,7 +20,6 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     var tableDict = [Int: TxHistory]()
     
     override func viewDidLoad() {
-        NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Loading")
@@ -74,14 +73,24 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let history = histories[indexPath.row]
                 tableDict.updateValue(history, forKey: indexPath.row)
                 if history.received {
-                    cell.statusLabel.textColor = Constants.GREENCOLOR
+                    if history.status < 4 {
+                        cell.statusLabel.textColor = .gray
+                        cell.coinCountLabel.textColor = .gray
+                    } else {
+                        cell.statusLabel.textColor = Constants.GREENCOLOR
+                        cell.coinCountLabel.textColor = Constants.GREENCOLOR
+                    }
                     cell.statusLabel.text = "Received"
-                    cell.coinCountLabel.textColor = Constants.GREENCOLOR
                     cell.coinCountLabel.text = "+\(history.value)"
                 } else {
-                    cell.statusLabel.textColor = .red
+                    if history.status < 4 {
+                        cell.statusLabel.textColor = .gray
+                        cell.coinCountLabel.textColor = .gray
+                    } else {
+                        cell.statusLabel.textColor = .red
+                        cell.coinCountLabel.textColor = .red
+                    }
                     cell.statusLabel.text = "Send to"
-                    cell.coinCountLabel.textColor = .red
                     cell.coinCountLabel.text = "-\(history.value)"
                 }
                 cell.addressLabel.text = history.address

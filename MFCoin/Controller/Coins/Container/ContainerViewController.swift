@@ -40,9 +40,9 @@ class ContainerViewController: UIViewController {
         return vc
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.largeTitleDisplayMode = .never
         segmentedControl.addTarget(self, action: #selector(selectedDidChange(sender:)), for: .valueChanged)
         updateView()
     }

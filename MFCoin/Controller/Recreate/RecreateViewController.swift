@@ -29,8 +29,6 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
         bip39PassphraseTF.delegate = self
         phraseTF.delegate = self
         nextButton.layer.cornerRadius = Constants.CORNER_RADIUS
-        KitManager().getOnline()
-        FiatTicker().setPrice()
     }
     
     @IBAction func switchPressed(_ sender: Any) {
@@ -70,6 +68,8 @@ class RecreateViewController: UIViewController, ScannerDelegate, UITextFieldDele
                     save(phrase: phrase.trimmingCharacters(in: .whitespacesAndNewlines))
                 }
             }
+            KitManager().getOnline()
+            FiatTicker().setPrice()
             let sb = UIStoryboard.init(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "setPass") as! SetPasswordViewController
             show(vc, sender: sender)

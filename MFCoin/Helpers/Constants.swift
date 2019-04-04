@@ -18,6 +18,7 @@ class Constants {
     static let PURPOSE = 44
     static let UPDATE = NSNotification.Name(rawValue: "UpdateInfo")
     static let INSUFFICIENTFUNDS = NSNotification.Name(rawValue: "InsufficientFunds")
+    static let SENDED = NSNotification.Name(rawValue: "SENDED")
     static let BIOMETRICS = "biometrics_bool"
     static let MYBALANCE = "myBalance"
     static let FIRSTTIME = "FirstTimeStart"

@@ -24,12 +24,13 @@ class CreateWalletViewController: UIViewController  {
         nextButton.backgroundColor = .gray
         kitManager.createWords()
         newSeedTV.text = kitManager.getWords()
-        KitManager().getOnline()
-        FiatTicker().setPrice()
+        
     }
     
     @IBAction func goForward(_ sender: UIButton) {
         if newSeedTV.text != "" && iSaveSeedSwitch.isOn {
+            KitManager().getOnline()
+            FiatTicker().setPrice()
             let sb = UIStoryboard.init(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "diffPhrase") as! DiffPhraseViewController
             show(vc, sender: sender)

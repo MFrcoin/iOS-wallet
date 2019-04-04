@@ -31,7 +31,7 @@ public struct WanchainTransaction {
     ///   - hashSigner: function to use for signing the hash
     public mutating func sign(chainID: Int, hashSigner: (Data) throws -> Data) rethrows {
         let signer = WanchainSigner(chainID: BigInt(chainID))
-        let hash = signer.hash(transaction: self)
+        //let hash = signer.hash(transaction: self)
         //let signature = try hashSigner(hash)
         //(transaction.r, transaction.s, transaction.v) = signer.values(signature: signature)
     }

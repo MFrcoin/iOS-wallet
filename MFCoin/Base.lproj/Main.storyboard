@@ -112,19 +112,11 @@
                                     <action selector="goForward:" destination="0IW-qv-BfW" eventType="touchUpInside" id="HNv-OI-TfI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tf-NB-PRe">
-                                <rect key="frame" x="109" y="393" width="102" height="30"/>
-                                <state key="normal" title="Skip (for tests)"/>
-                                <connections>
-                                    <action selector="skipFoward:" destination="0IW-qv-BfW" eventType="touchUpInside" id="4nt-ar-Wgi"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BMP-X9-H1m" firstAttribute="trailing" secondItem="rtK-2J-o6S" secondAttribute="trailing" constant="16" id="1ib-ih-cAx"/>
                             <constraint firstItem="BMP-X9-H1m" firstAttribute="trailing" secondItem="Tq7-6v-fJQ" secondAttribute="trailing" constant="16" id="3Uy-T1-bYp"/>
-                            <constraint firstItem="5tf-NB-PRe" firstAttribute="top" secondItem="Cbc-9v-wyh" secondAttribute="bottom" constant="20" id="4Sq-kg-vXm"/>
                             <constraint firstItem="IF8-as-CxO" firstAttribute="leading" secondItem="BMP-X9-H1m" secondAttribute="leading" constant="16" id="4y2-c7-269"/>
                             <constraint firstItem="Cbc-9v-wyh" firstAttribute="top" secondItem="EHo-Cp-s18" secondAttribute="bottom" constant="50" id="5OQ-Xh-H1i"/>
                             <constraint firstItem="mvR-c1-mzr" firstAttribute="top" secondItem="Tq7-6v-fJQ" secondAttribute="bottom" constant="16" id="9dT-I4-E6O"/>
@@ -136,7 +128,6 @@
                             <constraint firstItem="Tq7-6v-fJQ" firstAttribute="top" secondItem="IF8-as-CxO" secondAttribute="bottom" id="NZ1-9e-eck"/>
                             <constraint firstItem="BMP-X9-H1m" firstAttribute="trailing" secondItem="mvR-c1-mzr" secondAttribute="trailing" constant="16" id="TBn-Cu-c9K"/>
                             <constraint firstItem="YQN-e6-9fA" firstAttribute="top" secondItem="BMP-X9-H1m" secondAttribute="top" constant="16" id="Uky-cG-NEX"/>
-                            <constraint firstItem="5tf-NB-PRe" firstAttribute="centerX" secondItem="2Sv-CE-f43" secondAttribute="centerX" id="Xka-Pi-EME"/>
                             <constraint firstItem="BMP-X9-H1m" firstAttribute="trailing" secondItem="AVT-5I-bur" secondAttribute="trailing" constant="16" id="YC5-4a-ef7"/>
                             <constraint firstItem="mvR-c1-mzr" firstAttribute="leading" secondItem="BMP-X9-H1m" secondAttribute="leading" constant="16" id="c8U-Lq-Anu"/>
                             <constraint firstItem="EHo-Cp-s18" firstAttribute="top" secondItem="rtK-2J-o6S" secondAttribute="bottom" constant="16" id="dSk-BM-WeB"/>
@@ -484,7 +475,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLX-C8-bf8">
-                                <rect key="frame" x="16" y="425" width="288" height="44"/>
+                                <rect key="frame" x="16" y="380" width="288" height="44"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="lqD-WZ-IPe"/>
@@ -498,7 +489,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMe-sO-kln">
-                                <rect key="frame" x="145" y="489" width="30" height="44"/>
+                                <rect key="frame" x="145" y="444" width="30" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="6pH-ZN-7GO"/>
                                 </constraints>
@@ -524,11 +515,11 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                             <constraint firstItem="Txx-cM-YXI" firstAttribute="top" secondItem="Tlg-ac-2GE" secondAttribute="bottom" id="8OZ-De-4zz"/>
                             <constraint firstItem="hhK-2y-Gy3" firstAttribute="trailing" secondItem="InE-nA-TyD" secondAttribute="trailing" constant="16" id="9Va-58-Eiq"/>
                             <constraint firstItem="adZ-39-kzK" firstAttribute="top" secondItem="hhK-2y-Gy3" secondAttribute="top" constant="30" id="LYg-0J-mdi"/>
+                            <constraint firstItem="hhK-2y-Gy3" firstAttribute="bottom" secondItem="DMe-sO-kln" secondAttribute="bottom" constant="80" id="Loh-AL-1up"/>
                             <constraint firstItem="DMe-sO-kln" firstAttribute="top" secondItem="zLX-C8-bf8" secondAttribute="bottom" constant="20" id="Nzr-55-XLE"/>
                             <constraint firstItem="hhK-2y-Gy3" firstAttribute="trailing" secondItem="BIp-Zg-zMX" secondAttribute="trailing" constant="16" id="QBJ-a9-WmT"/>
                             <constraint firstItem="Tlg-ac-2GE" firstAttribute="leading" secondItem="hhK-2y-Gy3" secondAttribute="leading" constant="16" id="U64-Rn-hnF"/>
                             <constraint firstItem="hhK-2y-Gy3" firstAttribute="trailing" secondItem="Tlg-ac-2GE" secondAttribute="trailing" constant="16" id="efy-H4-RDe"/>
-                            <constraint firstItem="zLX-C8-bf8" firstAttribute="top" secondItem="BIp-Zg-zMX" secondAttribute="bottom" constant="100" id="gdb-dN-bXz"/>
                             <constraint firstItem="zLX-C8-bf8" firstAttribute="leading" secondItem="hhK-2y-Gy3" secondAttribute="leading" constant="16" id="hD4-sE-glt"/>
                             <constraint firstItem="hhK-2y-Gy3" firstAttribute="trailing" secondItem="zLX-C8-bf8" secondAttribute="trailing" constant="16" id="hEa-9f-y9D"/>
                             <constraint firstItem="adZ-39-kzK" firstAttribute="leading" secondItem="hhK-2y-Gy3" secondAttribute="leading" constant="16" id="int-Rx-s6t"/>
@@ -623,7 +614,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-do-v4e">
-                                <rect key="frame" x="16" y="366" width="288" height="44"/>
+                                <rect key="frame" x="16" y="380" width="288" height="44"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7ZR-O7-ZLj"/>
@@ -637,7 +628,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srF-Uf-PZK">
-                                <rect key="frame" x="145" y="430" width="30" height="44"/>
+                                <rect key="frame" x="145" y="444" width="30" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1zO-yb-eDC"/>
                                 </constraints>
@@ -653,6 +644,7 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                         <constraints>
                             <constraint firstItem="TxJ-xl-H3q" firstAttribute="trailing" secondItem="1Uv-XB-WSS" secondAttribute="trailing" constant="16" id="6ZS-s3-Hhe"/>
                             <constraint firstItem="oJN-uY-1nZ" firstAttribute="top" secondItem="pfE-g9-NUh" secondAttribute="bottom" id="FFG-Fw-3fg"/>
+                            <constraint firstItem="TxJ-xl-H3q" firstAttribute="bottom" secondItem="srF-Uf-PZK" secondAttribute="bottom" constant="80" id="FSj-EX-hgE"/>
                             <constraint firstItem="TxJ-xl-H3q" firstAttribute="trailing" secondItem="M0X-dv-A0O" secondAttribute="trailing" constant="16" id="FnD-As-d3k"/>
                             <constraint firstItem="TxJ-xl-H3q" firstAttribute="trailing" secondItem="klF-aA-Gtv" secondAttribute="trailing" constant="16" id="HKC-Nn-aeD"/>
                             <constraint firstItem="pfE-g9-NUh" firstAttribute="top" secondItem="Iji-qK-5e8" secondAttribute="bottom" constant="8" id="Jzh-Qc-2bt"/>
@@ -667,7 +659,6 @@ If you lose your recovery phrase, your wallet cannot be recovered.</string>
                             <constraint firstItem="M0X-dv-A0O" firstAttribute="leading" secondItem="TxJ-xl-H3q" secondAttribute="leading" constant="16" id="S9L-cj-bhY"/>
                             <constraint firstItem="v5k-do-v4e" firstAttribute="leading" secondItem="TxJ-xl-H3q" secondAttribute="leading" constant="16" id="VZW-Dp-u9N"/>
                             <constraint firstItem="ddm-mw-jbO" firstAttribute="top" secondItem="gWw-if-uTj" secondAttribute="bottom" constant="8" id="YHx-3s-Kct"/>
-                            <constraint firstItem="v5k-do-v4e" firstAttribute="top" secondItem="1Uv-XB-WSS" secondAttribute="bottom" constant="55" id="Zou-yV-37L"/>
                             <constraint firstAttribute="trailing" secondItem="oJN-uY-1nZ" secondAttribute="trailing" constant="16" id="ckT-XP-ZlN"/>
                             <constraint firstItem="gWw-if-uTj" firstAttribute="leading" secondItem="TxJ-xl-H3q" secondAttribute="leading" constant="16" id="d5r-2R-Vq8"/>
                             <constraint firstItem="TxJ-xl-H3q" firstAttribute="trailing" secondItem="ddm-mw-jbO" secondAttribute="trailing" constant="16" id="eHH-i8-Lyc"/>

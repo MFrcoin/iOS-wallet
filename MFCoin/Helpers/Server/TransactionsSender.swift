@@ -63,7 +63,7 @@ class TransactionsSender {
                 utxos.append(utxo)
             }
             if changeAddress == "" {
-                if path.balance == 0 && path.change == 1 {
+                if path.change == 1 {
                     changeAddress = path.address
                 }
             }
@@ -73,11 +73,15 @@ class TransactionsSender {
         guard let changeAddr = BitcoinAddress(string: changeAddress) else {return}
         guard let unsignedTx = createUnsignedTx(toAddr: toAddr, amount: amount, changeAddr: changeAddr, utxos: utxos) else { return }
         
-        let signedTx = signTx(unsignedTx: unsignedTx, keys: getPrivateKeys(coin: mfcoin))
+        let signedTx = signTx(unsignedTx: unsignedTx, keys: getPrivateKeys(coin: coinUnw))
         print(signedTx.encoded.hex)
         let info = "\"\(signedTx.hexEncoded)\""
         ServerConnect().sendRequest(coin: coinUnw, command: .broadcast, altInfo: info, id: coinUnw.shortName, { (response) in
             if let list = response as? Broadcast {
+                DispatchQueue.main.async{
+                    let userInfo = [ "txId" : list.result ]
+                    NotificationCenter.default.post(name: Constants.SENDED, object: nil, userInfo: userInfo)
+                }
                 print("list.result \(list.result)")
             }
         })
@@ -93,7 +97,6 @@ class TransactionsSender {
         }
         return nil
     }
-    
     
     private func createUnsignedTx(toAddr: BitcoinAddress, amount: Int64, changeAddr: BitcoinAddress, utxos: [BitcoinUnspentTransaction]) -> BitcoinUnsignedTransaction? {
         guard let (utxos, fee) = selectTx(from: utxos, amount: amount) else {return nil}

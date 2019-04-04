@@ -9,6 +9,4 @@ target 'MFCoin' do
   	pod 'SwiftProtobuf', '~> 1.0'
   	pod 'TrezorCrypto', '~> 0.0.9', inhibit_warnings: true
   	pod 'CryptoSwift'
-	pod 'RxSwift'
-	pod 'RxCocoa'
 end

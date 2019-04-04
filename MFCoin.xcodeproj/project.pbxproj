@@ -14,6 +14,8 @@
 		842CAFFE21EB5CE7000B8F0A /* KitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CAFFD21EB5CE7000B8F0A /* KitManager.swift */; };
 		842CB00021EB7117000B8F0A /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CAFFF21EB7117000B8F0A /* AddressViewController.swift */; };
 		842CB00221EB7915000B8F0A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CB00121EB7915000B8F0A /* Constants.swift */; };
+		842E65342253C7A900DB6ACA /* AddressesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E65332253C7A900DB6ACA /* AddressesTableViewCell.swift */; };
+		842E65362253C9BB00DB6ACA /* NewAddressTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E65352253C9BB00DB6ACA /* NewAddressTVC.swift */; };
 		843A152D2219D98D006F393D /* PublicKey+Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A151B2219D96D006F393D /* PublicKey+Bitcoin.swift */; };
 		843A152E2219D98D006F393D /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A151C2219D96F006F393D /* Bitcoin.swift */; };
 		843A152F2219D98D006F393D /* BitcoinUnspentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A151D2219D970006F393D /* BitcoinUnspentSelector.swift */; };
@@ -141,6 +143,7 @@
 		848AE24A21E3419D00B96427 /* DiffPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AE24921E3419D00B96427 /* DiffPhraseViewController.swift */; };
 		848AE24C21E341CC00B96427 /* SetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AE24B21E341CC00B96427 /* SetPasswordViewController.swift */; };
 		84917370224DEF7C008D57B8 /* TxHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491736F224DEF7C008D57B8 /* TxHistory.swift */; };
+		8494B4452253561000D7DE9C /* SweepPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494B4442253561000D7DE9C /* SweepPaperModel.swift */; };
 		849F012D21E4A43C000AB56A /* CoinsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F012C21E4A43C000AB56A /* CoinsTabBarController.swift */; };
 		84AA92EF221FF466004979FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA92EE221FF466004979FF /* SettingsViewController.swift */; };
 		84ABA725221F2DF60057458C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ABA724221F2DF60057458C /* Settings.storyboard */; };
@@ -180,6 +183,8 @@
 		842CAFFD21EB5CE7000B8F0A /* KitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitManager.swift; sourceTree = "<group>"; };
 		842CAFFF21EB7117000B8F0A /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		842CB00121EB7915000B8F0A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		842E65332253C7A900DB6ACA /* AddressesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewCell.swift; sourceTree = "<group>"; };
+		842E65352253C9BB00DB6ACA /* NewAddressTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressTVC.swift; sourceTree = "<group>"; };
 		843A151B2219D96D006F393D /* PublicKey+Bitcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublicKey+Bitcoin.swift"; sourceTree = "<group>"; };
 		843A151C2219D96F006F393D /* Bitcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
 		843A151D2219D970006F393D /* BitcoinUnspentSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinUnspentSelector.swift; sourceTree = "<group>"; };
@@ -312,6 +317,7 @@
 		848AE24921E3419D00B96427 /* DiffPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffPhraseViewController.swift; sourceTree = "<group>"; };
 		848AE24B21E341CC00B96427 /* SetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordViewController.swift; sourceTree = "<group>"; };
 		8491736F224DEF7C008D57B8 /* TxHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxHistory.swift; sourceTree = "<group>"; };
+		8494B4442253561000D7DE9C /* SweepPaperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweepPaperModel.swift; sourceTree = "<group>"; };
 		849F012C21E4A43C000AB56A /* CoinsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTabBarController.swift; sourceTree = "<group>"; };
 		84AA92EE221FF466004979FF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		84ABA724221F2DF60057458C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -617,6 +623,7 @@
 		845403B922187E2C00186453 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				842E65332253C7A900DB6ACA /* AddressesTableViewCell.swift */,
 				8474DE0A22183B4A00AF2365 /* AddressTableViewCell.swift */,
 			);
 			path = ViewModel;
@@ -647,6 +654,7 @@
 				845C3EB421EA54A500A4C836 /* CoinModel.swift */,
 				843FDD9521E50EBF00C655F2 /* CoinsList.swift */,
 				8491736F224DEF7C008D57B8 /* TxHistory.swift */,
+				8494B4442253561000D7DE9C /* SweepPaperModel.swift */,
 			);
 			path = Coin;
 			sourceTree = "<group>";
@@ -700,6 +708,7 @@
 				8474DE062218179C00AF2365 /* ReceiveViewController.swift */,
 				842CAFFF21EB7117000B8F0A /* AddressViewController.swift */,
 				8474DE08221817AE00AF2365 /* SendViewController.swift */,
+				842E65352253C9BB00DB6ACA /* NewAddressTVC.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -905,9 +914,6 @@
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
@@ -920,9 +926,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
@@ -1001,6 +1004,7 @@
 				843A155E2219DA3D006F393D /* EthereumAddress.swift in Sources */,
 				843A158B2219DB16006F393D /* IconSigner.swift in Sources */,
 				845050B6222BD0E4000B4194 /* Serialization.swift in Sources */,
+				8494B4452253561000D7DE9C /* SweepPaperModel.swift in Sources */,
 				8456E2142222A83700DACD49 /* ShapeShift.swift in Sources */,
 				843A15A12219DB97006F393D /* Contract.pb.swift in Sources */,
 				846EC9F5224F3B4000565D95 /* Unspent.swift in Sources */,
@@ -1041,6 +1045,7 @@
 				8451DFEA221981E10035D715 /* Purpose.swift in Sources */,
 				84696F6B2224080500BAE8BD /* TransactionsSender.swift in Sources */,
 				8451DFD8221981E10035D715 /* SLIP.swift in Sources */,
+				842E65362253C9BB00DB6ACA /* NewAddressTVC.swift in Sources */,
 				8470F89B21D6A5F00096CE22 /* CreateWalletViewController.swift in Sources */,
 				843A153B2219D98D006F393D /* SignatureHashType.swift in Sources */,
 				8474DE09221817AE00AF2365 /* SendViewController.swift in Sources */,
@@ -1080,6 +1085,7 @@
 				843A15992219DB79006F393D /* TronBlock.swift in Sources */,
 				843A157A2219DAD4006F393D /* ENSEncoder.swift in Sources */,
 				843A15B02219DBE0006F393D /* WanchainAddress.swift in Sources */,
+				842E65342253C7A900DB6ACA /* AddressesTableViewCell.swift in Sources */,
 				843A15432219D9BE006F393D /* BitcoinCash.swift in Sources */,
 				84ABA72F221F333D0057458C /* ExchRatesTableViewCell.swift in Sources */,
 				843A153C2219D98D006F393D /* BitcoinScript+Parsing.swift in Sources */,

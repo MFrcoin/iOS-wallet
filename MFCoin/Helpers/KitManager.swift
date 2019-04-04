@@ -16,8 +16,8 @@ class KitManager {
     let coinList = CoinsList.shared
     
     func createWords() {
-        print("create words")
-        clearAll()
+        DAKeychain.shared[Constants.MNEMONIC_KEY] = ""
+        DAKeychain.shared[Constants.PASSPHRASE_KEY] = ""
         let words = Mnemonic.init(language: .english).toString()
         save(words: words.trimmingCharacters(in: .whitespacesAndNewlines))
     }
@@ -67,12 +67,6 @@ class KitManager {
         }
     }
     
-    private func clearAll() {
-        print("clear all")
-        //realm.clearSelectedCoins()
-        DAKeychain.shared[Constants.MNEMONIC_KEY] = ""
-        DAKeychain.shared[Constants.PASSPHRASE_KEY] = ""
-    }
 }
 
 
@@ -94,11 +88,7 @@ extension KitManager {
                                 coin.online = false
                                 print("coin \(coin.shortName) offline")
                             }
-                        }
-                        else {
-                            coin.online = false
-                            print("coin \(coin.shortName) offline")
-                        }
+                        } 
                     }
                 }
             }
@@ -150,6 +140,7 @@ extension KitManager {
                     coin.unBalance = 0
                 }
                 for derPath in coin.derPaths {
+                    print(derPath.address)
                     if let scriptHash = self.getRevercesScriptHash(address: derPath.address) {
                         self.server.sendRequest(coin: coin, command: .getBalanceScrH, altInfo: "\"\(scriptHash)\"", id: coin.shortName, { (response) in
                             if let balance = response as? GetBalance {
@@ -159,8 +150,8 @@ extension KitManager {
                                     try! Realm().write {
                                         derPath.balance = confirmed
                                         derPath.unBalance = unconfirmed
-                                        coin.balance += derPath.balance
-                                        coin.unBalance += derPath.unBalance
+                                        coin.balance += confirmed
+                                        coin.unBalance += unconfirmed
                                     }
                                 }
                             }
@@ -180,7 +171,6 @@ extension KitManager {
             let bRealm = try! Realm()
             if let coin = bRealm.resolve(coinRef) {
                 for derPath in coin.derPaths {
-                    
                     try! bRealm.write {
                         bRealm.delete(derPath.unspent)
                     }
@@ -210,18 +200,20 @@ extension KitManager {
             if let coin = bRealm.resolve(coinRef) {
                 for derPath in coin.derPaths {
                     for history in derPath.history {
-                        self.server.sendRequest(coin: coin, command: .getTransactions, altInfo: "\"\(history.txId)\", true", id: coin.shortName, { (response) in
-                            if let txHistory = response as? GetTxHistory {
-                                if self.newHistory(txHistory.result.txid, txHistory.result.confirmations) {
-                                    let cRealm = try! Realm()
-                                    try! cRealm.write {
-                                        let history = TxHistory(coin: coin, tx: txHistory,
-                                                                address: derPath.address, change: derPath.change)
-                                        cRealm.add(history)
+                        if history.height > 0 {
+                            self.server.sendRequest(coin: coin, command: .getTransactions, altInfo: "\"\(history.txId)\", true", id: coin.shortName, { (response) in
+                                if let txHistory = response as? GetTxHistory {
+                                    if self.newHistory(txHistory.result.txid, txHistory.result.confirmations) {
+                                        let cRealm = try! Realm()
+                                        try! cRealm.write {
+                                            let history = TxHistory(coin: coin, tx: txHistory,
+                                                                    address: derPath.address, change: derPath.change)
+                                            cRealm.add(history)
+                                        }
                                     }
                                 }
-                            }
-                        })
+                            })
+                        }
                     }
                 }
                 DispatchQueue.main.async{
@@ -239,7 +231,7 @@ extension KitManager {
         return metaPhrase
     }
     
-    private func getPhrase() -> String {
+    func getPhrase() -> String {
         guard let phrase = DAKeychain.shared[Constants.PASSPHRASE_KEY] else {
             return ""
         }

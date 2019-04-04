@@ -51,7 +51,6 @@ extension RealmHelper {
     }
     
     func getCoins() -> Results<CoinModel>? {
-        let realm = try! Realm()
         let result = getSelectedCoins()
         if result.count == 0 {
             return getAllCoins()
