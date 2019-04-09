@@ -43,9 +43,7 @@ class TxHistory: Object {
             for vout in tx.result.vout {
                 var flag = false
                 let vAddress = vout.scriptPubKey.addresses[0]
-                print("vAddress \(vAddress)")
                 for filteredAddress in filteredAddresses {
-                    print ("filteredAddress \(filteredAddress)")
                     if vAddress == filteredAddress {
                         flag = true
                     }
@@ -59,7 +57,6 @@ class TxHistory: Object {
             self.address = newAddress
             return value
             }()
-        print("self.value \(self.value)")
     }
 
 }

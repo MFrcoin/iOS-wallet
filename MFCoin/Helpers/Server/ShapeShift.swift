@@ -30,8 +30,6 @@ class ShapeShift {
 //            guard let data = data else { return }
 //            do {
 //                let json = try JSONDecoder().decode(MinerFee.self, from: data)
-//                print(json.coin)
-//                print(json.result[0].minerFee)
 //                //RealmHelper.shared.saveFee(json)
 //            } catch {
 //                print(error)

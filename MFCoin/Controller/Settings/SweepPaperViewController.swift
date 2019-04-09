@@ -224,13 +224,11 @@ extension SweepPaperViewController {
         
         let signedTx = signTx(unsignedTx: unsignedTx, keys: [privateKey])
         let info = "\"\(signedTx.hexEncoded)\""
-        print("info \(info)")
         ServerConnect().sendRequest(coin: coin, command: .broadcast, altInfo: info, id: "SweepPaper", { (response) in
             if let list = response as? Broadcast {
                 DispatchQueue.main.async{
                     self.statusLabel.text = list.result
                 }
-                print("list.result \(list.result)")
             }
         })
     }

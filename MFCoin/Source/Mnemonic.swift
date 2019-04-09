@@ -54,7 +54,6 @@ public class Mnemonic {
         let count = ENT / 8
         let bytes = Array<UInt8>(repeating: 0, count: count)
         let status = SecRandomCopyBytes(kSecRandomDefault, count, UnsafeMutablePointer<UInt8>(mutating: bytes))
-        // print(status)
         if status != -1 {
             let data = Data(bytes: bytes)
             let hexString = data.toHexString()
@@ -87,8 +86,6 @@ public class Mnemonic {
             let startIndex = i * length
             let subArray = seedBits[startIndex..<startIndex + length]
             let subString = subArray.joined(separator: "")
-            // print(subString)
-            
             let index = Int(strtoul(subString, nil, 2))
             mnemonic.append(words[index])
         }
@@ -127,7 +124,6 @@ public class Mnemonic {
             
             return bytes.toHexString()
         } catch {
-            // print(error)
             throw error
         }
     }

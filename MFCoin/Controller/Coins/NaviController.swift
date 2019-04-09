@@ -22,8 +22,4 @@ class NaviController: UINavigationController {
             self.navigationBar.topItem?.title = "\(newValue) \(self.head.name)"
         }
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//    }
 }

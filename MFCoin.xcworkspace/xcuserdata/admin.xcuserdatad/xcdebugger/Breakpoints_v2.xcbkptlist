@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Controller/Recreate/RecreateViewController.swift"
-            timestampString = "576084136.2986259"
+            timestampString = "576095374.481491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Controller/Create/CreateWalletViewController.swift"
-            timestampString = "576084136.3018481"
+            timestampString = "576427077.383448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51">
+            startingLineNumber = "52"
+            endingLineNumber = "52">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -760,11 +760,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Controller/Create/CreateWalletViewController.swift"
-            timestampString = "576084136.301968"
+            timestampString = "576427077.383606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51">
+            startingLineNumber = "52"
+            endingLineNumber = "52">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -774,7 +774,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576084136.302086"
+            timestampString = "576427077.3837481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -790,7 +790,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576084136.3022209"
+            timestampString = "576427077.3838789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -806,7 +806,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576084136.302354"
+            timestampString = "576427077.384003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -838,7 +838,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576084136.302596"
+            timestampString = "576427077.384258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -854,11 +854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576084136.30274"
+            timestampString = "576427077.384391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "parseJSON(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -870,11 +870,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576084136.302863"
+            timestampString = "576427077.384521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "sendRequest(coin:command:altInfo:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -886,11 +886,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576084136.302984"
+            timestampString = "576427077.384648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "sendRequest(coin:command:altInfo:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -902,11 +902,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576084136.303106"
+            timestampString = "576427077.3847769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "sendRequest(coin:command:altInfo:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -966,11 +966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/FiatTicker.swift"
-            timestampString = "576078014.810329"
+            timestampString = "576095374.487402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -982,11 +982,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576084136.303628"
+            timestampString = "576427077.3854049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "getListunspent(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1078,11 +1078,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576084136.304006"
+            timestampString = "576095374.487947"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "signTx(unsignedTx:keys:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1094,7 +1094,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576084136.30415"
+            timestampString = "576095374.488077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -1110,7 +1110,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576084136.304288"
+            timestampString = "576095374.488201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -1126,11 +1126,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576084136.304427"
+            timestampString = "576095374.488325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "signTx(unsignedTx:keys:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1142,11 +1142,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576084136.30458"
+            timestampString = "576427077.386075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "getBalances()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1158,11 +1158,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576084136.304728"
+            timestampString = "576427077.386236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "getBalances()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1206,7 +1206,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Models/Coin/TxHistory.swift"
-            timestampString = "575819247.9253761"
+            timestampString = "576095374.488912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -1222,7 +1222,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Controller/Recreate/RecreateViewController.swift"
-            timestampString = "576084136.305163"
+            timestampString = "576095374.489036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -1238,7 +1238,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Controller/Settings/SweepPaperViewController.swift"
-            timestampString = "576078664.174691"
+            timestampString = "576095374.489792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
@@ -1254,11 +1254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Controller/Settings/SweepPaperViewController.swift"
-            timestampString = "576078664.174824"
+            timestampString = "576095374.489917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "signTx(unsignedTx:keys:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1270,11 +1270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Controller/Settings/SweepPaperViewController.swift"
-            timestampString = "576078664.174946"
+            timestampString = "576095374.490037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "createUnsignedTx(toAddr:amount:changeAddr:utxos:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1286,7 +1286,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576084136.305517"
+            timestampString = "576427077.386994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -1302,11 +1302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576084136.305684"
+            timestampString = "576095374.490289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "signTx(unsignedTx:keys:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1318,11 +1318,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576084136.305817"
+            timestampString = "576095374.490415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "createUnsignedTx(toAddr:amount:changeAddr:utxos:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1334,11 +1334,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576084136.305948"
+            timestampString = "576095374.490559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "selectTx(from:amount:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1350,12 +1350,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576084136.306077"
+            timestampString = "576095374.49069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "sendToSomeAddress(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Controller/Settings/ChangePasswordViewController.swift"
+            timestampString = "576095413.055156"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "changeButtonPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Controller/Create/CreateWalletViewController.swift"
+            timestampString = "576488555.340215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "saveSeedSwitched(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

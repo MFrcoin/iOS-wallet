@@ -42,7 +42,7 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationItem.title = "\(UserDefaults.standard.double(forKey: Constants.MYBALANCE)) \(head.name)"
         segmentedControl.addTarget(self, action: #selector(selectedDidChange(sender:)), for: .valueChanged)
         updateView()
     }

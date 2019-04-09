@@ -10,7 +10,8 @@ import UIKit
 
 class RecoveryPhraseViewController: UIViewController {
     
-    @IBOutlet weak var phraseLabel: UILabel!
+   
+    @IBOutlet weak var phraseLabel: SRCopyableLabel!
     @IBOutlet weak var qrImage: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {

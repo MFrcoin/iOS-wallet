@@ -14,14 +14,12 @@ class RealmHelper {
     static let shared = RealmHelper()
     
     func setCoins() {
-        print("set Coins")
         let realm = try! Realm()
         for coin in SLIP.CoinType.allCases {
             if let coinStruct = CoinsList.shared.coinInit(coin: coin) {
                 let coinModel = CoinModel.init(coinStruct: coinStruct)
                 try! realm.write {
                     realm.add(coinModel)
-                    print("add \(coinModel.shortName)")
                 }
             }
         }
@@ -31,7 +29,6 @@ class RealmHelper {
         let realm = try! Realm()
         try! realm.write {
             coin.isSelected = selected
-            print("isSelected \(coin.shortName)")
         }
     }
 
@@ -130,7 +127,7 @@ extension RealmHelper {
     
     func getTxHistories(coin: CoinModel) -> Results<TxHistory> {
         let realm = try! Realm()
-        let result = realm.objects(TxHistory.self).filter("coinFullName = %@", coin.fullName).sorted(byKeyPath: "date")
+        let result = realm.objects(TxHistory.self).filter("coinFullName = %@", coin.fullName).sorted(byKeyPath: "date", ascending: false)
         return result
     }
     
@@ -166,10 +163,8 @@ extension RealmHelper {
             let coin = realm.objects(CoinModel.self).filter("name = %@", json.id)
             if coin.count > 0 {
                 coin[0].fiatPrice = json.current_price
-                print (json.current_price)
                 let balance = coin[0].balance
                 coin[0].price = ConvertValue.shared.convertSatoshToFiat(satoshi: balance, rate: json.current_price)
-                print ( coin[0].price)
             }
         }
         DispatchQueue.main.async{

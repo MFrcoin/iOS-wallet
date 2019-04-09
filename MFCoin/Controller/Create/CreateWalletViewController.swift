@@ -11,7 +11,8 @@ import SwiftSocket
 
 class CreateWalletViewController: UIViewController  {
     
-    @IBOutlet weak var newSeedTV: UITextView!
+    
+    @IBOutlet weak var newSeedLabel: SRCopyableLabel!
     @IBOutlet weak var iSaveSeedSwitch: UISwitch!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextButton: UIButton!
@@ -23,12 +24,12 @@ class CreateWalletViewController: UIViewController  {
         nextButton.layer.cornerRadius = Constants.CORNER_RADIUS
         nextButton.backgroundColor = .gray
         kitManager.createWords()
-        newSeedTV.text = kitManager.getWords()
+        newSeedLabel.text = kitManager.getWords()
         
     }
     
     @IBAction func goForward(_ sender: UIButton) {
-        if newSeedTV.text != "" && iSaveSeedSwitch.isOn {
+        if newSeedLabel.text != "" && iSaveSeedSwitch.isOn {
             KitManager().getOnline()
             FiatTicker().setPrice()
             let sb = UIStoryboard.init(name: "Main", bundle: nil)

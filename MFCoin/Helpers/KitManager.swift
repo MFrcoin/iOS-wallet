@@ -83,10 +83,8 @@ extension KitManager {
                         if let ping = response as? Version {
                             if ping.result != nil {
                                 coin.online = true
-                                print("coin \(coin.shortName) online")
                             } else {
                                 coin.online = false
-                                print("coin \(coin.shortName) offline")
                             }
                         } 
                     }
@@ -140,7 +138,6 @@ extension KitManager {
                     coin.unBalance = 0
                 }
                 for derPath in coin.derPaths {
-                    print(derPath.address)
                     if let scriptHash = self.getRevercesScriptHash(address: derPath.address) {
                         self.server.sendRequest(coin: coin, command: .getBalanceScrH, altInfo: "\"\(scriptHash)\"", id: coin.shortName, { (response) in
                             if let balance = response as? GetBalance {
@@ -224,7 +221,6 @@ extension KitManager {
     }
     
     func getWords() -> String {
-        print ("get words")
         guard let metaPhrase = DAKeychain.shared[Constants.MNEMONIC_KEY] else {
             return ""
         }

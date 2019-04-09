@@ -68,7 +68,7 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
             replyPassErrorLabel.text = "Set reply password"
             return false }
         if password == replyPassword {
-            DAKeychain.shared[Constants.PASS_KEY] = password
+            DAKeychain.shared[Constants.PASS_KEY] = password.trimmingCharacters(in: .whitespacesAndNewlines)
             return true
         }
         return false

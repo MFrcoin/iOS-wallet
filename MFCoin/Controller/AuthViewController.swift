@@ -40,6 +40,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         guard let password = DAKeychain.shared[Constants.PASS_KEY] else {
             gogo()
             return }
+        print(password)
         if passTF.text == replyPassTF.text {
             if password == passTF.text {
                 gogo()

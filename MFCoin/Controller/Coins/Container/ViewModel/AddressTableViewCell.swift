@@ -16,5 +16,6 @@ class AddressTableViewCell: UITableViewCell {
     @IBOutlet weak var coinCountLabel: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
     
+    @IBOutlet weak var fillImageView: UIImageView!
     
 }

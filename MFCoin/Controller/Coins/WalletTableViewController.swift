@@ -25,7 +25,6 @@ class WalletTableViewController: UITableViewController {
     }
     
     private func startVC() {
-        navigationItem.largeTitleDisplayMode = .always
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Loading")
         refreshControl.tintColor = Constants.BLUECOLOR
@@ -33,7 +32,7 @@ class WalletTableViewController: UITableViewController {
         tableView.refreshControl = refreshControl
         walletsCoins = realmManager.selCoins
         kitManager.getBalances()
-        //kitManager.updateHistory()
+        kitManager.updateHistory()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,27 +52,24 @@ class WalletTableViewController: UITableViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        head = RealmHelper.shared.getHeadFiat()
+        self.navigationItem.title = "\(UserDefaults.standard.double(forKey: Constants.MYBALANCE)) \(head.name)"
         if !startFlag {
             startFlag = true
             NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
             NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
-            let newHead = RealmHelper.shared.getHeadFiat()
-            if newHead != head {
-                head = newHead
-                realmManager.updateTitleBalance()
-                tableView.reloadData()
-            }
+            tableView.reloadData()
         }
     }
     
     @objc func refreshBalances() {
-        if tableView.refreshControl?.isRefreshing ?? false {
-            tableView.refreshControl?.endRefreshing()
-            tableView.reloadData()
+        if self.tableView.refreshControl?.isRefreshing ?? false {
+            self.tableView.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         }
         guard let walletsCoinsUnw = walletsCoins else { return  }
         if walletsCoinsUnw.count > 0 {
-            tableView.refreshControl?.beginRefreshing()
+            self.tableView.refreshControl?.beginRefreshing()
             kitManager.getOnline()
             kitManager.getBalances()
         }
@@ -136,13 +132,13 @@ class WalletTableViewController: UITableViewController {
         let sb = UIStoryboard.init(name: "Coins", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "containerVC") as! ContainerViewController
         vc.coin = cell.coin
-        self.show(vc, sender: nil)
+        show(vc, sender: nil)
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "setCoins") as! SetCoinsTableViewController
-        self.show(vc, sender: sender)
+        show(vc, sender: sender)
     }
 }
 
@@ -153,13 +149,13 @@ extension WalletTableViewController {
         guard let status = Network.reachability?.status else { return }
         switch status {
         case .wifi, .wwan:
-            self.kitManager.getOnline()
-            self.refreshBalances()
+            kitManager.getOnline()
+            refreshBalances()
         default:
             let alert = UIAlertController.init(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
             let alertActionCancel = UIAlertAction.init(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(alertActionCancel)
-            self.present(alert, animated: true)
+            present(alert, animated: true)
         }
     }
 }

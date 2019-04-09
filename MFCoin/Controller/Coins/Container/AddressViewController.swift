@@ -21,6 +21,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Loading")
         refreshControl.tintColor = Constants.BLUECOLOR
@@ -68,37 +69,60 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell
-        if let coinUnw = coin {
-            if let histories = histories {
-                let history = histories[indexPath.row]
-                tableDict.updateValue(history, forKey: indexPath.row)
-                if history.received {
-                    if history.status < 4 {
-                        cell.statusLabel.textColor = .gray
-                        cell.coinCountLabel.textColor = .gray
-                    } else {
-                        cell.statusLabel.textColor = Constants.GREENCOLOR
-                        cell.coinCountLabel.textColor = Constants.GREENCOLOR
-                    }
-                    cell.statusLabel.text = "Received"
-                    cell.coinCountLabel.text = "+\(history.value)"
+        if let histories = histories {
+            let history = histories[indexPath.row]
+            tableDict.updateValue(history, forKey: indexPath.row)
+            if history.received {
+                cell.fillImageView.image = fillImage(conf: history.status)
+                cell.coinImage.image = UIImage(named: "Received")
+                if history.status < 4 {
+                    cell.coinImage.image = UIImage(named: "Received0")
+                    cell.statusLabel.textColor = .gray
+                    cell.coinCountLabel.textColor = .gray
                 } else {
-                    if history.status < 4 {
-                        cell.statusLabel.textColor = .gray
-                        cell.coinCountLabel.textColor = .gray
-                    } else {
-                        cell.statusLabel.textColor = .red
-                        cell.coinCountLabel.textColor = .red
-                    }
-                    cell.statusLabel.text = "Send to"
-                    cell.coinCountLabel.text = "-\(history.value)"
+                    cell.statusLabel.textColor = Constants.GREENCOLOR
+                    cell.coinCountLabel.textColor = Constants.GREENCOLOR
                 }
-                cell.addressLabel.text = history.address
-                cell.coinImage.image = UIImage(named: coinUnw.logo)
-                cell.dateLabel.text = dateFormat(milliseconds: history.date)
+                cell.statusLabel.text = "Received"
+                cell.coinCountLabel.text = "+\(history.value)"
+            } else {
+                cell.fillImageView.image = fillImage(conf: history.status)
+                cell.coinImage.image = UIImage(named: "Sended")
+                if history.status < 4 {
+                    cell.coinImage.image = UIImage(named: "Sended0")
+                    cell.statusLabel.textColor = .gray
+                    cell.coinCountLabel.textColor = .gray
+                } else {
+                    cell.statusLabel.textColor = .red
+                    cell.coinCountLabel.textColor = .red
+                }
+                cell.statusLabel.text = "Send to"
+                cell.coinCountLabel.text = "-\(history.value)"
             }
+            cell.addressLabel.text = history.address
+            
+            cell.dateLabel.text = dateFormat(milliseconds: history.date)
         }
         return cell
+    }
+    
+    private func fillImage(conf: Int) -> UIImage {
+        switch conf {
+        case 0:
+            guard let image = UIImage(named:"fill0.png") else { return UIImage() }
+            return image
+        case 1:
+            guard let image = UIImage(named:"fill1.png") else { return UIImage() }
+            return image
+        case 2:
+            guard let image = UIImage(named:"fill2.png") else { return UIImage() }
+            return image
+        case 3:
+            guard let image = UIImage(named:"fill3.png") else { return UIImage() }
+            return image
+        default: return UIImage()
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

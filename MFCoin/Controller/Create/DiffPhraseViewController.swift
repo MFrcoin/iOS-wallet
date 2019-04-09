@@ -31,16 +31,13 @@ class DiffPhraseViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func goForward(_ sender: UIButton) {
         guard let metaPhrase = DAKeychain.shared[Constants.MNEMONIC_KEY] else { return }
-        print (metaPhrase)
         guard let phrase = phraseTextView.text else {
             errorLabel.text = "Please, enter recovery phrase"
             return }
         if phrase == "" {
             errorLabel.text = "Please, enter recovery phrase"
         }
-        if manager.diffWords(words: phrase) {
-            print ("metaPhrase \(metaPhrase)")
-            print ("phrase \(phrase)")
+        if !manager.diffWords(words: phrase) {
             errorLabel.text = "Phrases is different"
         } else {
             let sb = UIStoryboard.init(name: "Main", bundle: nil)

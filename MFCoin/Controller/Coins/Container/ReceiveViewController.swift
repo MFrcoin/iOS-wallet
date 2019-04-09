@@ -50,9 +50,6 @@ class ReceiveViewController: UIViewController,UITextFieldDelegate {
         shareButtonView.layer.cornerRadius = Constants.CORNER_RADIUS
         if let coinUnw = coin {
             setupInfo(coinUnw)
-            print(coinUnw.derPaths[0].wif)
-            print(coinUnw.derPaths[0].address)
-            print(coinUnw.derPaths[0].balance)
         }
     }
     

@@ -428,7 +428,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ule-0G-PXf">
-                                            <rect key="frame" x="16" y="11.5" width="29" height="29"/>
+                                            <rect key="frame" x="16" y="12.5" width="29" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="29" id="5Wq-RE-zK4"/>
                                                 <constraint firstAttribute="height" constant="29" id="Thb-MD-OHc"/>
@@ -482,7 +482,7 @@
                                         <constraint firstItem="T54-yK-Da5" firstAttribute="top" secondItem="D5j-Wc-19b" secondAttribute="bottom" constant="8" id="lIe-wa-6kd"/>
                                         <constraint firstAttribute="trailing" secondItem="T54-yK-Da5" secondAttribute="trailing" constant="8" id="muA-xc-Xqx"/>
                                         <constraint firstItem="9HJ-nL-zE0" firstAttribute="top" secondItem="UmZ-3h-BSw" secondAttribute="top" constant="9" id="pQK-hZ-dZZ"/>
-                                        <constraint firstItem="Ule-0G-PXf" firstAttribute="top" secondItem="UmZ-3h-BSw" secondAttribute="top" constant="11" id="sDH-Ys-mAu"/>
+                                        <constraint firstItem="Ule-0G-PXf" firstAttribute="top" secondItem="UmZ-3h-BSw" secondAttribute="top" constant="12" id="sDH-Ys-mAu"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -500,7 +500,8 @@
                             <outlet property="delegate" destination="F4e-sZ-XPh" id="UmD-dv-wei"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Overview" id="QrI-FM-JTe">
+                    <navigationItem key="navigationItem" title="Overview" largeTitleDisplayMode="always" id="QrI-FM-JTe">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="QrI-rO-s5c"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="3dd-oG-zSm">
                             <color key="tintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                             <connections>
@@ -514,7 +515,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUU-0a-ght" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1303" y="-375"/>
+            <point key="canvasLocation" x="-1303.125" y="-375"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="Q7F-LQ-uju">
@@ -719,7 +720,7 @@
                                             <constraint firstItem="ELa-M1-06H" firstAttribute="centerX" secondItem="wPb-Gz-ywR" secondAttribute="centerX" id="vEx-Ub-fAV"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX XXXX XXXX XXXX XXXX XXXX" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="phg-1V-tSH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX XXXX XXXX XXXX XXXX XXXX" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="phg-1V-tSH" customClass="SRCopyableLabel" customModule="MFCoin" customModuleProvider="target">
                                         <rect key="frame" x="58" y="149" width="204" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="px1-JK-NFr"/>
@@ -815,7 +816,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin" translatesAutoresizingMaskIntoConstraints="NO" id="VFy-97-ebp">
-                                                    <rect key="frame" x="16" y="18" width="40" height="40"/>
+                                                    <rect key="frame" x="16" y="16" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="CkI-bm-d0M"/>
                                                         <constraint firstAttribute="height" constant="40" id="Hb1-LU-7UK"/>
@@ -858,19 +859,28 @@ YYYY zzzz XXXX yyyy ZZZZ xxxx</string>
                                                     <color key="textColor" red="0.29803921568627451" green="0.85098039215686272" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wyi-M2-eXx">
+                                                    <rect key="frame" x="29.5" y="60" width="13" height="7"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="13" id="j0Z-mO-tI2"/>
+                                                        <constraint firstAttribute="height" constant="7" id="mRU-Wx-uWB"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VFy-97-ebp" firstAttribute="leading" secondItem="qR7-mD-Vic" secondAttribute="leading" constant="16" id="35n-TT-YbT"/>
                                                 <constraint firstItem="czN-Sz-LpZ" firstAttribute="top" secondItem="qR7-mD-Vic" secondAttribute="top" constant="8" id="ElL-b7-Lpt"/>
                                                 <constraint firstItem="czN-Sz-LpZ" firstAttribute="leading" secondItem="rUR-ks-GP2" secondAttribute="leading" id="Rep-HA-e58"/>
-                                                <constraint firstItem="VFy-97-ebp" firstAttribute="top" secondItem="qR7-mD-Vic" secondAttribute="top" constant="18" id="TXo-Vb-9cO"/>
+                                                <constraint firstItem="VFy-97-ebp" firstAttribute="top" secondItem="qR7-mD-Vic" secondAttribute="top" constant="16" id="TXo-Vb-9cO"/>
                                                 <constraint firstItem="rUR-ks-GP2" firstAttribute="leading" secondItem="VFy-97-ebp" secondAttribute="trailing" constant="7" id="VEs-Nh-7tT"/>
                                                 <constraint firstItem="rUR-ks-GP2" firstAttribute="centerY" secondItem="qR7-mD-Vic" secondAttribute="centerY" id="WAA-IS-KQ1"/>
+                                                <constraint firstItem="wyi-M2-eXx" firstAttribute="centerX" secondItem="VFy-97-ebp" secondAttribute="centerX" id="WTP-Pr-vFG"/>
                                                 <constraint firstItem="0Pf-jC-Hqk" firstAttribute="top" secondItem="qR7-mD-Vic" secondAttribute="top" constant="8" id="Ypj-ud-e2u"/>
                                                 <constraint firstAttribute="trailing" secondItem="rUR-ks-GP2" secondAttribute="trailing" constant="15" id="bKI-nf-VHZ"/>
                                                 <constraint firstItem="6Y5-65-53Y" firstAttribute="leading" secondItem="rUR-ks-GP2" secondAttribute="leading" id="bp3-19-iHH"/>
                                                 <constraint firstAttribute="trailing" secondItem="0Pf-jC-Hqk" secondAttribute="trailing" constant="15" id="cFI-7b-3Gm"/>
                                                 <constraint firstItem="6Y5-65-53Y" firstAttribute="top" secondItem="rUR-ks-GP2" secondAttribute="bottom" constant="7" id="gGy-Qi-65k"/>
+                                                <constraint firstItem="wyi-M2-eXx" firstAttribute="top" secondItem="VFy-97-ebp" secondAttribute="bottom" constant="4" id="kWZ-ro-iAY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -878,6 +888,7 @@ YYYY zzzz XXXX yyyy ZZZZ xxxx</string>
                                             <outlet property="coinCountLabel" destination="6Y5-65-53Y" id="GWA-za-OTH"/>
                                             <outlet property="coinImage" destination="VFy-97-ebp" id="cvN-cN-J6F"/>
                                             <outlet property="dateLabel" destination="0Pf-jC-Hqk" id="BnN-ig-6Rg"/>
+                                            <outlet property="fillImageView" destination="wyi-M2-eXx" id="VyO-XC-iCn"/>
                                             <outlet property="statusLabel" destination="czN-Sz-LpZ" id="S7a-tY-qHW"/>
                                         </connections>
                                     </tableViewCell>
@@ -904,7 +915,7 @@ YYYY zzzz XXXX yyyy ZZZZ xxxx</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRk-eg-KaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="213.59999999999999" y="287.40629685157421"/>
+            <point key="canvasLocation" x="211.875" y="287.32394366197184"/>
         </scene>
         <!--New AddressTVC-->
         <scene sceneID="xGv-ZC-r0U">
@@ -1012,7 +1023,7 @@ YYYY zzzz XXXX yyyy ZZZZ xxxx</string>
                                 <color key="textColor" red="0.4823529412" green="0.4823529412" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Id" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOl-oJ-W7a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Id" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOl-oJ-W7a" customClass="SRCopyableLabel" customModule="MFCoin" customModuleProvider="target">
                                 <rect key="frame" x="16" y="321.5" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1027,7 +1038,7 @@ YYYY zzzz XXXX yyyy ZZZZ xxxx</string>
                                     <action selector="viewBlockButtonPressed:" destination="sRI-fE-eQW" eventType="touchUpInside" id="3fT-SN-edK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoM-bC-Wuz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoM-bC-Wuz" customClass="SRCopyableLabel" customModule="MFCoin" customModuleProvider="target">
                                 <rect key="frame" x="16" y="251" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1208,10 +1219,10 @@ YYYY zzzz XXXX yyyy ZZZZ xxxx</string>
                                     <action selector="sendButtonPressed:" destination="Wjd-Uu-mCj" eventType="touchUpInside" id="bn1-wx-EtO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="CgK-Dn-SAB">
-                                <rect key="frame" x="20" y="364.5" width="280" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="CgK-Dn-SAB" customClass="SRCopyableLabel" customModule="MFCoin" customModuleProvider="target">
+                                <rect key="frame" x="20" y="364.5" width="280" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="cPI-n6-rf2"/>
+                                    <constraint firstAttribute="height" constant="40" id="cPI-n6-rf2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>

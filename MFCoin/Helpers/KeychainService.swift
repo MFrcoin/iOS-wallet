@@ -45,16 +45,13 @@ open class DAKeychain {
         if SecItemCopyMatching(query, nil) == noErr {
             if let dictData = objectData {
                 let status = SecItemUpdate(query, NSDictionary(dictionary: [kSecValueData: dictData]))
-                print("Update status: ", status)
             } else {
                 let status = SecItemDelete(query)
-                print("Delete status: ", status)
             }
         } else {
             if let dictData = objectData {
                 query.setValue(dictData, forKey: kSecValueData as String)
                 let status = SecItemAdd(query, nil)
-                print("Update status: ", status)
             }
         }
     }
@@ -72,7 +69,6 @@ open class DAKeychain {
             let resultsData = resultsDict.value(forKey: kSecValueData as String) as? Data,
             status == noErr
             else {
-                print("Load status: ", status)
                 return nil
         }
         return String(data: resultsData, encoding: .utf8)

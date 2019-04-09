@@ -30,23 +30,29 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func changeButtonPressed(_ sender: UIButton) {
-        if let oldPass = DAKeychain.shared[Constants.PASS_KEY] {
-            if oldPass == oldPassTF.text {
-                if getBoolNewPass() {
-                    DAKeychain.shared[Constants.PASS_KEY] = repeatPassTF.text
-                } else {
-                    errorLabel.text = "Repeat password incorrect"
-                }
-            } else {
-                errorLabel.text = "Old password incorrect"
-            }
-        } else {
+        errorLabel.textColor = .red
+        guard let oldPass = DAKeychain.shared[Constants.PASS_KEY] else {
             if getBoolNewPass() {
-                DAKeychain.shared[Constants.PASS_KEY] = repeatPassTF.text
+                DAKeychain.shared[Constants.PASS_KEY] = repeatPassTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             } else {
                 errorLabel.text = "Repeat password incorrect"
             }
+            return
         }
+        if oldPass == oldPassTF.text {
+            if getBoolNewPass() {
+                DAKeychain.shared[Constants.PASS_KEY] = repeatPassTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            } else {
+                errorLabel.text = "Repeat password incorrect"
+            }
+        } else {
+            errorLabel.text = "Old password incorrect"
+        }
+        oldPassTF.text = ""
+        newPassTF.text = ""
+        repeatPassTF.text = ""
+        errorLabel.textColor = Constants.BLUECOLOR
+        errorLabel.text = "Success"
     }
     
     private func getBoolNewPass() -> Bool {

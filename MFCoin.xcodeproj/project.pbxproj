@@ -87,6 +87,7 @@
 		843A15B42219E048006F393D /* MFCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A15B32219E048006F393D /* MFCoin.swift */; };
 		843A15B72219E83B006F393D /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A15B62219E83B006F393D /* Mnemonic.swift */; };
 		843B9F63221B333400913829 /* JsonStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B9F62221B333400913829 /* JsonStructs.swift */; };
+		843D9160225B8C5F009081C6 /* SRCopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D915F225B8C5F009081C6 /* SRCopyableLabel.swift */; };
 		843F8FF821CE916A008E2F86 /* Coins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843F8FF721CE916A008E2F86 /* Coins.storyboard */; };
 		843F8FFC21CE9258008E2F86 /* CoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F8FFB21CE9258008E2F86 /* CoinsTableViewCell.swift */; };
 		843FDD8E21E4E9E800C655F2 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FDD8D21E4E9E800C655F2 /* ScannerViewController.swift */; };
@@ -256,6 +257,7 @@
 		843A15B32219E048006F393D /* MFCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFCoin.swift; sourceTree = "<group>"; };
 		843A15B62219E83B006F393D /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		843B9F62221B333400913829 /* JsonStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonStructs.swift; sourceTree = "<group>"; };
+		843D915F225B8C5F009081C6 /* SRCopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCopyableLabel.swift; sourceTree = "<group>"; };
 		843F8FF721CE916A008E2F86 /* Coins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Coins.storyboard; sourceTree = "<group>"; };
 		843F8FFB21CE9258008E2F86 /* CoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTableViewCell.swift; sourceTree = "<group>"; };
 		843FDD8D21E4E9E800C655F2 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				8470A8DA221C8CA800454971 /* ConvertValue.swift */,
 				845403B7221877CD00186453 /* Extensions.swift */,
 				8484A31522524731006B8486 /* Reachability.swift */,
+				843D915F225B8C5F009081C6 /* SRCopyableLabel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1024,6 +1027,7 @@
 				842CAFF821EB46EB000B8F0A /* WalletTableViewCell.swift in Sources */,
 				843A15892219DB16006F393D /* IconAddress.swift in Sources */,
 				8456E2182222C4EE00DACD49 /* History.swift in Sources */,
+				843D9160225B8C5F009081C6 /* SRCopyableLabel.swift in Sources */,
 				843A15322219D98D006F393D /* WitnessProgram.swift in Sources */,
 				8451DFD5221981E10035D715 /* Data+Hex.swift in Sources */,
 				8451DFE7221981E10035D715 /* BigIntEncoding.swift in Sources */,

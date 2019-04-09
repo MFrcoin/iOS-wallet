@@ -26,7 +26,6 @@ class ServerConnect {
       switch resultConnect {
       case .success:
          let message = "{\"jsonrpc\": \"2.0\", \"method\": \"\(command.rawValue)\", \"params\": [\(altInfo)], \"id\": \"\(coin.shortName)\(date)\"}\n"
-         print(message)
          let resultSend = client.send(string: message )
          switch resultSend {
          case .success:
@@ -40,17 +39,14 @@ class ServerConnect {
                completion(answer)
             }
          case .failure(let error):
-            debugPrint("error1 \(error.localizedDescription)")
             completion(error)
          }
       case .failure(let error):
-         debugPrint("error2 \(error.localizedDescription)")
          if !requestFlag {
             requestFlag = true
             sendRequest(coin: coin, command: command, altInfo: altInfo, id: id) { (response) in
                completion(response)
             }
-            //completion(response)
          }
          completion(error)
       }
@@ -59,7 +55,7 @@ class ServerConnect {
    private func parseJSON(_ data: Data, _ command: toServer) -> Any? {
       do {
          let pr = String.init(data: data, encoding: .utf8)
-         print (pr!)
+         print(pr!)
          let decoder = JSONDecoder()
          switch command{
          case .getBalanceScrH:
@@ -82,7 +78,6 @@ class ServerConnect {
             return response
          default:
             let response = try decoder.decode(JsonError.self, from: data)
-            print ("ERROR JSON Request \(response)")
             return nil
          }
       } catch { print(" Catch Error \(error)") }

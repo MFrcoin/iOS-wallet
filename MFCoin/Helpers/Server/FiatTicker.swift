@@ -39,7 +39,6 @@ class FiatTicker {
             guard let data = data else {return}
             do {
                 let json = try JSONDecoder().decode([Fiat].self, from: data)
-                print(json)
                 self.realm.saveFiatInCoin(json: json[0])
             } catch {
                 print(error)

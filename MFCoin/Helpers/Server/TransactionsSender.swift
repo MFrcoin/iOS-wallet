@@ -74,7 +74,6 @@ class TransactionsSender {
         guard let unsignedTx = createUnsignedTx(toAddr: toAddr, amount: amount, changeAddr: changeAddr, utxos: utxos) else { return }
         
         let signedTx = signTx(unsignedTx: unsignedTx, keys: getPrivateKeys(coin: coinUnw))
-        print(signedTx.encoded.hex)
         let info = "\"\(signedTx.hexEncoded)\""
         ServerConnect().sendRequest(coin: coinUnw, command: .broadcast, altInfo: info, id: coinUnw.shortName, { (response) in
             if let list = response as? Broadcast {
@@ -82,7 +81,6 @@ class TransactionsSender {
                     let userInfo = [ "txId" : list.result ]
                     NotificationCenter.default.post(name: Constants.SENDED, object: nil, userInfo: userInfo)
                 }
-                print("list.result \(list.result)")
             }
         })
     }
@@ -102,7 +100,6 @@ class TransactionsSender {
         guard let (utxos, fee) = selectTx(from: utxos, amount: amount) else {return nil}
         let totalAmount: Int64 = utxos.reduce(0) { $0 + $1.output.value }
         let change: Int64 = totalAmount - amount - fee
-        print(change)
         let lockingScriptTo = BitcoinScript.buildPayToPublicKeyHash(address: toAddr)
         let lockingScriptChange = BitcoinScript.buildPayToPublicKeyHash(address: changeAddr)
         let toOutput = BitcoinTransactionOutput(value: amount, script: lockingScriptTo)
