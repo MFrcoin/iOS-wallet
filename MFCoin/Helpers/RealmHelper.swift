@@ -127,23 +127,10 @@ extension RealmHelper {
     
     func getTxHistories(coin: CoinModel) -> Results<TxHistory> {
         let realm = try! Realm()
-        let result = realm.objects(TxHistory.self).filter("coinFullName = %@", coin.fullName).sorted(byKeyPath: "date", ascending: false)
+        let result = realm.objects(TxHistory.self).filter("coinFullName = %@", coin.fullName).sorted(byKeyPath: "nowDate", ascending: false)
         return result
     }
-    
-    func isTxid(_ txid: String, _ confirmations: Int) -> Bool {
-        let realm = try! Realm()
-        let result = realm.objects(TxHistory.self).filter("txid = %@", txid)
-        if result.count > 0 {
-            try! realm.write {
-                for history in result {
-                    history.status = confirmations
-                }
-            }
-            return false
-        }
-        return true
-    }
+
 }
 
 
@@ -216,17 +203,5 @@ extension RealmHelper {
         }
         let myBalance = Double(getTotalAmount())
         UserDefaults.standard.set(myBalance, forKey: Constants.MYBALANCE)
-    }
-    
-    func updateTxHistory(txid: String, confirmations: Int) {
-        let realm = try! Realm()
-        let result = realm.objects(TxHistory.self).filter("txid = %@", txid)
-        if result.count > 0 {
-            try! realm.write {
-                for history in result {
-                    history.status = confirmations
-                }
-            }
-        }
     }
 }

@@ -56,13 +56,13 @@ struct GetMempool: Codable {
 struct GetTxHistory: Codable {
     
     struct Result: Codable {
-        var blockhash: String
-        var confirmations: Int
-        var time: Int
         var hex: String
         var txid: String
         var version: Int
         var locktime: Int
+        var blockhash: String?
+        var confirmations: Int?
+        var time: Int?
         
         struct Vin: Codable {
             var txid: String

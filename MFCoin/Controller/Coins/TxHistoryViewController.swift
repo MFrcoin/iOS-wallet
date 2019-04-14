@@ -30,7 +30,7 @@ class TxHistoryViewController: UIViewController {
         guard let coinUnw = coin else {return}
         guard let txUnw = txHistory else {return}
         dateLabel.text = dateFormat(milliseconds: txUnw.date)
-        statusLabel.text = "\(txUnw.status) confirmations"
+        statusLabel.text = "\(txUnw.confirmation) confirmations"
         sentOrReceivedLabel.textColor = Constants.BLUECOLOR
         if txUnw.received {
             sentOrReceivedLabel.text = "Received"
@@ -52,6 +52,7 @@ class TxHistoryViewController: UIViewController {
     }
     
     private func dateFormat(milliseconds: Int) -> String {
+        if milliseconds == 0 { return "Waiting for transaction confirmations" }
         let date = Date(timeIntervalSince1970: TimeInterval(milliseconds))
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy, HH:mm"

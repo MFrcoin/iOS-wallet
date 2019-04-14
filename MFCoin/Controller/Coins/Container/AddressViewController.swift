@@ -18,25 +18,52 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     let kitManager = KitManager.shared
     let realm = RealmHelper.shared
     var tableDict = [Int: TxHistory]()
+    var timerFlag = false
+    var timer: Timer? = nil
+    var loyautFlag = false
     
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
         NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Loading")
         refreshControl.tintColor = Constants.BLUECOLOR
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        refresh()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         tableView.refreshControl?.endRefreshing()
         NotificationCenter.default.removeObserver(self, name: Constants.UPDATE, object: nil)
         NotificationCenter.default.removeObserver(self, name: .flagsChanged, object: nil)
+        timer?.invalidate()
+        loyautFlag = false
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if !loyautFlag {
+            loyautFlag = true
+            tableView.refreshControl?.beginRefreshing()
+            guard let coinUnw = coin else { return }
+            setInfo(coinUnw)
+            time()
+        }
+    }
+    
+    private func time() {
+        if !timerFlag {
+            timerFlag = true
+            timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+            if let timerUnw = timer {
+                RunLoop.current.add(timerUnw, forMode: .common)
+            }
+            self.timer?.fire()
+        }
+    }
+    
+    @objc func timerFired() {
+        guard let coinUnw = coin else { return }
+        kitManager.updateHistory()
+        kitManager.getTransactions(coinUnw)
     }
     
     private func setInfo(_ coin: CoinModel) {
@@ -46,8 +73,11 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc func refresh() {
+        tableDict.removeAll()
         guard let coinUnw = coin else { return }
-        tableView.refreshControl?.beginRefreshing()
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.beginRefreshing()
+        }
         setInfo(coinUnw)
     }
     
@@ -69,13 +99,14 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell
-        if let histories = histories {
-            let history = histories[indexPath.row]
+        if let historiesUnw = histories {
+            let history = historiesUnw[indexPath.row]
+            print("nowDate \(history.nowDate)")
             tableDict.updateValue(history, forKey: indexPath.row)
             if history.received {
-                cell.fillImageView.image = fillImage(conf: history.status)
+                cell.fillImageView.image = fillImage(conf: history.confirmation)
                 cell.coinImage.image = UIImage(named: "Received")
-                if history.status < 4 {
+                if history.confirmation < 4 {
                     cell.coinImage.image = UIImage(named: "Received0")
                     cell.statusLabel.textColor = .gray
                     cell.coinCountLabel.textColor = .gray
@@ -86,9 +117,9 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.statusLabel.text = "Received"
                 cell.coinCountLabel.text = "+\(history.value)"
             } else {
-                cell.fillImageView.image = fillImage(conf: history.status)
+                cell.fillImageView.image = fillImage(conf: history.confirmation)
                 cell.coinImage.image = UIImage(named: "Sended")
-                if history.status < 4 {
+                if history.confirmation < 4 {
                     cell.coinImage.image = UIImage(named: "Sended0")
                     cell.statusLabel.textColor = .gray
                     cell.coinCountLabel.textColor = .gray
@@ -100,7 +131,6 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.coinCountLabel.text = "-\(history.value)"
             }
             cell.addressLabel.text = history.address
-            
             cell.dateLabel.text = dateFormat(milliseconds: history.date)
         }
         return cell
@@ -136,6 +166,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     private func dateFormat(milliseconds: Int) -> String {
+        if milliseconds == 0 { return "" }
         let date = Date(timeIntervalSince1970: TimeInterval(milliseconds))
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yy HH:mm"

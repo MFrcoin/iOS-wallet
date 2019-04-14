@@ -58,12 +58,7 @@ class SetPasswordViewController: UIViewController, UITextFieldDelegate {
             passErrorLabel.text = "Set password"
             return false
         }
-        if password.count < 10 {
-            passErrorLabel.text = "Password is too short, minimum 10 characters."
-            return false
-        }
-        //"Password 4444 is too common to be safely used."
-        //"Passwords don't match."
+
         guard let replyPassword = replyPassTextField.text else {
             replyPassErrorLabel.text = "Set reply password"
             return false }

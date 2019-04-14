@@ -774,11 +774,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576427077.3837481"
+            timestampString = "576918650.899001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "diffWords(words:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -790,13 +790,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576427077.3838789"
+            timestampString = "576918650.899143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "KitManager"
-            landmarkType = "3">
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "initSelectedWallets()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -806,11 +806,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576427077.384003"
+            timestampString = "576918650.899264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "initSelectedWallets()"
             landmarkType = "7">
          </BreakpointContent>
@@ -838,11 +838,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576427077.384258"
+            timestampString = "576791300.296365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "sendRequest(coin:command:altInfo:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -854,11 +854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576427077.384391"
+            timestampString = "576791300.296481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "parseJSON(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -870,11 +870,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576427077.384521"
+            timestampString = "576791300.296568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "sendRequest(coin:command:altInfo:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -886,11 +886,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576427077.384648"
+            timestampString = "576791300.296654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "sendRequest(coin:command:altInfo:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -902,28 +902,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/ServerConnect.swift"
-            timestampString = "576427077.3847769"
+            timestampString = "576791300.296739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "sendRequest(coin:command:altInfo:id:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MFCoin/Controller/Coins/Container/SendViewController.swift"
-            timestampString = "576084136.303232"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "sendButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -982,11 +966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576427077.3854049"
+            timestampString = "576918650.89995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "getListunspent(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1078,11 +1062,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576095374.487947"
+            timestampString = "576922464.222008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "signTx(unsignedTx:keys:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1094,7 +1078,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576095374.488077"
+            timestampString = "576922464.2221479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -1110,7 +1094,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576095374.488201"
+            timestampString = "576922464.2222739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -1126,11 +1110,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576095374.488325"
+            timestampString = "576922464.222399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "signTx(unsignedTx:keys:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1142,12 +1126,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576427077.386075"
+            timestampString = "576918650.9004329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "getBalances()"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "getBalances(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1158,28 +1142,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576427077.386236"
+            timestampString = "576918650.900555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "getBalances()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MFCoin/Controller/Coins/Container/SendViewController.swift"
-            timestampString = "576084136.3048739"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "sendButtonPressed(_:)"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "getBalances(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1206,11 +1174,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Models/Coin/TxHistory.swift"
-            timestampString = "576095374.488912"
+            timestampString = "576922464.2227269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "init(coin:tx:address:change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1286,11 +1254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/KitManager.swift"
-            timestampString = "576427077.386994"
+            timestampString = "576918650.901893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "getOnline()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1302,11 +1270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576095374.490289"
+            timestampString = "576922464.223121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "signTx(unsignedTx:keys:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1318,11 +1286,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576095374.490415"
+            timestampString = "576922464.22324"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "createUnsignedTx(toAddr:amount:changeAddr:utxos:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1334,11 +1302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576095374.490559"
+            timestampString = "576922464.223357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "selectTx(from:amount:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1350,7 +1318,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
-            timestampString = "576095374.49069"
+            timestampString = "576922464.223472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -1388,6 +1356,150 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "saveSeedSwitched(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Controller/Coins/Container/AddressViewController.swift"
+            timestampString = "576922464.22374"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "viewDidDisappear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
+            timestampString = "576922464.223869"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "createUnsignedTx(toAddr:amount:changeAddr:utxos:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Source/Bitcoin/BitcoinUnspentSelector.swift"
+            timestampString = "576791300.302683"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "select(from:targetValue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Source/Bitcoin/BitcoinUnspentSelector.swift"
+            timestampString = "576791300.30278"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "select(from:targetValue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
+            timestampString = "576922464.2241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "sendToSomeAddress(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Helpers/Server/TransactionsSender.swift"
+            timestampString = "576922464.2242171"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "sendToSomeAddress(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Controller/Coins/Container/AddressViewController.swift"
+            timestampString = "576922464.224333"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Controller/Coins/Container/AddressViewController.swift"
+            timestampString = "576922464.2244641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFCoin/Controller/Coins/Container/ContainerViewController.swift"
+            timestampString = "576922464.224592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -15,10 +15,12 @@ enum BitcoinUnspentSelectorError: LocalizedError {
 public struct BitcoinUnspentSelector {
     public let byteFee: BigInt
     public let dustThreshold: BigInt
+    var coinFee: BigInt
 
-    public init(byteFee: BigInt = 1, dustThreshold: BigInt = 3 * 182) {
+    public init(byteFee: BigInt = 1, dustThreshold: BigInt = 3 * 182, coinFee: BigInt = 100000) {
         self.byteFee = byteFee
         self.dustThreshold = dustThreshold
+        self.coinFee = coinFee
     }
 
     public func select(from utxos: [BitcoinUnspentTransaction], targetValue: BigInt) throws -> (utxos: [BitcoinUnspentTransaction], fee: BigInt) {
@@ -29,7 +31,7 @@ public struct BitcoinUnspentSelector {
 
         // total values of utxos should be greater than targetValue
         guard utxos.sum() >= targetValue && !utxos.isEmpty else {
-            NotificationCenter.default.post(name: Constants.UPDATE, object: nil)
+            NotificationCenter.default.post(name: Constants.INSUFFICIENTFUNDS, object: nil)
             return ([], 0)
             //throw BitcoinUnspentSelectorError.insufficientFunds
         }
@@ -52,13 +54,13 @@ public struct BitcoinUnspentSelector {
         //    (3) and does not produce dust change.
         do {
             for numInputs in (1...sortedUtxos.count) {
-                let fee = calculateFee(input: numInputs, output: numOutputs)
-                let targetWithFeeAndDust = targetValue + fee + dustThreshold
+                //let fee = calculateFee(input: numInputs, output: numOutputs)
+                let targetWithFeeAndDust = targetValue + coinFee + dustThreshold
                 let nOutputsSlices = sortedUtxos.eachSlices(numInputs)
                 var nOutputsInRange = nOutputsSlices.filter { $0.sum() >= targetWithFeeAndDust }
                 nOutputsInRange.sort { distFrom2x($0.sum()) < distFrom2x($1.sum()) }
                 if let nOutputs = nOutputsInRange.first {
-                    return (nOutputs, fee)
+                    return (nOutputs, coinFee)
                 }
             }
         }
@@ -66,18 +68,18 @@ public struct BitcoinUnspentSelector {
         // 2. If not, find a combination of outputs that may produce dust change.
         do {
             for numInputs in (1...sortedUtxos.count) {
-                let fee = calculateFee(input: numInputs, output: numOutputs)
-                let targetWithFee = targetValue + fee
+                //let fee = calculateFee(input: numInputs, output: numOutputs)
+                let targetWithFee = targetValue + coinFee
                 let nOutputsSlices = sortedUtxos.eachSlices(numInputs)
                 let nOutputsInRange = nOutputsSlices.filter {
                     return $0.sum() >= targetWithFee
                 }
                 if let nOutputs = nOutputsInRange.first {
-                    return (nOutputs, fee)
+                    return (nOutputs, coinFee)
                 }
             }
         }
-        NotificationCenter.default.post(name: Constants.UPDATE, object: nil)
+        NotificationCenter.default.post(name: Constants.INSUFFICIENTFUNDS, object: nil)
         return ([], 0)
         //throw BitcoinUnspentSelectorError.insufficientFunds
     }

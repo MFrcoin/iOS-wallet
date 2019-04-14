@@ -50,6 +50,19 @@ class ContainerViewController: UIViewController {
     @objc func selectedDidChange(sender: UISegmentedControl) {
         updateView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.SENDED, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: Constants.SENDED, object: nil)
+    }
+    
+    @objc private func update() {
+        segmentedControl.selectedSegmentIndex = 1
+        updateView()
+    }
 
     private func updateView() {
         receiveViewController.view.isHidden = !(segmentedControl.selectedSegmentIndex == 0)

@@ -19,13 +19,13 @@ class TransactionsSender {
     var toAddress = ""
     var amount = 0
     var coinIndex = 0
-    var fee = 100000
+    var coinFee = 100000
     
     convenience init(coin: CoinModel, toAddress: String, amount: Int) {
         self.init()
         self.coin = coin
         self.coinIndex = coin.index
-        self.fee = coin.fee
+        self.coinFee = coin.fee
         self.toAddress = toAddress
         self.amount = amount
     }
@@ -75,6 +75,7 @@ class TransactionsSender {
         
         let signedTx = signTx(unsignedTx: unsignedTx, keys: getPrivateKeys(coin: coinUnw))
         let info = "\"\(signedTx.hexEncoded)\""
+        print(info)
         ServerConnect().sendRequest(coin: coinUnw, command: .broadcast, altInfo: info, id: coinUnw.shortName, { (response) in
             if let list = response as? Broadcast {
                 DispatchQueue.main.async{
@@ -86,7 +87,8 @@ class TransactionsSender {
     }
     
     private func selectTx(from utxos: [BitcoinUnspentTransaction], amount: Int64) -> (utxos: [BitcoinUnspentTransaction], fee: Int64)? {
-        let selector = BitcoinUnspentSelector.init()
+        let fee = BigInt(coinFee)
+        let selector = BitcoinUnspentSelector.init(coinFee: fee)
         do {
             let answer = try selector.select(from: utxos, targetValue: BigInt(amount))
             return (answer.utxos, Int64(answer.fee))
@@ -97,9 +99,9 @@ class TransactionsSender {
     }
     
     private func createUnsignedTx(toAddr: BitcoinAddress, amount: Int64, changeAddr: BitcoinAddress, utxos: [BitcoinUnspentTransaction]) -> BitcoinUnsignedTransaction? {
-        guard let (utxos, fee) = selectTx(from: utxos, amount: amount) else {return nil}
+        guard let (utxos, _) = selectTx(from: utxos, amount: amount) else {return nil}
         let totalAmount: Int64 = utxos.reduce(0) { $0 + $1.output.value }
-        let change: Int64 = totalAmount - amount - fee
+        let change: Int64 = totalAmount - amount - Int64(coinFee)
         let lockingScriptTo = BitcoinScript.buildPayToPublicKeyHash(address: toAddr)
         let lockingScriptChange = BitcoinScript.buildPayToPublicKeyHash(address: changeAddr)
         let toOutput = BitcoinTransactionOutput(value: amount, script: lockingScriptTo)

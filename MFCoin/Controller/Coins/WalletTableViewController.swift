@@ -17,6 +17,8 @@ class WalletTableViewController: UITableViewController {
     let convert = ConvertValue.shared
     var head = RealmHelper.shared.getHeadFiat()
     var startFlag = false
+    var timerFlag = false
+    var timer: Timer? = nil
     
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
@@ -26,13 +28,16 @@ class WalletTableViewController: UITableViewController {
     
     private func startVC() {
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Loading")
         refreshControl.tintColor = Constants.BLUECOLOR
         refreshControl.addTarget(self, action: #selector(refreshBalances), for: .valueChanged)
         tableView.refreshControl = refreshControl
         walletsCoins = realmManager.selCoins
-        kitManager.getBalances()
         kitManager.updateHistory()
+        if let coins = walletsCoins {
+            for coin in coins {
+                kitManager.getBalances(coin)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +54,7 @@ class WalletTableViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: Constants.UPDATE, object: nil)
         NotificationCenter.default.removeObserver(self, name: .flagsChanged, object: nil)
         startFlag = false
+        timer?.invalidate()
     }
     
     override func viewWillLayoutSubviews() {
@@ -56,22 +62,45 @@ class WalletTableViewController: UITableViewController {
         self.navigationItem.title = "\(UserDefaults.standard.double(forKey: Constants.MYBALANCE)) \(head.name)"
         if !startFlag {
             startFlag = true
+            time()
             NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
             NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
             tableView.reloadData()
         }
     }
     
+    private func time() {
+        if !timerFlag {
+            timerFlag = true
+            timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+            if let timerUnw = timer {
+                RunLoop.current.add(timerUnw, forMode: .common)
+            }
+            self.timer?.fire()
+        }
+    }
+    
+    @objc func timerFired() {
+        if let coins = walletsCoins {
+            for coin in coins {
+                kitManager.getBalances(coin)
+            }
+        }
+    }
+    
     @objc func refreshBalances() {
-        if self.tableView.refreshControl?.isRefreshing ?? false {
-            self.tableView.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
+        if tableView.refreshControl?.isRefreshing ?? false {
+            tableView.refreshControl?.endRefreshing()
         }
         guard let walletsCoinsUnw = walletsCoins else { return  }
         if walletsCoinsUnw.count > 0 {
             self.tableView.refreshControl?.beginRefreshing()
             kitManager.getOnline()
-            kitManager.getBalances()
+            if let coins = walletsCoins {
+                for coin in coins {
+                    kitManager.getBalances(coin)
+                }
+            }
         }
     }
     
@@ -82,8 +111,8 @@ class WalletTableViewController: UITableViewController {
         if walletsCoinsUnw.count > 0 {
             realmManager.updateTitleBalance()
             kitManager.updateHistory()
+            tableView.refreshControl?.endRefreshing()
             DispatchQueue.main.async {
-                self.tableView.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             }
         }

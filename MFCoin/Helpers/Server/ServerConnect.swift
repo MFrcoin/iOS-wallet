@@ -13,7 +13,6 @@ struct jsonAnswer: Decodable {
 
 class ServerConnect {
    static let shared = ServerConnect()
-   //let block = "https://blockchain.info/tx/%s"
    var requestFlag = false
    
    func sendRequest(coin: CoinModel, command: toServer, altInfo: String, id: String, _ completion: @escaping (_ completion: Any?) -> ()) {
@@ -29,11 +28,11 @@ class ServerConnect {
          let resultSend = client.send(string: message )
          switch resultSend {
          case .success:
-            var time = 2048
+            var time = 4096
             if command == .getTransactions {
                time = 1024000
             }
-            if let wert = client.read(time, timeout: 2) {
+            if let wert = client.read(time, timeout: 1) {
                let data = Data(bytes: wert)
                let answer = self.parseJSON(data, command)
                completion(answer)
@@ -77,7 +76,7 @@ class ServerConnect {
             let response = try decoder.decode(Version.self, from: data)
             return response
          default:
-            let response = try decoder.decode(JsonError.self, from: data)
+            //let response = try decoder.decode(JsonError.self, from: data)
             return nil
          }
       } catch { print(" Catch Error \(error)") }

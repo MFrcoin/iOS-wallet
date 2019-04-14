@@ -48,10 +48,8 @@ class SendViewController: UIViewController, UITextFieldDelegate {
         firstMoneyTF.delegate = self
         secondMoneyTF.delegate = self
         addressTF.delegate = self
-        
         firstMoneyTF.addDoneToolbar()
         secondMoneyTF.addDoneToolbar()
-        
         sendButton.layer.cornerRadius = Constants.CORNER_RADIUS
         guard let coinUnw = coin else {return}
         setInfo(coinUnw)
@@ -110,6 +108,33 @@ class SendViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
+        guard let password = DAKeychain.shared[Constants.PASS_KEY] else {
+            sendConfirmed()
+            return
+        }
+        let alert = UIAlertController.init(title: "Confirmation", message: "Enter the password to confirm the transaction", preferredStyle: .alert)
+        alert.addTextField { (textField: UITextField) in
+            textField.placeholder = "Password"
+            textField.delegate = self
+        }
+        let alertActionCancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        let alertActionOk = UIAlertAction.init(title: "Ok", style: .default, handler: { (ok) in
+            if let tf = alert.textFields {
+                if let pass = tf[0].text {
+                    if pass.trimmingCharacters(in: .whitespacesAndNewlines) == password {
+                        self.sendConfirmed()
+                    } else {
+                        self.setSendStatus(status: .invalidPassword)
+                    }
+                }
+            }
+        })
+        alert.addAction(alertActionCancel)
+        alert.addAction(alertActionOk)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func sendConfirmed() {
         guard let coinUnw = coin,
             let address = addressTF.text,
             let amount = firstMoneyTF.text,
@@ -118,9 +143,8 @@ class SendViewController: UIViewController, UITextFieldDelegate {
         let convertAmount = convert.convertValueToSatoshi(value: dAmount)
         if dAmount > 0.0 && convertAmount < coinUnw.balance {
             if BitcoinAddress.isValid(string: address) {
-            let ts = TransactionsSender(coin: coinUnw, toAddress: address, amount: convertAmount)
-            ts.sendToSomeAddress(Int64(convertAmount))
-            //setSendStatus(status: .success)
+                let ts = TransactionsSender(coin: coinUnw, toAddress: address, amount: convertAmount)
+                ts.sendToSomeAddress(Int64(convertAmount))
             } else {
                 setSendStatus(status: .invalidAddress)
             }
@@ -128,6 +152,7 @@ class SendViewController: UIViewController, UITextFieldDelegate {
             setSendStatus(status: .insufficientFunds)
         }
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -147,7 +172,8 @@ class SendViewController: UIViewController, UITextFieldDelegate {
         case .success:
             statusLabel.textColor = Constants.BLUECOLOR
             statusLabel.text = "Sended"
-            KitManager().getBalances()
+            guard let coinUnw = coin else {return}
+            KitManager().getBalances(coinUnw)
             RealmHelper().updateTitleBalance()
         case .insufficientFunds:
             statusLabel.textColor = .red
@@ -155,6 +181,9 @@ class SendViewController: UIViewController, UITextFieldDelegate {
         case .invalidAddress:
             statusLabel.textColor = .red
             statusLabel.text = "Address is invalid"
+        case .invalidPassword:
+            statusLabel.textColor = .red
+            statusLabel.text = "Password is invalid"
         case .online:
             statusLabel.textColor = Constants.BLUECOLOR
             statusLabel.text = "Online"
@@ -214,4 +243,5 @@ enum SendedStatus {
     case online
     case offline
     case invalidAddress
+    case invalidPassword
 }

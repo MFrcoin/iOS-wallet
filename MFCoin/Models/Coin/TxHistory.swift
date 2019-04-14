@@ -9,8 +9,9 @@
 import RealmSwift
 
 class TxHistory: Object {
-    @objc dynamic var status = 0 // 11029 confirmation
+    @objc dynamic var confirmation = 0 // 11029 confirmation
     @objc dynamic var date = 0 // 1550507154 (+000) currentmillis
+    @objc dynamic var nowDate = 0
     @objc dynamic var lockTime = 0
     @objc dynamic var value:Float = -1 //coins
     @objc dynamic var received = true //получено или отправлено
@@ -22,10 +23,17 @@ class TxHistory: Object {
     convenience init(coin: CoinModel, tx: GetTxHistory, address: String, change: Int) {
         self.init()
         self.coinFullName = coin.fullName
-        self.date = tx.result.time
+        self.date = tx.result.time ?? 0
+        self.nowDate = {
+            guard let time = tx.result.time else { return 0 }
+            if time == 0 {
+                return 0
+            }
+           return (time - Int(Date.timeIntervalBetween1970AndReferenceDate*1000))
+        }()
         self.lockTime = tx.result.locktime
         self.txid = tx.result.txid
-        self.status = tx.result.confirmations
+        self.confirmation = tx.result.confirmations ?? 0
         self.value = {
             if change == 0 {
                 for vout in tx.result.vout {
@@ -137,4 +145,37 @@ class TxHistory: Object {
     //"confirmations": 11029,
     //"time": 1550507154,
     //"blocktime": 1550507154},
-    //"id": "MFC1553838636.217914"}
+//"id": "MFC1553838636.217914"}
+
+
+//{"jsonrpc": "2.0", "result": {
+        //"hex": "0100000001ff4b7d0ac14accf0e0e5c95644268c456b27ce60f3db192757a9caa5842fed84010000006a473044022009976c722a981bc8d9d2ee201c4ce96305d1c5033d6d88256dd7c6a8596f9eec02203266c1695f7343c33097b9e1ee3899a79f07cf6e426b8997ab1fb552c7af8241012103cf07bb95a4de7316205cf56381c97074b0e989cd350625ea9851938cb76ae2a8ffffffff0200e1f505000000001976a9141d3f830921c53813aa346d412c3da046118a36f688acb09a7805000000001976a91495e9dcbc0b4feb4fc44470ea2834d0c35c7435f788ac00000000",
+        //"txid": "cfaa8d0d52d765061896fa93f8ae12745759adf0f7a7285456fe56f0b4404015",
+        //"version": 1,
+        //"locktime": 0,
+        //"vin": [{
+                //"txid": "84ed2f84a5caa9572719dbf360ce276b458c264456c9e5e0f0cc4ac10a7d4bff",
+                //"vout": 1,
+                //"scriptSig": {
+                        //"asm": "3044022009976c722a981bc8d9d2ee201c4ce96305d1c5033d6d88256dd7c6a8596f9eec02203266c1695f7343c33097b9e1ee3899a79f07cf6e426b8997ab1fb552c7af824101 03cf07bb95a4de7316205cf56381c97074b0e989cd350625ea9851938cb76ae2a8",
+                        //"hex": "473044022009976c722a981bc8d9d2ee201c4ce96305d1c5033d6d88256dd7c6a8596f9eec02203266c1695f7343c33097b9e1ee3899a79f07cf6e426b8997ab1fb552c7af8241012103cf07bb95a4de7316205cf56381c97074b0e989cd350625ea9851938cb76ae2a8"},
+                //"sequence": 4294967295}],
+        //"vout": [{
+                //"value": 1.0,
+                //"n": 0,
+                //"scriptPubKey": {
+                        //"asm": "OP_DUP OP_HASH160 1d3f830921c53813aa346d412c3da046118a36f6 OP_EQUALVERIFY OP_CHECKSIG",
+                        //"hex": "76a9141d3f830921c53813aa346d412c3da046118a36f688ac",
+                        //"reqSigs": 1,
+                        //"type": "pubkeyhash",
+                        //"addresses": ["MZuQtyyULCaZvMtXvSrevYZN8UuP44NQBU"]}},
+                //{"value": 0.9179,
+                //"n": 1,
+                //"scriptPubKey": {
+                        //"asm": "OP_DUP OP_HASH160 95e9dcbc0b4feb4fc44470ea2834d0c35c7435f7 OP_EQUALVERIFY OP_CHECKSIG",
+                        //"hex": "76a91495e9dcbc0b4feb4fc44470ea2834d0c35c7435f788ac",
+                        //"reqSigs": 1,
+                        //"type": "pubkeyhash",
+                        //"addresses": ["MkuS49x3BVt2MKtLUnbvN7K4z2586cvq3g"]}}
+        //]},
+//"id": "MFC1555152641.646181"}

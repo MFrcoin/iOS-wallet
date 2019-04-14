@@ -56,9 +56,10 @@ class KitManager {
         let addrLegExt = privKeyExt.publicKey(compressed: true).legacyBitcoinAddress(prefix: prefixP2PKH).base58String
         let addrLegInt = privKeyInt.publicKey(compressed: true).legacyBitcoinAddress(prefix: prefixP2PKH).base58String
         
-        let history = getHistory(coin: coinModel, address: addrLegExt)
-        if history.count > 0 {
-            save(coinModel, derPathExt.description, addrLegExt, 0, i, privKeyExtWif, history)
+        let historyExt = getHistory(coin: coinModel, address: addrLegExt)
+        let historyInt = getHistory(coin: coinModel, address: addrLegInt)
+        if historyExt.count > 0 || historyInt.count > 0 {
+            save(coinModel, derPathExt.description, addrLegExt, 0, i, privKeyExtWif, historyExt)
             save(coinModel, derPathInt.description, addrLegInt, 1 ,i, privKeyIntWif, nil)
             initHDWallet(coinModel, words, phrase, i: i+1)
         } else {
@@ -102,12 +103,25 @@ extension KitManager {
                         guard let txHash = result.tx_hash,
                             let height = result.height else { return }
                         let history = History(txId: txHash, height: height)
-                        answer.append(history)
+                        if self.isNewHistory(coin, history) {
+                            answer.append(history)
+                        }
                     }
                 }
             })
         }
         return answer
+    }
+    
+    private func isNewHistory(_ coin: CoinModel, _ history: History) -> Bool {
+        for path in coin.derPaths {
+            for historyPath in path.history {
+                if historyPath.txId == history.txId {
+                    return false
+                }
+            }
+        }
+        return true
     }
     
     func updateHistory() {
@@ -129,11 +143,12 @@ extension KitManager {
         }
     }
     
-    func getBalances() {
+    func getBalances(_ coinUnw: CoinModel) {
+        let coinRef = ThreadSafeReference(to: coinUnw)
         DispatchQueue.global(qos: .utility).async {
-            let result = self.realm.selCoins
-            for coin in result {
-                try! Realm().write {
+            let bRealm = try! Realm()
+            if let coin = bRealm.resolve(coinRef) {
+                try! bRealm.write {
                     coin.balance = 0
                     coin.unBalance = 0
                 }
@@ -147,8 +162,6 @@ extension KitManager {
                                     try! Realm().write {
                                         derPath.balance = confirmed
                                         derPath.unBalance = unconfirmed
-                                        coin.balance += confirmed
-                                        coin.unBalance += unconfirmed
                                     }
                                 }
                             }
@@ -176,9 +189,13 @@ extension KitManager {
                             if let listunspents = response as? Listunspent {
                                 try! Realm().write {
                                     for listunspent in listunspents.result {
-                                        if self.newhash(derPath, listunspent.tx_hash!) {
-                                            let input = Unspent.init(result: listunspent)
-                                            derPath.unspent.append(input)
+                                        guard let hash = listunspent.tx_hash,
+                                            let height = listunspent.height else {return}
+                                        if height > 0 {
+                                            if self.newhash(derPath, hash) {
+                                                let input = Unspent.init(result: listunspent)
+                                                derPath.unspent.append(input)
+                                            }
                                         }
                                     }
                                 }
@@ -197,20 +214,21 @@ extension KitManager {
             if let coin = bRealm.resolve(coinRef) {
                 for derPath in coin.derPaths {
                     for history in derPath.history {
-                        if history.height > 0 {
-                            self.server.sendRequest(coin: coin, command: .getTransactions, altInfo: "\"\(history.txId)\", true", id: coin.shortName, { (response) in
-                                if let txHistory = response as? GetTxHistory {
-                                    if self.newHistory(txHistory.result.txid, txHistory.result.confirmations) {
-                                        let cRealm = try! Realm()
-                                        try! cRealm.write {
-                                            let history = TxHistory(coin: coin, tx: txHistory,
-                                                                    address: derPath.address, change: derPath.change)
-                                            cRealm.add(history)
-                                        }
+                        self.server.sendRequest(coin: coin, command: .getTransactions, altInfo: "\"\(history.txId)\", true", id: coin.shortName, { (response) in
+                            if let txHistory = response as? GetTxHistory {
+                                let cRealm = try! Realm()
+                                try! cRealm.write {
+                                    let txid = txHistory.result.txid
+                                    let result = cRealm.objects(TxHistory.self).filter("txid = %@", txid)
+                                    if result.count > 0 {
+                                        cRealm.delete(result)
                                     }
+                                    let history = TxHistory(coin: coin, tx: txHistory,
+                                                            address: derPath.address, change: derPath.change)
+                                    cRealm.add(history)
                                 }
-                            })
-                        }
+                            }
+                        })
                     }
                 }
                 DispatchQueue.main.async{
@@ -288,10 +306,6 @@ extension KitManager {
             }
         }
         return true
-    }
-    
-    private func newHistory(_ txid: String, _ confirmations: Int) -> Bool {
-        return realm.isTxid(txid, confirmations)
     }
 }
 
