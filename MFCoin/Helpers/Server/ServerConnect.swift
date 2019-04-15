@@ -53,8 +53,6 @@ class ServerConnect {
    
    private func parseJSON(_ data: Data, _ command: toServer) -> Any? {
       do {
-         let pr = String.init(data: data, encoding: .utf8)
-         print(pr!)
          let decoder = JSONDecoder()
          switch command{
          case .getBalanceScrH:

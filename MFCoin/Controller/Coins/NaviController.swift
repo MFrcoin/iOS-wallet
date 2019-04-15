@@ -14,7 +14,6 @@ class NaviController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.topItem?.largeTitleDisplayMode = .always
         self.navigationBar.topItem?.title = "\(UserDefaults.standard.double(forKey: Constants.MYBALANCE)) \(head.name)"
         titleObservation = UserDefaults.standard.observe(\.myBalance, options: [.new]) { (vc, change) in
             guard let newValue = change.newValue else { return }

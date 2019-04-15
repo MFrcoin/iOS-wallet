@@ -75,7 +75,6 @@ class TransactionsSender {
         
         let signedTx = signTx(unsignedTx: unsignedTx, keys: getPrivateKeys(coin: coinUnw))
         let info = "\"\(signedTx.hexEncoded)\""
-        print(info)
         ServerConnect().sendRequest(coin: coinUnw, command: .broadcast, altInfo: info, id: coinUnw.shortName, { (response) in
             if let list = response as? Broadcast {
                 DispatchQueue.main.async{

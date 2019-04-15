@@ -39,6 +39,7 @@ class KitManager {
     }
     
     private func initHDWallet(_ coinModel: CoinModel, _ words: String, _ phrase: String, i: Int) {
+        
         let purpose = 44 //bip44
         let hdWallet = HDWallet.init(mnemonic: words, passphrase: phrase)
         
@@ -148,10 +149,6 @@ extension KitManager {
         DispatchQueue.global(qos: .utility).async {
             let bRealm = try! Realm()
             if let coin = bRealm.resolve(coinRef) {
-                try! bRealm.write {
-                    coin.balance = 0
-                    coin.unBalance = 0
-                }
                 for derPath in coin.derPaths {
                     if let scriptHash = self.getRevercesScriptHash(address: derPath.address) {
                         self.server.sendRequest(coin: coin, command: .getBalanceScrH, altInfo: "\"\(scriptHash)\"", id: coin.shortName, { (response) in
@@ -167,9 +164,6 @@ extension KitManager {
                             }
                         })
                     }
-                }
-                DispatchQueue.main.async{
-                    NotificationCenter.default.post(name: Constants.UPDATE, object: nil)
                 }
             }
         }
@@ -217,22 +211,27 @@ extension KitManager {
                         self.server.sendRequest(coin: coin, command: .getTransactions, altInfo: "\"\(history.txId)\", true", id: coin.shortName, { (response) in
                             if let txHistory = response as? GetTxHistory {
                                 let cRealm = try! Realm()
+                                let txid = txHistory.result.txid
+                                let result = cRealm.objects(TxHistory.self).filter("txid = %@", txid)
                                 try! cRealm.write {
-                                    let txid = txHistory.result.txid
-                                    let result = cRealm.objects(TxHistory.self).filter("txid = %@", txid)
-                                    if result.count > 0 {
+                                    if result.count == 1 {
+                                        result[0].confirmation = txHistory.result.confirmations ?? 0
+                                        if let time = txHistory.result.time {
+                                            if time > 0 {
+                                                result[0].date = time
+                                                result[0].nowDate = (time - Int(Date.timeIntervalBetween1970AndReferenceDate*1000))
+                                            }
+                                        }
+                                    } else {
+                                        let history = TxHistory(coin: coin, tx: txHistory,
+                                                                address: derPath.address, change: derPath.change)
                                         cRealm.delete(result)
+                                        cRealm.add(history)
                                     }
-                                    let history = TxHistory(coin: coin, tx: txHistory,
-                                                            address: derPath.address, change: derPath.change)
-                                    cRealm.add(history)
                                 }
                             }
                         })
                     }
-                }
-                DispatchQueue.main.async{
-                    NotificationCenter.default.post(name: Constants.UPDATE, object: nil)
                 }
             }
         }

@@ -12,6 +12,7 @@ class SendViewController: UIViewController, UITextFieldDelegate {
 
     var coin: CoinModel?
     let convert = ConvertValue.shared
+    let realm = RealmHelper.shared
     
     @IBOutlet weak var firstMoneyLabel: UILabel!
     @IBOutlet weak var secondMoneyLabel: UILabel!
@@ -23,6 +24,7 @@ class SendViewController: UIViewController, UITextFieldDelegate {
     var fiatPrice: Float = 0.0
     var head = "USD"
     var balance: Float = 0.0
+    var secondChanceFlag = true
     @objc dynamic var inputSatoshi: String?
     @objc dynamic var inputFiat: String?
     var inputSatoshiObservation: NSKeyValueObservation?
@@ -55,9 +57,14 @@ class SendViewController: UIViewController, UITextFieldDelegate {
         setInfo(coinUnw)
     }
     
-    
     @objc func update(_ notification: Notification) {
         if let text = notification.userInfo?["txId"] {
+            let alert = UIAlertController.init(title: "Success!", message: "Transaction id: \(text)", preferredStyle: .alert)
+            let alertActionOk = UIAlertAction.init(title: "Ok", style: .default, handler: { (sec) in
+                NotificationCenter.default.post(name: Constants.SUCCESS, object: nil)
+            })
+            alert.addAction(alertActionOk)
+            self.present(alert, animated: true, completion: nil)
             statusLabel.textColor = Constants.BLUECOLOR
             statusLabel.text = "\(text)"
         } else {
@@ -72,7 +79,13 @@ class SendViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func insuffFunds() {
-        setSendStatus(status: .insufficientFunds)
+        if secondChanceFlag {
+            secondChanceFlag = false
+            sendConfirmed()
+        } else {
+            secondChanceFlag = true
+            setSendStatus(status: .insufficientFunds)
+        }
     }
     
     private func setInfo(_ coin: CoinModel) {
@@ -139,7 +152,6 @@ class SendViewController: UIViewController, UITextFieldDelegate {
             let address = addressTF.text,
             let amount = firstMoneyTF.text,
             let dAmount: Double = Double(amount) else { return }
-        
         let convertAmount = convert.convertValueToSatoshi(value: dAmount)
         if dAmount > 0.0 && convertAmount < coinUnw.balance {
             if BitcoinAddress.isValid(string: address) {
@@ -152,7 +164,6 @@ class SendViewController: UIViewController, UITextFieldDelegate {
             setSendStatus(status: .insufficientFunds)
         }
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -172,9 +183,6 @@ class SendViewController: UIViewController, UITextFieldDelegate {
         case .success:
             statusLabel.textColor = Constants.BLUECOLOR
             statusLabel.text = "Sended"
-            guard let coinUnw = coin else {return}
-            KitManager().getBalances(coinUnw)
-            RealmHelper().updateTitleBalance()
         case .insufficientFunds:
             statusLabel.textColor = .red
             statusLabel.text = "Insufficient funds"
@@ -228,10 +236,6 @@ extension SendViewController {
             setSendStatus(status: .online)
         default:
             setSendStatus(status: .offline)
-            let alert = UIAlertController.init(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
-            let alertActionCancel = UIAlertAction.init(title: "Ok", style: .cancel, handler: nil)
-            alert.addAction(alertActionCancel)
-            self.present(alert, animated: true)
         }
     }
 }

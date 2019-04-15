@@ -130,7 +130,6 @@ extension RealmHelper {
         let result = realm.objects(TxHistory.self).filter("coinFullName = %@", coin.fullName).sorted(byKeyPath: "nowDate", ascending: false)
         return result
     }
-
 }
 
 

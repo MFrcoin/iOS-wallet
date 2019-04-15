@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 
-
 class ExchRatesTableViewController: UITableViewController {
     
     var results: Results<FiatModel>?

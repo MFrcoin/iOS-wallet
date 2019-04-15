@@ -18,75 +18,44 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     let kitManager = KitManager.shared
     let realm = RealmHelper.shared
     var tableDict = [Int: TxHistory]()
-    var timerFlag = false
-    var timer: Timer? = nil
-    var loyautFlag = false
+    var startFlag = false
     
     override func viewDidLoad() {
-        NotificationCenter.default.addObserver(self, selector: #selector(internetReactions), name: .flagsChanged, object: Network.reachability)
-        NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = Constants.BLUECOLOR
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        tableView.refreshControl = refreshControl
+        self.tableView.refreshControl = refreshControl
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: Constants.UPDATE , object: nil)
+        guard let coinUnw = coin else { return }
+        histories = realm.getTxHistories(coin: coinUnw)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if !startFlag {
+            startFlag = true
+            self.tableView.refreshControl?.beginRefreshing()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         tableView.refreshControl?.endRefreshing()
         NotificationCenter.default.removeObserver(self, name: Constants.UPDATE, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .flagsChanged, object: nil)
-        timer?.invalidate()
-        loyautFlag = false
     }
-    
-    override func viewWillLayoutSubviews() {
-        if !loyautFlag {
-            loyautFlag = true
-            tableView.refreshControl?.beginRefreshing()
-            guard let coinUnw = coin else { return }
-            setInfo(coinUnw)
-            time()
-        }
-    }
-    
-    private func time() {
-        if !timerFlag {
-            timerFlag = true
-            timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
-            if let timerUnw = timer {
-                RunLoop.current.add(timerUnw, forMode: .common)
-            }
-            self.timer?.fire()
-        }
-    }
-    
-    @objc func timerFired() {
-        guard let coinUnw = coin else { return }
-        kitManager.updateHistory()
-        kitManager.getTransactions(coinUnw)
-    }
-    
-    private func setInfo(_ coin: CoinModel) {
-        histories = realm.getTxHistories(coin: coin)
-        kitManager.getTransactions(coin)
-        kitManager.getListunspent(coin)
-    }
-    
+
     @objc func refresh() {
-        tableDict.removeAll()
-        guard let coinUnw = coin else { return }
-        DispatchQueue.main.async {
-            self.tableView.refreshControl?.beginRefreshing()
-        }
-        setInfo(coinUnw)
+        tableView.refreshControl?.beginRefreshing()
+        update()
     }
     
     @objc func update() {
         tableDict.removeAll()
         guard let coinUnw = coin else { return }
         histories = realm.getTxHistories(coin: coinUnw)
+        tableView.refreshControl?.endRefreshing()
         DispatchQueue.main.async {
-            self.tableView.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         }
     }
@@ -101,7 +70,6 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell
         if let historiesUnw = histories {
             let history = historiesUnw[indexPath.row]
-            print("nowDate \(history.nowDate)")
             tableDict.updateValue(history, forKey: indexPath.row)
             if history.received {
                 cell.fillImageView.image = fillImage(conf: history.confirmation)
@@ -174,18 +142,4 @@ class AddressViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 }
 
-extension AddressViewController {
-    
-    @objc func internetReactions() {
-        guard let status = Network.reachability?.status else { return }
-        switch status {
-        case .wifi, .wwan:
-            refresh()
-        default:
-            let alert = UIAlertController.init(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
-            let alertActionCancel = UIAlertAction.init(title: "Ok", style: .cancel, handler: nil)
-            alert.addAction(alertActionCancel)
-            self.present(alert, animated: true)
-        }
-    }
-}
+

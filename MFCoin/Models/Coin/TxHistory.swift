@@ -29,7 +29,7 @@ class TxHistory: Object {
             if time == 0 {
                 return 0
             }
-           return (time - Int(Date.timeIntervalBetween1970AndReferenceDate*1000))
+            return (time - Int(Date.timeIntervalBetween1970AndReferenceDate*1000))
         }()
         self.lockTime = tx.result.locktime
         self.txid = tx.result.txid

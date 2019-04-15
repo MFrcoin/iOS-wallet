@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8429E9ED226510C600A44EDF /* WalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429E9EC226510C600A44EDF /* WalletsViewController.swift */; };
 		842B5AEF2226F00500D8688A /* FiatTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B5AEE2226F00500D8688A /* FiatTicker.swift */; };
 		842B5AF12227108100D8688A /* FiatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B5AF02227108100D8688A /* FiatModel.swift */; };
 		842CAFF821EB46EB000B8F0A /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CAFF721EB46EB000B8F0A /* WalletTableViewCell.swift */; };
-		842CAFFA21EB47A9000B8F0A /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CAFF921EB47A9000B8F0A /* WalletTableViewController.swift */; };
 		842CAFFE21EB5CE7000B8F0A /* KitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CAFFD21EB5CE7000B8F0A /* KitManager.swift */; };
 		842CB00021EB7117000B8F0A /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CAFFF21EB7117000B8F0A /* AddressViewController.swift */; };
 		842CB00221EB7915000B8F0A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CB00121EB7915000B8F0A /* Constants.swift */; };
@@ -177,10 +177,10 @@
 /* Begin PBXFileReference section */
 		529BA5D880D10FEADEA09955 /* Pods-MFCoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFCoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MFCoin/Pods-MFCoin.debug.xcconfig"; sourceTree = "<group>"; };
 		5ECF25CC02EFD6C5E8DD8D1C /* Pods-MFCoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFCoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-MFCoin/Pods-MFCoin.release.xcconfig"; sourceTree = "<group>"; };
+		8429E9EC226510C600A44EDF /* WalletsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewController.swift; sourceTree = "<group>"; };
 		842B5AEE2226F00500D8688A /* FiatTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatTicker.swift; sourceTree = "<group>"; };
 		842B5AF02227108100D8688A /* FiatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatModel.swift; sourceTree = "<group>"; };
 		842CAFF721EB46EB000B8F0A /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
-		842CAFF921EB47A9000B8F0A /* WalletTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
 		842CAFFD21EB5CE7000B8F0A /* KitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitManager.swift; sourceTree = "<group>"; };
 		842CAFFF21EB7117000B8F0A /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		842CB00121EB7915000B8F0A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -787,9 +787,9 @@
 				845403BB22187E6600186453 /* ViewModel */,
 				849F012C21E4A43C000AB56A /* CoinsTabBarController.swift */,
 				846E88862250F97100EB6EAE /* NaviController.swift */,
-				842CAFF921EB47A9000B8F0A /* WalletTableViewController.swift */,
 				84AA92EE221FF466004979FF /* SettingsViewController.swift */,
 				846E88842250916500EB6EAE /* TxHistoryViewController.swift */,
+				8429E9EC226510C600A44EDF /* WalletsViewController.swift */,
 			);
 			path = Coins;
 			sourceTree = "<group>";
@@ -1037,6 +1037,7 @@
 				8451DFDD221981E10035D715 /* BlockchainFactory.swift in Sources */,
 				843A15682219DA6D006F393D /* ABIError.swift in Sources */,
 				843A15742219DAAF006F393D /* GenericJSON.swift in Sources */,
+				8429E9ED226510C600A44EDF /* WalletsViewController.swift in Sources */,
 				842B5AF12227108100D8688A /* FiatModel.swift in Sources */,
 				84C0DCAB222B717100BB6B87 /* BitcoinUnsignedTransaction.swift in Sources */,
 				843A155C2219DA3D006F393D /* PublicKey+Ethereum.swift in Sources */,
@@ -1100,7 +1101,6 @@
 				843A15792219DAD4006F393D /* ReverseResolverEncoder.swift in Sources */,
 				843A15B72219E83B006F393D /* Mnemonic.swift in Sources */,
 				843A15732219DAAF006F393D /* EIP712TypedData.swift in Sources */,
-				842CAFFA21EB47A9000B8F0A /* WalletTableViewController.swift in Sources */,
 				849F012D21E4A43C000AB56A /* CoinsTabBarController.swift in Sources */,
 				843A155A2219DA3D006F393D /* EthereumTransaction.swift in Sources */,
 				843A15472219D9D4006F393D /* Dash.swift in Sources */,
