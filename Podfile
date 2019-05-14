@@ -3,6 +3,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'MFCoin' do
+	pod 'SwiftSocket'
 	pod 'Realm'
 	pod 'RealmSwift'
 	pod 'BigInt', '~> 3.0'

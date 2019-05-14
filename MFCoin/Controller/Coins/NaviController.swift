@@ -18,7 +18,10 @@ class NaviController: UINavigationController {
         titleObservation = UserDefaults.standard.observe(\.myBalance, options: [.new]) { (vc, change) in
             guard let newValue = change.newValue else { return }
             self.head = RealmHelper.shared.getHeadFiat()
-            self.navigationBar.topItem?.title = "\(newValue) \(self.head.name)"
+            let titleText = "\(newValue) \(self.head.name)"
+            DispatchQueue.main.async {
+                self.navigationBar.topItem?.title = titleText
+            }
         }
     }
 }

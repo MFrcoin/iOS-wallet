@@ -16,7 +16,7 @@
                 <navigationController hidesBarsOnSwipe="YES" hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="hz2-7J-YQS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settingsAct" id="lqy-CC-c9l"/>
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="1pe-B6-min">
-                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="103"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         <textAttributes key="titleTextAttributes">
@@ -393,7 +393,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Overview" image="wallet" selectedImage="walletAct" id="Xle-Sq-TYx"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="b0H-yj-oCH">
-                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="103"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
@@ -425,7 +425,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uq4-mH-iae">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="408"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="396"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="walletsCoinsCell" rowHeight="54" id="AMz-SG-aeo" customClass="WalletTableViewCell" customModule="MFCoin" customModuleProvider="target">
@@ -508,7 +508,7 @@
                                 </connections>
                             </tableView>
                             <view clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Jh-kQ-skQ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="408"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="396"/>
                                 <subviews>
                                     <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nyh-4k-V20">
                                         <rect key="frame" x="140" y="100" width="40" height="40"/>
@@ -619,7 +619,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwq-td-CoQ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="532"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ib-UW-x7l">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
@@ -852,7 +852,7 @@
                         <constraints>
                             <constraint firstItem="6iB-Dg-c0c" firstAttribute="trailing" secondItem="Kwq-td-CoQ" secondAttribute="trailing" id="3Ha-nJ-bIP"/>
                             <constraint firstItem="Kwq-td-CoQ" firstAttribute="leading" secondItem="6iB-Dg-c0c" secondAttribute="leading" id="Zfc-gF-0cD"/>
-                            <constraint firstItem="6iB-Dg-c0c" firstAttribute="bottom" secondItem="Kwq-td-CoQ" secondAttribute="bottom" id="b2c-Mb-tLU"/>
+                            <constraint firstItem="6iB-Dg-c0c" firstAttribute="bottom" secondItem="Kwq-td-CoQ" secondAttribute="bottom" constant="36" id="b2c-Mb-tLU"/>
                             <constraint firstItem="6iB-Dg-c0c" firstAttribute="top" secondItem="Kwq-td-CoQ" secondAttribute="top" constant="20" id="k2K-xo-aVe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6iB-Dg-c0c"/>

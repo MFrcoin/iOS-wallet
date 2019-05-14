@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16E8C7E52FC2418AAAA856C0 /* Pods_MFCoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A78A0860019F9D37CBC913 /* Pods_MFCoin.framework */; };
 		8429E9ED226510C600A44EDF /* WalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429E9EC226510C600A44EDF /* WalletsViewController.swift */; };
 		842B5AEF2226F00500D8688A /* FiatTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B5AEE2226F00500D8688A /* FiatTicker.swift */; };
 		842B5AF12227108100D8688A /* FiatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B5AF02227108100D8688A /* FiatModel.swift */; };
@@ -116,8 +117,6 @@
 		845B797121E37A6500867A57 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B797021E37A6500867A57 /* AuthViewController.swift */; };
 		845C3EB521EA54A500A4C836 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C3EB421EA54A500A4C836 /* CoinModel.swift */; };
 		845C3EB721EA552F00A4C836 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C3EB621EA552F00A4C836 /* RealmHelper.swift */; };
-		84616735220EBF900085C756 /* SwiftSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84616734220EBF900085C756 /* SwiftSocket.framework */; };
-		84616736220EBF900085C756 /* SwiftSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84616734220EBF900085C756 /* SwiftSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		846586F62229938A0046A8ED /* CoinDerPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846586F52229938A0046A8ED /* CoinDerPaths.swift */; };
 		84696F6B2224080500BAE8BD /* TransactionsSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84696F6A2224080500BAE8BD /* TransactionsSender.swift */; };
 		846E88852250916500EB6EAE /* TxHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E88842250916500EB6EAE /* TxHistoryViewController.swift */; };
@@ -157,7 +156,6 @@
 		84ABA735221F38480057458C /* SweepPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABA734221F38480057458C /* SweepPaperViewController.swift */; };
 		84ACE6F021E90986000E624B /* QRCodeGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACE6EF21E90986000E624B /* QRCodeGenerate.swift */; };
 		84C0DCAB222B717100BB6B87 /* BitcoinUnsignedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0DCAA222B717100BB6B87 /* BitcoinUnsignedTransaction.swift */; };
-		8A86B9BF688CAD6C2A19C5F4 /* Pods_MFCoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF53E8CCEAE04050D764C25 /* Pods_MFCoin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,7 +165,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84616736220EBF900085C756 /* SwiftSocket.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +172,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		36A78A0860019F9D37CBC913 /* Pods_MFCoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFCoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		529BA5D880D10FEADEA09955 /* Pods-MFCoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFCoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MFCoin/Pods-MFCoin.debug.xcconfig"; sourceTree = "<group>"; };
 		5ECF25CC02EFD6C5E8DD8D1C /* Pods-MFCoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFCoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-MFCoin/Pods-MFCoin.release.xcconfig"; sourceTree = "<group>"; };
 		8429E9EC226510C600A44EDF /* WalletsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewController.swift; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 		845B797021E37A6500867A57 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		845C3EB421EA54A500A4C836 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 		845C3EB621EA552F00A4C836 /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
-		84616734220EBF900085C756 /* SwiftSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSocket.framework; path = Carthage/Build/iOS/SwiftSocket.framework; sourceTree = "<group>"; };
 		846586F52229938A0046A8ED /* CoinDerPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDerPaths.swift; sourceTree = "<group>"; };
 		84696F6A2224080500BAE8BD /* TransactionsSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSender.swift; sourceTree = "<group>"; };
 		846E88842250916500EB6EAE /* TxHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxHistoryViewController.swift; sourceTree = "<group>"; };
@@ -332,7 +329,6 @@
 		84ABA734221F38480057458C /* SweepPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweepPaperViewController.swift; sourceTree = "<group>"; };
 		84ACE6EF21E90986000E624B /* QRCodeGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerate.swift; sourceTree = "<group>"; };
 		84C0DCAA222B717100BB6B87 /* BitcoinUnsignedTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinUnsignedTransaction.swift; sourceTree = "<group>"; };
-		AFF53E8CCEAE04050D764C25 /* Pods_MFCoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFCoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,8 +336,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A86B9BF688CAD6C2A19C5F4 /* Pods_MFCoin.framework in Frameworks */,
-				84616735220EBF900085C756 /* SwiftSocket.framework in Frameworks */,
+				16E8C7E52FC2418AAAA856C0 /* Pods_MFCoin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,14 +350,6 @@
 				5ECF25CC02EFD6C5E8DD8D1C /* Pods-MFCoin.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		842C70A021D53DCA00405E0B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AFF53E8CCEAE04050D764C25 /* Pods_MFCoin.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		843A151A2219D959006F393D /* Bitcoin */ = {
@@ -719,11 +706,10 @@
 		8487C2BD21CE38BF000A9725 = {
 			isa = PBXGroup;
 			children = (
-				84616734220EBF900085C756 /* SwiftSocket.framework */,
 				8487C2C821CE38BF000A9725 /* MFCoin */,
 				8487C2C721CE38BF000A9725 /* Products */,
-				842C70A021D53DCA00405E0B /* Frameworks */,
 				6D367CCBB7CFF0A5E1567F4D /* Pods */,
+				F37FD596D93020DED3561D14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -815,6 +801,14 @@
 			);
 			name = ViewModel;
 			path = "New GroupiewModel";
+			sourceTree = "<group>";
+		};
+		F37FD596D93020DED3561D14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36A78A0860019F9D37CBC913 /* Pods_MFCoin.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -919,6 +913,7 @@
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -931,6 +926,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1192,6 +1188,7 @@
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1248,6 +1245,7 @@
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1259,7 +1257,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3K73D89JMS;
+				DEVELOPMENT_TEAM = 3SV8KHCF2P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1279,8 +1277,9 @@
 					"-framework",
 					"\"CryptoSwift\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.s0m380dy.MFCoin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SolutionFactory.MFCoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MFCoin/Source/MFCoin-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1296,7 +1295,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3K73D89JMS;
+				DEVELOPMENT_TEAM = 3SV8KHCF2P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1316,8 +1315,9 @@
 					"-framework",
 					"\"CryptoSwift\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.s0m380dy.MFCoin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SolutionFactory.MFCoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MFCoin/Source/MFCoin-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 4.2;

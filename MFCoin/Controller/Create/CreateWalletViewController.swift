@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftSocket
 
 class CreateWalletViewController: UIViewController  {
     
